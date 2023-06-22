@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ELIF GAMES</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-size: 72px;
+        font-weight: bold;
+        letter-spacing: 10px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="text"></h1>
+    <script>
+      var text = "ELIF GAMES";
+      var index = 0;
+      var interval = null;
+
+      function startInterval() {
+        interval = setInterval(function() {
+          document.getElementById("text").textContent = text.substring(0, index);
+          index++;
+          if (index > text.length) {
+            clearInterval(interval);
+            setTimeout(function() {
+              index = 0;
+              interval = setInterval(startInterval, 200);
+            }, 3000);
+          }
+        }, 200);
+      }
+
+      startInterval();
+    </script>
+  </body>
+</html>
