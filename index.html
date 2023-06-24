@@ -20,25 +20,38 @@
   <body>
     <h1 id="text"></h1>
     <script>
-      var text = "ELIF GAMES";
+      var texts = [
+        "ELIF GAMES",
+        "ELIF GAME STUDIO",
+		"UNDER CONSTRUCTION"
+      ];
+	  var delay = 3000; // 黑屏延迟时间，单位：毫秒
+      var currentTextIndex = 0;
+      var currentText = texts[currentTextIndex];
       var index = 0;
       var interval = null;
 
       function startInterval() {
+        clearInterval(interval); // 清除上一次的定时器
         interval = setInterval(function() {
-          document.getElementById("text").textContent = text.substring(0, index);
+          document.getElementById("text").textContent = currentText.substring(0, index);
           index++;
-          if (index > text.length) {
+          if (index > currentText.length) {
             clearInterval(interval);
             setTimeout(function() {
               index = 0;
-              interval = setInterval(startInterval, 200);
-            }, 3000);
+              currentTextIndex = (currentTextIndex + 1) % texts.length; // 切换到下一个文本
+              currentText = texts[currentTextIndex];
+              startInterval(); // 重新调用startInterval函数
+            }, delay);
           }
         }, 200);
       }
 
-      startInterval();
+      // 初始黑屏延迟
+      setTimeout(function() {
+        startInterval(); // 开始打字效果
+      }, delay);
     </script>
   </body>
 </html>
