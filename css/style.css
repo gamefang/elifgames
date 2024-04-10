@@ -288,9 +288,13 @@ button {
      display: flex;
      align-content: center;
      align-items: center;
-     background-size: 100% 100%;
+     /* background-size: 100% 100%; */
      padding-top: 13%;
      padding-bottom: 150px;
+     /* 背景图片修改为保持比例 */
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: right center;
 }
 
 .text-bg {
