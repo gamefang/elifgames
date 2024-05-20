@@ -51,7 +51,7 @@ Please verify and send the activation code for the official version of "Mound of
 ```
 
 ## Verification Method for Old-Timer Players
-- Old-Timer players are currently defined as those who have played the full version of "MyCompany996" through legitimate channels, as of June 30, 2024.
+- Old-Timer players are currently defined as those who have played the full version of "MyCompany996" through legitimate channels, as of May 31, 2024.
 1. If you are in any of the QQ group of "MyCompany996 Official", I will send you an email directly and automatically recognize you as an old player without the need for additional proof.
 2. 【Steam Library Screenshot】If you own "MyCompany996" on Steam, please follow the format below and send a screenshot with your Steam account information.
 <img src="oldtimer_steam.png" alt="oldtimer_steam" style="max-width: 80%; height: auto;" />
