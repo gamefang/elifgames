@@ -9,7 +9,7 @@ export_on_save:
 
 亲爱的老玩家：
 
-你好，我是独立游戏开发者gamefang(方珩)。作为《我的公司996》的作者，目前新作《Mound of Music》即将完成开发，为表达谢意，我希望可以免费奉送新作的激活码给老玩家。
+你好，我是独立游戏开发者gamefang(方珩)。作为《我的公司996》的开发者之一，目前个人新作《Mound of Music》即将完成开发，为表达谢意，我希望可以免费奉送新作的激活码给老玩家。
 
 ![mound of music](../images/work1.jpg)
 《Mound of Music》是一款音乐题材的叙事游戏，同样讲述了一个跌宕起伏的故事，并且以独特的音乐玩法贯穿始终，你可以[点击这里](https://store.steampowered.com/app/2911340/Mound_of_Music/)了解更多。如果你是老玩家，只需要将游戏加入Steam愿望单，并推荐你的一位朋友也将其加入愿望单，我就会免费发送给你《Mound of Music》正式版本的激活码，从而免费畅玩新作。

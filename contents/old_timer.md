@@ -9,7 +9,7 @@ export_on_save:
 
 Dear old-timer player,
 
-Hello, I am Gamefang(Fang Heng), an independent game developer. As the author of "MyCompany996," my new work "Mound of Music" is about to be completed. To express my gratitude, I would like to offer a free activation code for the new game to old-timer players.
+Hello, I am Gamefang(Fang Heng), an independent game developer. As one of the developers of "MyCompany996", my new work "Mound of Music" is about to be completed. To express my gratitude, I would like to offer a free activation code for the new game to old-timer players.
 
 ![mound of music](../images/work1.jpg)
 "Mound of Music" is a narrative game themed around music, which tells a story full of ups and downs, and is interspersed with unique musical gameplay throughout. You can [CLICK HERE](https://store.steampowered.com/app/2911340/Mound_of_Music/) to learn more. If you are an old-timer player, simply add the game to your Steam wishlist and recommend a friend to do the same, and I will send you the official version of "Mound of Music" for free.
