@@ -3,7 +3,12 @@ export_on_save:
     html: true
 ---
 
-@import "lan.md"
+<a href="/index.html">HOME</a>
+<details open>
+<summary>LANGUAGE</summary>
+
+[English](old_timer.html) | [简体中文](old_timer_zhhans.html)
+</details>
 
 # 【Long-term Offer】Free New Game for Old-Timer Players
 
@@ -11,7 +16,7 @@ Dear old-timer player,
 
 Hello, I am Gamefang(Fang Heng), an independent game developer. As one of the developers of "MyCompany996", my new work "Mound of Music" is about to be completed. To express my gratitude, I would like to offer a free activation code for the new game to old-timer players.
 
-![mound of music](../images/work1.jpg)
+![mound of music](../../moundofmusic/moundofmusic.png)
 "Mound of Music" is a narrative game themed around music, which tells a story full of ups and downs, and is interspersed with unique musical gameplay throughout. You can [CLICK HERE](https://store.steampowered.com/app/2911340/Mound_of_Music/) to learn more. If you are an old-timer player, simply add the game to your Steam wishlist and recommend a friend to do the same, and I will send you the official version of "Mound of Music" for free.
 
 I have been developing games for over a decade and have focused on independent games for nearly seven years. Unless something extraordinary happens, I have at least another twenty to thirty years to make games. As a gamer for over thirty years, I understand that the probability of continuously playing multiple works by the same author is quite low, and that is undoubtedly the greatest honor for an author. Therefore, I am willing to open my new work for free to old players, and in the future, for any work I am responsible for, I hope to adhere to this principle: <b>As long as you continue to follow me, my new works will always be free for you.</b>

@@ -3,7 +3,12 @@ export_on_save:
     html: true
 ---
 
-@import "lan.md"
+<a href="/index_zhhans.html">返回主页</a>
+<details open>
+<summary>LANGUAGE</summary>
+
+[English](old_timer.html) | [简体中文](old_timer_zhhans.html)
+</details>
 
 # 【长期有效】老玩家免费奉送新游戏
 
@@ -11,7 +16,7 @@ export_on_save:
 
 你好，我是独立游戏开发者gamefang(方珩)。作为《我的公司996》的开发者之一，目前个人新作《Mound of Music》即将完成开发，为表达谢意，我希望可以免费奉送新作的激活码给老玩家。
 
-![mound of music](../images/work1.jpg)
+![mound of music](../../moundofmusic/moundofmusic.png)
 《Mound of Music》是一款音乐题材的叙事游戏，同样讲述了一个跌宕起伏的故事，并且以独特的音乐玩法贯穿始终，你可以[点击这里](https://store.steampowered.com/app/2911340/Mound_of_Music/)了解更多。如果你是老玩家，只需要将游戏加入Steam愿望单，并推荐你的一位朋友也将其加入愿望单，我就会免费发送给你《Mound of Music》正式版本的激活码，从而免费畅玩新作。
 
 我已从事游戏开发十余年，并专注于独立游戏近七年，如果没有特殊情况，至少还有二三十年可以用来做游戏。作为30余年的游戏老玩家，我深知连续玩同一作者多个作品的概率很低，那无疑是作者最大的荣耀。所以，我愿意向老玩家免费开放我的新作，并且将来凡是我负责的作品，我都希望坚持这个原则：<b>只要你一直在关注着我，我的新作就会一直对你免费开放。</b>
