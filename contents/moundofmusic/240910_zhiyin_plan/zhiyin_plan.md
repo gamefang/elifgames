@@ -3,57 +3,25 @@ export_on_save:
     html: true
 ---
 
-<a href="/index_zhhans.html">返回主页</a>
+<a href="/index.html">HOME</a>
+<details open>
+<summary>LANGUAGE</summary>
 
-# 《知音冢 Mound of Music》知音计划
+[English](zhiyin_plan.html) | [简体中文](zhiyin_plan_zhhans.html)
+</details>
 
-- 知音计划旨在答谢热心玩家在《知音冢 Mound of Music》上线之前对游戏进行宣传，参与活动可获得完整版本的游戏激活码及其他奖励。
-- 活动即日开始，至游戏上线前10天截至，请加入官方QQ群了解更多详情：894397045
+# Zhiyin Plan - Mound of Music
 
-## 奖励列表
+- “Zhiyin Plan” is designed to thank enthusiastic players for promoting the game before the launch of “Mound of Music”. Participants in the event can receive an activation code for the full version of the game and other rewards.
+- The event starts today and ends before the game's launch. Please join our Discord to learn more details: [Click to Join Discord](https://discord.com/invite/SQ22XP4MKc)
 
-奖励等级|奖励|内容|发放人数|积分要求
---|--|--|--|--
-1|作者终身免费通行证|可终身免费畅玩作者的所有游戏作品，目前除《知音冢》外，还包括《我的公司996》。本奖励也包括周边套装，以及未来游戏的周边套装。|1|128
-2|游戏激活码+周边套装|《知音冢》完整版本激活码，游戏音乐黑胶CD，宣传折页、卡片等，不断制作扩充中。|10|108
-3|游戏激活码+话费充值卡|《知音冢》完整版本激活码，30元话费充值卡。|15|72
-4|游戏激活码|《知音冢》完整版本激活码。|30|36
-5|参与奖|游戏内致谢名单，累积积分，NPC资格等。|不限|1
+## How to Participate
+1. Please introduce Mound of Music to your friends, have them add the game to their wishlist and follow the game on Steam, and save a screenshot that includes their account information.
+2. Send five screenshots (including your own) to the email: elifgamestudio@gmail.com
+3. If verified to be correct, congratulations, you will receive a free activation code for the full version of the game.
 
-- 达到最低积分即可获得奖励资格，奖励根据积分值高低依次发放。如超过某一奖励等级的发放人数，则会归入下一等级奖励。
-- 上述表格中奖励发放人数并非固定不变，会随参与人数的增多而不断扩充，只增不减。
-- 参与奖的具体内容
-    - 所有人均会被加入游戏内致谢名单，以示感谢。
-    - 未兑换奖励的积分将累积至下一游戏，达到积分要求则可兑换完整游戏。
-    - 有几率成为下一游戏中的NPC，所以在QQ群内起一个难忘的名称吧。
-
-## 知音计划项目
-项目|积分|统计方式|备注
---|--|--|--
-[Steam添加愿望单](https://store.steampowered.com/app/2911340/Mound_of_Music/)|4|Steam带账号截图|不限次数，可介绍给朋友，额外每个愿望单也算一次
-[Steam关注游戏](https://store.steampowered.com/app/2911340/Mound_of_Music/)|1|Steam带账号截图|不限次数，同愿望单
-[Steam试玩Demo版并发表评论](https://store.steampowered.com/app/2924000/Mound_of_Music_Demo/)|5|Steam带账号截图|每人一次
-[B站上传游戏视频](https://www.bilibili.com/)|10|视频链接|视频标题需包含“知音冢”，不低于5分钟（制作精良除外）。不限次数，播放量高则额外计算奖励
-[B站关注作者](https://space.bilibili.com/412487116)|1|B站截图|每人一次
-小黑盒内关注游戏|1|小黑盒截图|每人一次
-其余宣传|1|相关截图|如朋友圈转发，QQ群转发等，每种类型限1次
-[我的公司996完整版老玩家](https://store.steampowered.com/app/1249060/MyCompany996/)|20|Steam带账号截图|每人一次，与测试版老玩家互斥
-[我的公司996测试版老玩家](https://www.taptap.cn/app/177769)|10|Taptap截图|每人一次，与完整版老玩家互斥，限2024年6月以前玩家
-有效的Bug或优化反馈|5|-|不限次数，重复bug或优化不记分
-加入QQ群|1|-|每人一次
-
-- 涉及外部链接的项目，可以点击项目文字直接跳转。
-- 上述表格的知音计划项目还会不断扩充，只增不减。
-- 由于统计时间有限（作者本人统计），请尽量提供清晰有效的截图等内容，否则积分可能会视为无效。
-
-### 活动参与方式
-- 参与活动需要加入游戏官方QQ群：894397045
-- 活动即日起开始，截止日期为游戏正式发售前10天。发售时间待定，大约10月下旬，则活动截止时间为10月中旬。
-- 活动截至日期前，将所有参与活动的资料统一发送群主(方珩 337503110)，并留下邮箱作为奖励接收方式。
-- 活动截止后，会统计奖励、公布获奖名单，并陆续发放奖励。
-- 注意事项
-    - 群名称会作为玩家的唯一标识，用于致谢名单、NPC姓名等，请酌情修改。
-    - 邮箱会作为奖励发放的途径，默认为QQ号对应邮箱，如有不同请私信群主。
-    - 群主是游戏核心开发人员，负责策划、程序、音乐、发行等各项事宜，可能回复较慢，请见谅。
+## Additional Information
+- Alternatively, you can upload a video on Youtube to introduce the game. Each video is equivalent to two friend referrals (the view count must be higher than 20).
+- Special Reward: If you refer 10 friends or upload 5 videos, you will receive a lifetime free pass from Elif Games. All future games from Elif Games will be available to you for free, for life!
 
 ![Mound of Music](../moundofmusic.png)

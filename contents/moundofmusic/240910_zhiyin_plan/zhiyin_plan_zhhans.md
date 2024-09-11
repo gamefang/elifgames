@@ -4,6 +4,11 @@ export_on_save:
 ---
 
 <a href="/index_zhhans.html">返回主页</a>
+<details open>
+<summary>LANGUAGE</summary>
+
+[English](zhiyin_plan.html) | [简体中文](zhiyin_plan_zhhans.html)
+</details>
 
 # 《知音冢 Mound of Music》知音计划
 
@@ -55,4 +60,4 @@ export_on_save:
     - 邮箱会作为奖励发放的途径，默认为QQ号对应邮箱，如有不同请私信群主。
     - 群主是游戏核心开发人员，负责策划、程序、音乐、发行等各项事宜，可能回复较慢，请见谅。
 
-![Mound of Music](../contents/moundofmusic/moundofmusic.png)
+![Mound of Music](../moundofmusic.png)

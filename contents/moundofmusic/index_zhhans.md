@@ -22,7 +22,7 @@ https://store.steampowered.com/app/2911340/Mound_of_Music/
 
 ## 知音计划
 - 知音计划旨在答谢热心玩家在《知音冢 Mound of Music》上线之前对游戏进行宣传，参与活动可获得完整版本的游戏激活码及其他奖励。
-- [点击加入知音计划](240910_zhiyin_plan/zhiyin_plan.html)
+- [点击加入知音计划](240910_zhiyin_plan/zhiyin_plan_zhhans.html)
 
 ## 教程
 - [录音教程](240909_tutor_record/tutor_record_zhhans.html)
