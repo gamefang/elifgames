@@ -39,6 +39,7 @@ export_on_save:
 [Steam试玩Demo版并发表评论](https://store.steampowered.com/app/2924000/Mound_of_Music_Demo/)|5|Steam带账号截图|每人一次
 [B站上传游戏视频](https://www.bilibili.com/)|10|视频链接|视频标题需包含“知音冢”，播放量不低于100次。不限次数，播放量高额外计算奖励
 [B站关注作者](https://space.bilibili.com/412487116)|1|B站截图|每人一次
+[网易云关注作者](https://music.163.com/#/user/home?id=9030781488)|1|网易云截图|每人一次
 小黑盒内关注游戏|1|小黑盒截图|每人一次
 其余宣传|1|相关截图|如朋友圈转发，QQ群转发等，每种类型限1次
 [我的公司996完整版老玩家](https://store.steampowered.com/app/1249060/MyCompany996/)|20|Steam带账号截图|每人一次，与测试版老玩家互斥
