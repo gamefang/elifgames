@@ -13,7 +13,7 @@ export_on_save:
 # Zhiyin Plan - Mound of Music
 
 - “Zhiyin Plan” is designed to thank enthusiastic players for promoting the game before the launch of “Mound of Music”. Participants in the event can receive an activation code for the full version of the game and other rewards.
-- The event starts today and ends before the game's launch. Please join our Discord to learn more details: [Click to Join Discord](https://discord.com/invite/SQ22XP4MKc)
+- The event starts today and ends before the game's launch (25 Oct, 2024). Please join our Discord to learn more details: [Click to Join Discord](https://discord.com/invite/SQ22XP4MKc)
 
 ## How to Participate
 1. Please introduce Mound of Music to your friends, have them add the game to their wishlist and follow the game on Steam, and save a screenshot that includes their account information.

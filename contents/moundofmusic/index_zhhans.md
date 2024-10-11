@@ -26,3 +26,4 @@ https://store.steampowered.com/app/2911340/Mound_of_Music/
 
 ## 教程
 - [录音教程](240909_tutor_record/tutor_record_zhhans.html)
+- [原创曲目教程](241010_tutor_compose/tutor_compose_zhhans.html)
