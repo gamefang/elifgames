@@ -14,7 +14,7 @@ export_on_save:
 
 ![Mound of Music](./moundofmusic.png)
 
-> “Mound of Music” is a game that integrates narrative and music gameplay. As a force opposing humanity, you embark on Earth to execute the Final Solution to the Music Crisis. Explore and discover classic musical pieces, perform all melodies and rhythms, until fate and truth are revealed.
+> “Mound of Music” a game that blends storytelling with music. Test your skills by mimicking real instrument performances, matching rhythm and pitch to bring classic tunes to life. Journey through global music and uncover the truth behind humanity's end.
 
 ## Steam Store Page
 - Please add “Mound of Music” to your wishlist to support us, thank you! 

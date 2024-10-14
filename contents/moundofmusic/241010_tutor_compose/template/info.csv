@@ -1,15 +1,15 @@
 Key,Value,Tips
-name,Twinkle Twinkle Little Star,曲目显示的名称
-scale_name,C,曲目的调式，需要按照规范填写
-slice_start,7,曲目试听开始的时间
-slice_end,24,曲目试听结束的时间
+name,Twinkle Twinkle Little Star,曲目显示的名称，可以与索引名不同
+scale_name,C,曲目的调式，会影响曲目的唱名，填写调式key字符串
+slice_start,7,曲目wave文件试听开始时间的秒数
+slice_end,24,曲目wave文件试听结束时间的秒数
 keytype,1,按键类型：1-7键，2-12键
-composer,Wolfgang Amadeus Mozart,作曲家
-lyrics,Twinkle twinkle little star\nHow I wonder what you are!\nUp above the world so high\nLike a diamond in the sky,歌词，仅显示在过场动画中
+composer,Wolfgang Amadeus Mozart,作曲家姓名
+lyrics,Twinkle twinkle little star\nHow I wonder what you are!\nUp above the world so high\nLike a diamond in the sky,歌词，仅显示在过场中，换行请使用\n
 copyright,Author: Elif Games,版权信息
-pic_pos,0|0|0.5,图片在圆形碟片中的位置：x|y|scale
-card_pos,0|0|0.7,图片在方形音乐卡片中的位置：x|y|scale
-video,musicbg1,视频背景，仅支持部分内置视频
-fade_lose,0.2,视频每秒变暗百分比
-fade_hit,0.2,视频连击变亮百分比
-alpha_area,0.05|0.4,视频的透明度区间
+pic_pos,0|0|0.5,曲目图片在准备阶段圆形碟片中的位置及缩放：x像素偏移|y像素偏移|缩放比例
+card_pos,0|0|0.7,曲目图片在选择界面方形音乐卡片中的位置及缩放：x像素偏移|y像素偏移|缩放比例
+video,musicbg1,视频背景，仅支持内置视频：musicbg1 – musicbg9
+fade_lose,0.2,视频每秒变暗的百分比
+fade_hit,0.2,视频每次三连击时变亮的百分比
+alpha_area,0.05|0.4,视频的透明度区间：最低透明度|最高透明度

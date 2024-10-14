@@ -11,4 +11,4 @@ export_on_save:
 </details>
 
 # Recording Tutorial
-- Coming soon!
+- Currently [简体中文](tutor_record_zhhans.html) only...English version coming soon!
