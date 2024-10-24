@@ -203,7 +203,7 @@ g♯|12|g♯小调
 ---
 
 ## 其他
-### 脚本转化midi单音轨文件
+### 可转化midi单音轨文件为配置的脚本
 - 一次性配置python环境（目前工具暂未成熟，后期无问题会制作为exe）
     - 下载并安装Python：[下载Python](https://www.python.org/)
     - 执行cmd，输入并运行：`pip install mido`

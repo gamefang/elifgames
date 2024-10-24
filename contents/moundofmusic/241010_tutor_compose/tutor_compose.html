@@ -31,7 +31,729 @@
 </details>
 <h1 id="self-compose-tutorial">Self-Compose Tutorial </h1>
 <ul>
-<li>Currently <a href="tutor_compose_zhhans.html">简体中文</a> only...English version coming soon!</li>
+<li>Folder containing all Self-Compose files: <code>%USERPROFILE%/AppData/LocalLow/ElifGames/MoundofMusic/UGC/Music</code></li>
+</ul>
+<h2 id="creating-a-new-track-template">Creating a New Track Template </h2>
+<ul>
+<li>
+<p>First, go to the track selection screen and click on the <code>More</code> button at the bottom right corner to pop up the entrance for Self-Composed tracks. Click to enter.<br>
+<img src="step1.png" alt="step1"></p>
+</li>
+<li>
+<p>The Self-Composed track interface will list all existing tracks. Click on New to add.<br>
+<img src="step2.png" alt="step2"></p>
+</li>
+<li>
+<p>You can enter a new name for the Self-Composed track. This string will serve as the unique index name:</p>
+<ul>
+<li>The final displayed name of the track can be different from this index name.</li>
+<li>It must not duplicate any other index names.</li>
+<li>Spaces are not allowed; if spaces are included in the input, they will be replaced with the <code>_</code> symbol.<br>
+<img src="step3.png" alt="step3"></li>
+</ul>
+</li>
+<li>
+<p>If the index name is correct, the game will automatically exit and enter the following folder:</p>
+<ul>
+<li>If the transfer does not proceed normally, please copy this path to the file manager: <code>%USERPROFILE%/AppData/LocalLow/ElifGames/MoundofMusic/UGC/Music</code><br>
+<img src="step4.png" alt="step4"></li>
+</ul>
+</li>
+<li>
+<p>Run the <code>init_config.bat</code> within it to synchronize the template files required for Self-Composed tracks.</p>
+<ul>
+<li>
+<p>A smooth internet connection is required; if you cannot connect, please join our discord to request the template files: <a href="https://discord.com/invite/SQ22XP4MKc">Click to Discord</a></p>
+</li>
+<li>
+<p>If all downloads are successful, the <code>init_config.bat</code> file will automatically delete itself after execution.<br>
+<img src="step5.png" alt="step5"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>If all the above steps are correct, you will find an additional track named <code>TwinkleTwinkleLittleStar</code> in game.</p>
+</li>
+</ul>
+<hr>
+<h2 id="track-content-editing">Track Content Editing </h2>
+<blockquote>
+<p>Take the template file <code>TwinkleTwinkleLittleStar</code> as an example, please ensure that the track template was created correctly in the previous step.</p>
+</blockquote>
+<h3 id="wav-file">WAV File </h3>
+<ul>
+<li>Filename: [Index Name].wav</li>
+<li>This file is the audio file for the background music, with the following requirements:
+<ul>
+<li>The filename must match the index name.</li>
+<li>It must be a WAV file.</li>
+<li>It must be stereo, encoded as 16bit-PCM.</li>
+<li>It is recommended that the first note of the actual configuration starts after 6 seconds; otherwise, there may be issues during note speed adjustment. If the prelude time is insufficient, you can add silence at the beginning of the track.<br>
+<img src="tip_wave.png" alt="tip_wave"></li>
+</ul>
+</li>
+<li>If the audio file cannot be parsed correctly, it is recommended to download Audacity and re-export it:<br>
+<a href="https://www.audacityteam.org/download/">Download Audacity</a></li>
+</ul>
+<h3 id="track-image">Track Image </h3>
+<ul>
+<li>Filename: [Index Name].png</li>
+<li>This file is used as the image for the track in the selection interface and on the disc. The requirements are as follows:
+<ul>
+<li>The filename must match the index name.</li>
+<li>It must be a PNG file.</li>
+</ul>
+</li>
+<li>It is recommended to create the file based on the size of the template to avoid subsequent adjustments to size and position.</li>
+</ul>
+<h3 id="background-image">Background Image </h3>
+<ul>
+<li>Filename: bg.png</li>
+<li>This file is used exclusively as the large background image for the track's start and end transitions. The requirements are as follows:
+<ul>
+<li>The filename must be: bg.png</li>
+<li>It is not a required configuration; if this file is deleted, the default background image will be used automatically.</li>
+</ul>
+</li>
+</ul>
+<h3 id="infocsv">info.csv </h3>
+<ul>
+<li>This file is the configuration file for all track information.</li>
+<li>The CSV file can be edited with Excel, but it is recommended to use Libre Office Calc, which provides better compatibility with UTF-8 characters (especially non-English languages).<br>
+<a href="https://www.libreoffice.org/download/download-libreoffice/">Download Libre Office Calc</a></li>
+<li>The first row of the CSV file is the header, and subsequent rows contain the actual configuration data. Only the first two columns are used for the actual data.</li>
+<li>Explanation of each configuration data:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value (Default)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Twinkle Twinkle Little Star</td>
+<td>The displayed name of the track, which can be different from the index name.</td>
+</tr>
+<tr>
+<td>scale_name</td>
+<td>C</td>
+<td>The key of the track, which affects the solfege names of the notes. Enter the key string. See <a href="#ScaleData">Scale Data</a>.</td>
+</tr>
+<tr>
+<td>slice_start</td>
+<td>7</td>
+<td>The starting seconds of the track's WAV file preview that will loop during the track preparation phase.</td>
+</tr>
+<tr>
+<td>slice_end</td>
+<td>24</td>
+<td>The ending seconds of the track's WAV file preview.</td>
+</tr>
+<tr>
+<td>keytype</td>
+<td>1</td>
+<td>Key type: 1-&gt;7 keys, 2-&gt;12 keys. If your track uses accidentals, please use the 12-key setting.</td>
+</tr>
+<tr>
+<td>composer</td>
+<td>Wolfgang Amadeus Mozart</td>
+<td>The composer's name, displayed during the preparation phase.</td>
+</tr>
+<tr>
+<td>lyrics</td>
+<td>Twinkle twinkle little star\nHow I wonder what you are!\nUp above the world so high\nLike a diamond in the sky</td>
+<td>Lyrics, displayed only in transitions, use \n for line breaks, and avoid using <code>,</code> (it will cause CSV parsing errors).</td>
+</tr>
+<tr>
+<td>copyright</td>
+<td>Author: Elif Games</td>
+<td>Copyright information, viewable by clicking the info button during the preparation phase.</td>
+</tr>
+<tr>
+<td>pic_pos</td>
+<td>0|0|0.5</td>
+<td>The position and scale of the track image on the circular disc in the preparation phase: x pixel offset|y pixel offset|scale ratio.</td>
+</tr>
+<tr>
+<td>card_pos</td>
+<td>0|0|0.7</td>
+<td>The position and scale of the track image on the square music card in the selection interface: x pixel offset|y pixel offset|scale ratio.</td>
+</tr>
+<tr>
+<td>video</td>
+<td>musicbg1</td>
+<td>Video background, only supports built-in videos: musicbg1 - musicbg9.</td>
+</tr>
+<tr>
+<td>fade_lose</td>
+<td>0.2</td>
+<td>The percentage the video darkens per second.</td>
+</tr>
+<tr>
+<td>fade_hit</td>
+<td>0.2</td>
+<td>The percentage the video brightens with each triple hit.</td>
+</tr>
+<tr>
+<td>alpha_area</td>
+<td>0.05|0.4</td>
+<td>The transparency range of the video: minimum transparency|maximum transparency.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>All configuration files do not support multiple languages.</li>
+</ul>
+<h3 id="notecsv">note.csv </h3>
+<ul>
+<li>This file is the configuration file for all notes of the track.</li>
+<li>The first row of the CSV file is the header, and subsequent rows contain the actual configuration data, with only the first three columns being used:
+<ul>
+<li>id: The sequence number of the note's appearance order.</li>
+<li>pitch: The pitch key of the note, see <a href="#PitchData">Pitch Data</a> for details.</li>
+<li>time: The time at which the note appears, in seconds, supporting up to three decimal places, i.e., precise to milliseconds.</li>
+</ul>
+</li>
+<li>It is recommended to use the <code>config.xlsx</code> to configure this file.</li>
+</ul>
+<h3 id="configxlsx">config.xlsx </h3>
+<ul>
+<li>This file is an auxiliary file used to generate <code>note.csv</code>, and the data will not be actually loaded.</li>
+<li>To configure pitch, please use the Sheet: <code>config</code>
+<ul>
+<li>First, record all the pitches of the notes in the track.</li>
+<li>Choose to use either solfège or scientific pitch names to configure the data, but use only one method.</li>
+<li>If using solfège, correctly select the key of the track in cell <code>B1</code>.</li>
+<li>By default, use the scientific pitch name/Italian solmization notation. For details, refer to the content in Sheet: <code>data</code>. You can replace the content of the scientific pitch name/Italian solmization column with what you are familiar with to facilitate configuration.</li>
+<li>The <code>Phrase</code> and <code>Lyrics</code> columns are only for auxiliary positioning.</li>
+<li>If the configured pitch exceeds the supported range of the game, adjust it with <code>Octave Offset</code>. 1 indicates one octave up, and -1 indicates one octave down.</li>
+<li>When all the <code>Check</code> columns are TRUE, the <code>Output Pitch</code> column is the <code>pitch</code> column in <code>note.csv</code>, which can be used as a backup.</li>
+</ul>
+</li>
+<li>Configure timing points
+<ul>
+<li>It is recommended to use Audacity to collect the timing points of each note: <a href="https://www.audacityteam.org/download/">Download Audacity</a></li>
+<li>Fill in the timing point data into the <code>Output Timing Points</code> column of the table.</li>
+</ul>
+</li>
+<li>Combine <code>Output Pitch</code> and <code>Output Timing Points</code> data, and number them in sequence, as formatted in Sheet: <code>note.csv</code>, then overwrite the <code>note.csv</code> file.</li>
+</ul>
+<h3 id="readmetxt">README.txt </h3>
+<ul>
+<li>This is an instruction file; the data will not be actually loaded.</li>
+</ul>
+<h2 id="completion-and-testing">Completion and Testing </h2>
+<ul>
+<li>If all the above steps are completed smoothly, you can load the track in the game for testing.</li>
+<li>After modifying the data and closing the CSV file, there is no need to restart the game; just re-enter the level to refresh the content.</li>
+<li>Congratulations on successfully creating your own track! Please upload it to the Steam Workshop to share with friends all around the world!</li>
+</ul>
+<hr>
+<h2 id="configuration-data">Configuration Data </h2>
+<h3 id="scale-dataa-idscaledataa">Scale Data<a id="ScaleData" href=""></a> </h3>
+<table>
+<thead>
+<tr>
+<th>Scale Key</th>
+<th>Scale Value in game</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>1</td>
+<td>C Major</td>
+</tr>
+<tr>
+<td>C♯</td>
+<td>2</td>
+<td>C♯ Major</td>
+</tr>
+<tr>
+<td>D</td>
+<td>3</td>
+<td>D Major</td>
+</tr>
+<tr>
+<td>D♯</td>
+<td>4</td>
+<td>D♯ Major</td>
+</tr>
+<tr>
+<td>E</td>
+<td>5</td>
+<td>E Major</td>
+</tr>
+<tr>
+<td>F</td>
+<td>6</td>
+<td>F Major</td>
+</tr>
+<tr>
+<td>F♯</td>
+<td>7</td>
+<td>F♯ Major</td>
+</tr>
+<tr>
+<td>G</td>
+<td>8</td>
+<td>G Major</td>
+</tr>
+<tr>
+<td>G♯</td>
+<td>9</td>
+<td>G♯ Major</td>
+</tr>
+<tr>
+<td>A</td>
+<td>10</td>
+<td>A Major</td>
+</tr>
+<tr>
+<td>A♯</td>
+<td>11</td>
+<td>A♯ Major, B♭ Major should also be noted as A♯</td>
+</tr>
+<tr>
+<td>B</td>
+<td>12</td>
+<td>B Major</td>
+</tr>
+<tr>
+<td>a</td>
+<td>1</td>
+<td>a Minor</td>
+</tr>
+<tr>
+<td>a♯</td>
+<td>2</td>
+<td>a♯ Minor</td>
+</tr>
+<tr>
+<td>b</td>
+<td>3</td>
+<td>b Minor</td>
+</tr>
+<tr>
+<td>c</td>
+<td>4</td>
+<td>c Minor</td>
+</tr>
+<tr>
+<td>c♯</td>
+<td>5</td>
+<td>c♯ Minor</td>
+</tr>
+<tr>
+<td>d</td>
+<td>6</td>
+<td>d Minor</td>
+</tr>
+<tr>
+<td>d♯</td>
+<td>7</td>
+<td>d♯ Minor</td>
+</tr>
+<tr>
+<td>e</td>
+<td>8</td>
+<td>e Minor</td>
+</tr>
+<tr>
+<td>f</td>
+<td>9</td>
+<td>f Minor</td>
+</tr>
+<tr>
+<td>f♯</td>
+<td>10</td>
+<td>f♯ Minor</td>
+</tr>
+<tr>
+<td>g</td>
+<td>11</td>
+<td>g Minor</td>
+</tr>
+<tr>
+<td>g♯</td>
+<td>12</td>
+<td>g♯ Minor</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>When the scale values in game are the same, indicating that they are related major and minor scales, and they are the same when using solfège as key bindings.</li>
+</ul>
+<h3 id="pitch-dataa-idpitchdataa">Pitch Data<a id="PitchData" href=""></a> </h3>
+<table>
+<thead>
+<tr>
+<th>Pitch Key</th>
+<th>Chev System</th>
+<th>Italiano System</th>
+<th>Note Name</th>
+<th>Corresponding Piano Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>41</td>
+<td>1,</td>
+<td>do,</td>
+<td>c</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>-41</td>
+<td>#1,</td>
+<td>dod,</td>
+<td>#c</td>
+<td></td>
+</tr>
+<tr>
+<td>42</td>
+<td>2,</td>
+<td>re,</td>
+<td>d</td>
+<td>D4</td>
+</tr>
+<tr>
+<td>-42</td>
+<td>#2,</td>
+<td>red,</td>
+<td>#d</td>
+<td></td>
+</tr>
+<tr>
+<td>43</td>
+<td>3,</td>
+<td>mi,</td>
+<td>e</td>
+<td>E4</td>
+</tr>
+<tr>
+<td>44</td>
+<td>4,</td>
+<td>fa,</td>
+<td>f</td>
+<td>F4</td>
+</tr>
+<tr>
+<td>-44</td>
+<td>#4,</td>
+<td>fad,</td>
+<td>#f</td>
+<td></td>
+</tr>
+<tr>
+<td>45</td>
+<td>5,</td>
+<td>sol,</td>
+<td>g</td>
+<td>G4</td>
+</tr>
+<tr>
+<td>-45</td>
+<td>#5,</td>
+<td>sold,</td>
+<td>#g</td>
+<td></td>
+</tr>
+<tr>
+<td>46</td>
+<td>6,</td>
+<td>la,</td>
+<td>a</td>
+<td>A4</td>
+</tr>
+<tr>
+<td>-46</td>
+<td>b7,</td>
+<td>sib,</td>
+<td>#a</td>
+<td></td>
+</tr>
+<tr>
+<td>47</td>
+<td>7,</td>
+<td>si,</td>
+<td>b</td>
+<td>B4</td>
+</tr>
+<tr>
+<td>51</td>
+<td>1</td>
+<td>do</td>
+<td>c1</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>-51</td>
+<td>#1</td>
+<td>dod</td>
+<td>#c1</td>
+<td></td>
+</tr>
+<tr>
+<td>52</td>
+<td>2</td>
+<td>re</td>
+<td>d1</td>
+<td>D5</td>
+</tr>
+<tr>
+<td>-52</td>
+<td>#2</td>
+<td>red</td>
+<td>#d1</td>
+<td></td>
+</tr>
+<tr>
+<td>53</td>
+<td>3</td>
+<td>mi</td>
+<td>e1</td>
+<td>E5</td>
+</tr>
+<tr>
+<td>54</td>
+<td>4</td>
+<td>fa</td>
+<td>f1</td>
+<td>F5</td>
+</tr>
+<tr>
+<td>-54</td>
+<td>#4</td>
+<td>fad</td>
+<td>#f1</td>
+<td></td>
+</tr>
+<tr>
+<td>55</td>
+<td>5</td>
+<td>sol</td>
+<td>g1</td>
+<td>G5</td>
+</tr>
+<tr>
+<td>-55</td>
+<td>#5</td>
+<td>sold</td>
+<td>#g1</td>
+<td></td>
+</tr>
+<tr>
+<td>56</td>
+<td>6</td>
+<td>la</td>
+<td>a1</td>
+<td>A5</td>
+</tr>
+<tr>
+<td>-56</td>
+<td>b7</td>
+<td>sib</td>
+<td>#a1</td>
+<td></td>
+</tr>
+<tr>
+<td>57</td>
+<td>7</td>
+<td>si</td>
+<td>b1</td>
+<td>B5</td>
+</tr>
+<tr>
+<td>61</td>
+<td>1'</td>
+<td>do'</td>
+<td>c2</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>-61</td>
+<td>#1'</td>
+<td>dod'</td>
+<td>#c2</td>
+<td></td>
+</tr>
+<tr>
+<td>62</td>
+<td>2'</td>
+<td>re'</td>
+<td>d2</td>
+<td>D6</td>
+</tr>
+<tr>
+<td>-62</td>
+<td>#2'</td>
+<td>red'</td>
+<td>#d2</td>
+<td></td>
+</tr>
+<tr>
+<td>63</td>
+<td>3'</td>
+<td>mi'</td>
+<td>e2</td>
+<td>E6</td>
+</tr>
+<tr>
+<td>64</td>
+<td>4'</td>
+<td>fa'</td>
+<td>f2</td>
+<td>F6</td>
+</tr>
+<tr>
+<td>-64</td>
+<td>#4'</td>
+<td>fad'</td>
+<td>#f2</td>
+<td></td>
+</tr>
+<tr>
+<td>65</td>
+<td>5'</td>
+<td>sol'</td>
+<td>g2</td>
+<td>G6</td>
+</tr>
+<tr>
+<td>-65</td>
+<td>#5'</td>
+<td>sold'</td>
+<td>#g2</td>
+<td></td>
+</tr>
+<tr>
+<td>66</td>
+<td>6'</td>
+<td>la'</td>
+<td>a2</td>
+<td>A6</td>
+</tr>
+<tr>
+<td>-66</td>
+<td>b7'</td>
+<td>sib'</td>
+<td>#a2</td>
+<td></td>
+</tr>
+<tr>
+<td>67</td>
+<td>7'</td>
+<td>si'</td>
+<td>b2</td>
+<td>B6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The game only supports pitches within these three octaves.</li>
+</ul>
+<hr>
+<h2 id="other">Other </h2>
+<h3 id="script-to-convert-midi-mono-tracks-to-configuration">Script to convert MIDI mono tracks to configuration </h3>
+<ul>
+<li>Configure the Python environment in one go (the tool is currently not mature, but it will be made into an exe file if there are no issues later)
+<ul>
+<li>Download and install Python: <a href="https://www.python.org/">Download Python</a></li>
+<li>Run cmd and enter: <code>pip install mido</code></li>
+<li>Save the following code as <code>mom_converter.py</code></li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="py" class="language-python py"><code><span class="token comment"># -*- coding: utf-8 -*-</span>
+<span class="token comment"># 将midi文件转化为moundofmusic数据</span>
+<span class="token comment"># pip install mido</span>
+
+<span class="token comment"># Midi文件名</span>
+MIDI_FILE <span class="token operator">=</span> <span class="token string">'YOUR_MIDI.mid'</span>
+<span class="token comment"># 输出文件名</span>
+OUTPUT_FILE <span class="token operator">=</span> <span class="token string">'note_raw.csv'</span>
+<span class="token comment"># midi音高：moundofmusic音高，音域三个八度</span>
+DIC_NOTES <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">48</span><span class="token punctuation">:</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> <span class="token number">53</span><span class="token punctuation">:</span> <span class="token number">44</span><span class="token punctuation">,</span> <span class="token number">54</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">44</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">:</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">56</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">:</span> <span class="token number">46</span><span class="token punctuation">,</span> <span class="token number">58</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">46</span><span class="token punctuation">,</span> <span class="token number">59</span><span class="token punctuation">:</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">:</span> <span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">61</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">62</span><span class="token punctuation">:</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">63</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">:</span> <span class="token number">53</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">:</span> <span class="token number">54</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">54</span><span class="token punctuation">,</span> <span class="token number">67</span><span class="token punctuation">:</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">68</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">69</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span> <span class="token number">70</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">56</span><span class="token punctuation">,</span> <span class="token number">71</span><span class="token punctuation">:</span> <span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">72</span><span class="token punctuation">:</span> <span class="token number">61</span><span class="token punctuation">,</span> <span class="token number">73</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">61</span><span class="token punctuation">,</span> <span class="token number">74</span><span class="token punctuation">:</span> <span class="token number">62</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">62</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">:</span> <span class="token number">63</span><span class="token punctuation">,</span> <span class="token number">77</span><span class="token punctuation">:</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">79</span><span class="token punctuation">:</span> <span class="token number">65</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">65</span><span class="token punctuation">,</span> <span class="token number">81</span><span class="token punctuation">:</span> <span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">82</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">83</span><span class="token punctuation">:</span> <span class="token number">67</span><span class="token punctuation">}</span>
+DIC_NOTES_OUT <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">:</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">:</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">:</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">:</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">:</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">:</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">:</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">:</span> <span class="token number">26</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">26</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">:</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">:</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">39</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">:</span> <span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">:</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">:</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">:</span> <span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">46</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">:</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">84</span><span class="token punctuation">:</span> <span class="token number">71</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">71</span><span class="token punctuation">,</span> <span class="token number">86</span><span class="token punctuation">:</span> <span class="token number">72</span><span class="token punctuation">,</span> <span class="token number">87</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">72</span><span class="token punctuation">,</span> <span class="token number">88</span><span class="token punctuation">:</span> <span class="token number">73</span><span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">:</span> <span class="token number">74</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">74</span><span class="token punctuation">,</span> <span class="token number">91</span><span class="token punctuation">:</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">92</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">93</span><span class="token punctuation">:</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">94</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">95</span><span class="token punctuation">:</span> <span class="token number">77</span><span class="token punctuation">,</span> <span class="token number">96</span><span class="token punctuation">:</span> <span class="token number">81</span><span class="token punctuation">,</span> <span class="token number">97</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">81</span><span class="token punctuation">,</span> <span class="token number">98</span><span class="token punctuation">:</span> <span class="token number">82</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">82</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">:</span> <span class="token number">83</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">:</span> <span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">102</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">103</span><span class="token punctuation">:</span> <span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">104</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">105</span><span class="token punctuation">:</span> <span class="token number">86</span><span class="token punctuation">,</span> <span class="token number">106</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">86</span><span class="token punctuation">,</span> <span class="token number">107</span><span class="token punctuation">:</span> <span class="token number">87</span><span class="token punctuation">,</span> <span class="token number">108</span><span class="token punctuation">:</span> <span class="token number">91</span><span class="token punctuation">}</span>
+
+<span class="token keyword keyword-import">import</span> mido
+<span class="token keyword keyword-import">import</span> csv
+
+<span class="token keyword keyword-def">def</span> <span class="token function">midi_to_mom</span><span class="token punctuation">(</span>filename_midi<span class="token punctuation">,</span> filename_csv<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 读取MIDI文件</span>
+    midi_file <span class="token operator">=</span> mido<span class="token punctuation">.</span>MidiFile<span class="token punctuation">(</span>filename_midi<span class="token punctuation">)</span>
+    <span class="token comment"># 获取MIDI文件的ticks_per_beat</span>
+    ticks_per_beat <span class="token operator">=</span> midi_file<span class="token punctuation">.</span>ticks_per_beat
+    <span class="token comment"># 初始化tempo</span>
+    tempo <span class="token operator">=</span> <span class="token number">1000000</span>  <span class="token comment"># 默认tempo</span>
+    <span class="token comment"># 计算每个tick的时间（秒）</span>
+    tick_time <span class="token operator">=</span> tempo <span class="token operator">/</span> <span class="token punctuation">(</span>ticks_per_beat <span class="token operator">*</span> <span class="token number">1000000</span><span class="token punctuation">)</span>
+    <span class="token comment"># 准备CSV文件</span>
+    <span class="token keyword keyword-with">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>filename_csv<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword keyword-as">as</span> csvfile<span class="token punctuation">:</span>
+        count <span class="token operator">=</span> <span class="token number">0</span>
+        result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        writer <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>csvfile<span class="token punctuation">)</span>
+        <span class="token comment"># 写入标题行</span>
+        writer<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token string">'pitch'</span><span class="token punctuation">,</span> <span class="token string">'time'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token comment"># 初始化变量</span>
+        total_time <span class="token operator">=</span> <span class="token number">0.0</span>
+        notes_on <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment"># 存储音符的开始时间和音符号</span>
+        <span class="token comment"># 遍历MIDI文件中的每个轨道</span>
+        <span class="token keyword keyword-for">for</span> track <span class="token keyword keyword-in">in</span> midi_file<span class="token punctuation">.</span>tracks<span class="token punctuation">:</span>
+            <span class="token keyword keyword-for">for</span> msg <span class="token keyword keyword-in">in</span> track<span class="token punctuation">:</span>
+                <span class="token keyword keyword-if">if</span> msg<span class="token punctuation">.</span><span class="token builtin">type</span> <span class="token operator">==</span> <span class="token string">'set_tempo'</span><span class="token punctuation">:</span> <span class="token comment"># 更新tick_time</span>
+                    tempo <span class="token operator">=</span> msg<span class="token punctuation">.</span>tempo
+                    tick_time <span class="token operator">=</span> tempo <span class="token operator">/</span> <span class="token punctuation">(</span>ticks_per_beat <span class="token operator">*</span> <span class="token number">1000000</span><span class="token punctuation">)</span>
+                    <span class="token comment"># print(f'tempo change to: {tempo}')</span>
+                total_time <span class="token operator">+=</span> msg<span class="token punctuation">.</span>time <span class="token operator">*</span> tick_time  <span class="token comment"># 当前累积时间记录</span>
+                <span class="token keyword keyword-if">if</span> msg<span class="token punctuation">.</span><span class="token builtin">type</span> <span class="token operator">==</span> <span class="token string">'note_on'</span> <span class="token keyword keyword-and">and</span> msg<span class="token punctuation">.</span>velocity <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>  <span class="token comment"># 计算当前音符的开始时间</span>
+                    notes_on<span class="token punctuation">[</span>msg<span class="token punctuation">.</span>note<span class="token punctuation">]</span> <span class="token operator">=</span> total_time
+                    count <span class="token operator">+=</span> <span class="token number">1</span>
+                <span class="token keyword keyword-elif">elif</span> msg<span class="token punctuation">.</span><span class="token builtin">type</span> <span class="token operator">==</span> <span class="token string">'note_off'</span> <span class="token keyword keyword-or">or</span> <span class="token punctuation">(</span>msg<span class="token punctuation">.</span><span class="token builtin">type</span> <span class="token operator">==</span> <span class="token string">'note_on'</span> <span class="token keyword keyword-and">and</span> msg<span class="token punctuation">.</span>velocity <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 计算当前音符的停止时间</span>
+                    <span class="token keyword keyword-if">if</span> msg<span class="token punctuation">.</span>note <span class="token keyword keyword-in">in</span> notes_on<span class="token punctuation">:</span>
+                        play_time <span class="token operator">=</span> notes_on<span class="token punctuation">[</span>msg<span class="token punctuation">.</span>note<span class="token punctuation">]</span>
+                        <span class="token comment"># 转化、记录数据</span>
+                        <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>msg<span class="token punctuation">.</span>note <span class="token keyword keyword-not">not</span> <span class="token keyword keyword-in">in</span> DIC_NOTES<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                            note <span class="token operator">=</span> DIC_NOTES_OUT<span class="token punctuation">[</span>msg<span class="token punctuation">.</span>note<span class="token punctuation">]</span>    <span class="token comment"># 超出音域的音符</span>
+                            <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'WARNING! &lt;id:</span><span class="token interpolation"><span class="token punctuation">{</span>count<span class="token punctuation">}</span></span><span class="token string"> pitch:</span><span class="token interpolation"><span class="token punctuation">{</span>note<span class="token punctuation">}</span></span><span class="token string">&gt; not in range, need to be transpose!'</span></span><span class="token punctuation">)</span>
+                        <span class="token keyword keyword-else">else</span><span class="token punctuation">:</span>
+                            note <span class="token operator">=</span> DIC_NOTES<span class="token punctuation">[</span>msg<span class="token punctuation">.</span>note<span class="token punctuation">]</span>
+                        result<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>count<span class="token punctuation">,</span> note<span class="token punctuation">,</span> play_time<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        writer<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span><span class="token punctuation">[</span>count<span class="token punctuation">,</span> note<span class="token punctuation">,</span> <span class="token builtin">round</span><span class="token punctuation">(</span>play_time<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 时间只保留三位小数</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'Successfully create midi data file: </span><span class="token interpolation"><span class="token punctuation">{</span>filename_csv<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-return">return</span> midi_file<span class="token punctuation">,</span> result
+
+<span class="token keyword keyword-if">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    midi_file<span class="token punctuation">,</span> result <span class="token operator">=</span> midi_to_mom<span class="token punctuation">(</span>MIDI_FILE<span class="token punctuation">,</span> OUTPUT_FILE<span class="token punctuation">)</span>
+</code></pre><ul>
+<li>
+<p>Convert MIDI files</p>
+<ul>
+<li>Prepare a complete MIDI file of the track.</li>
+<li>Extract the main melody track from it. You can use <a href="https://musescore.org/en/download">MuseScore</a> to delete other tracks. If the main melody is distributed across multiple tracks, this method may not be suitable.</li>
+<li>Export the main melody MIDI file and place it in the same folder as <code>mom_converter.py</code>.</li>
+<li>Right-click on <code>mom_converter.py</code> and select <code>Edit with IDLE</code> to open the Python script.</li>
+<li>Replace the filename on line 6 of the script with the name of the main melody MIDI file:</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>MIDI_FILE = 'YOUR_MIDI.mid'
+</code></pre><ul>
+<li>Press <code>F5</code> to execute the script. If it prompts that the operation was successful, a <code>note_raw.csv</code>file will be generated. This file is consistent with the format of <a href="#notecsv">note.csv</a>.</li>
+<li>MIDI files may have some parts that exceed 3 octaves. The script will also prompt when exporting, and you can use Excel to adjust them.</li>
+</ul>
+</li>
+<li>
+<p>Complete other configurations</p>
+<ul>
+<li>Convert the complete track MIDI file to WAV to ensure that the timing of all notes is consistent with that converted by the script.</li>
+<li>Follow the above tutorial to complete the remaining information.</li>
+</ul>
+</li>
 </ul>
 
       </div>

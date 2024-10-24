@@ -11,7 +11,7 @@ export_on_save:
 </details>
 
 # 录音教程
-- 所有原创曲目所在文件夹：`%USERPROFILE%/AppData/LocalLow/ElifGames/MoundofMusic/UGC/Record`
+- 所有录音所在文件夹：`%USERPROFILE%/AppData/LocalLow/ElifGames/MoundofMusic/UGC/Record`
 
 ## 文件说明
 - 录音文件均为csv文件，格式如下：
@@ -85,41 +85,41 @@ play_time|stop_time|pitch|instrument|misc
 
 ### 乐器数据
 
-乐器key|乐器名称
---|--
-101|钢片琴
-103|马林巴
-105|姆比拉
-303|羽管键琴
-304|钢琴
-306|巴拉莱卡
-307|班卓琴
-308|大提琴
-310|吉他
-311|竖琴
-312|鲁特琴
-314|曼陀林
-315|乌德琴
-317|三味线
-318|西塔琴
-319|尤克里里
-320|小提琴
-401|手风琴
-402|口琴
-404|风笛
-405|巴松
-406|单簧管
-407|迪吉里杜
-409|长笛
-410|圆号
-411|双簧管
-412|陶笛
-413|管风琴
-415|竖笛
-416|萨克斯
-417|尺八
-418|哨笛
-419|长号
-420|小号
-601|合唱
-603|八音盒
+乐器key|乐器名称|图片
+--|--|--
+101|钢片琴|<img src="../instruments/celesta.png" width="128" height="128" alt="celesta">
+103|马林巴|<img src="../instruments/marimba.png" width="128" height="128" alt="marimba">
+105|姆比拉|<img src="../instruments/mbira.png" width="128" height="128" alt="mbira">
+303|羽管键琴|<img src="../instruments/harpsichord.png" width="128" height="128" alt="harpsichord">
+304|钢琴|<img src="../instruments/piano.png" width="128" height="128" alt="piano">
+306|巴拉莱卡|<img src="../instruments/balalaika.png" width="128" height="128" alt="balalaika">
+307|班卓琴|<img src="../instruments/banjo.png" width="128" height="128" alt="banjo">
+308|大提琴|<img src="../instruments/cello.png" width="128" height="128" alt="cello">
+310|吉他|<img src="../instruments/guitar.png" width="128" height="128" alt="guitar">
+311|竖琴|<img src="../instruments/harp.png" width="128" height="128" alt="harp">
+312|鲁特琴|<img src="../instruments/lute.png" width="128" height="128" alt="lute">
+314|曼陀林|<img src="../instruments/mandolin.png" width="128" height="128" alt="mandolin">
+315|乌德琴|<img src="../instruments/oud.png" width="128" height="128" alt="oud">
+317|三味线|<img src="../instruments/shamisen.png" width="128" height="128" alt="shamisen">
+318|西塔琴|<img src="../instruments/sitar.png" width="128" height="128" alt="sitar">
+319|尤克里里|<img src="../instruments/ukulele.png" width="128" height="128" alt="ukulele">
+320|小提琴|<img src="../instruments/violin.png" width="128" height="128" alt="violin">
+401|手风琴|<img src="../instruments/accordion.png" width="128" height="128" alt="accordion">
+402|口琴|<img src="../instruments/harmonica.png" width="128" height="128" alt="harmonica">
+404|风笛|<img src="../instruments/bagpipes.png" width="128" height="128" alt="bagpipes">
+405|巴松|<img src="../instruments/bassoon.png" width="128" height="128" alt="bassoon">
+406|单簧管|<img src="../instruments/clarinet.png" width="128" height="128" alt="clarinet">
+407|迪吉里杜|<img src="../instruments/didgeridoo.png" width="128" height="128" alt="didgeridoo">
+409|长笛|<img src="../instruments/flute.png" width="128" height="128" alt="flute">
+410|圆号|<img src="../instruments/frenchhorn.png" width="128" height="128" alt="frenchhorn">
+411|双簧管|<img src="../instruments/oboe.png" width="128" height="128" alt="oboe">
+412|陶笛|<img src="../instruments/ocarina.png" width="128" height="128" alt="ocarina">
+413|管风琴|<img src="../instruments/organ.png" width="128" height="128" alt="organ">
+415|竖笛|<img src="../instruments/recorder.png" width="128" height="128" alt="recorder">
+416|萨克斯|<img src="../instruments/saxophone.png" width="128" height="128" alt="saxophone">
+417|尺八|<img src="../instruments/shakuhachi.png" width="128" height="128" alt="shakuhachi">
+418|哨笛|<img src="../instruments/tinwhistle.png" width="128" height="128" alt="tinwhistle">
+419|长号|<img src="../instruments/trombone.png" width="128" height="128" alt="trombone">
+420|小号|<img src="../instruments/trumpet.png" width="128" height="128" alt="trumpet">
+601|合唱|<img src="../instruments/choir.png" width="128" height="128" alt="choir">
+603|八音盒|<img src="../instruments/musicbox.png" width="128" height="128" alt="musicbox">

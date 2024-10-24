@@ -31,8 +31,540 @@
 </details>
 <h1 id="recording-tutorial">Recording Tutorial </h1>
 <ul>
-<li>Currently <a href="tutor_record_zhhans.html">简体中文</a> only...English version coming soon!</li>
+<li>Folder containing all recording files: <code>%USERPROFILE%/AppData/LocalLow/ElifGames/MoundofMusic/UGC/Record</code></li>
 </ul>
+<h2 id="file-description">File Description </h2>
+<ul>
+<li>All recording files are in CSV format, as follows:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>play_time</th>
+<th>stop_time</th>
+<th>pitch</th>
+<th>instrument</th>
+<th>misc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>level:4021</td>
+</tr>
+<tr>
+<td>8578</td>
+<td>8636</td>
+<td>-56</td>
+<td>304</td>
+<td></td>
+</tr>
+<tr>
+<td>10269</td>
+<td>10365</td>
+<td>-56</td>
+<td>304</td>
+<td></td>
+</tr>
+<tr>
+<td>12076</td>
+<td>12141</td>
+<td>61</td>
+<td>304</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The first row in the file is the header, and the data will not be loaded.</li>
+<li>The second row in the file contains miscellaneous data:
+<ul>
+<li>The first column is -1</li>
+<li>The last column contains miscellaneous informations, such as level information for track recordings and string information for universal music boxes.</li>
+</ul>
+</li>
+<li>From the third row onwards are the actual recording data:
+<ul>
+<li>play_time: The start time of the note in milliseconds; for example, 10.5 seconds should be written as 10500.</li>
+<li>stop_time: The end time of the note in milliseconds.</li>
+<li>pitch: The pitch key of the note; see <a href="#PitchData">Pitch Data</a> for details.</li>
+<li>instrument: The instrument key of the note; see <a href="#InstrumentData">Instrument Data</a> for details.</li>
+</ul>
+</li>
+<li>You can freely modify the data within the CSV file:
+<ul>
+<li>After saving and closing, you can preview the recordings in the recording studio at any time without restarting the game.</li>
+<li>By modification, you can create original multi-track music.</li>
+<li>By concatenating the play_time (divided by 1000) and pitch columns, you can use them as configuration data for Self-Compose.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="configuration-data">Configuration Data </h2>
+<h3 id="pitch-dataa-idpitchdataa">Pitch Data<a id="PitchData" href=""></a> </h3>
+<table>
+<thead>
+<tr>
+<th>Pitch Key</th>
+<th>Chev System</th>
+<th>Italiano System</th>
+<th>Note Name</th>
+<th>Corresponding Piano Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>41</td>
+<td>1,</td>
+<td>do,</td>
+<td>c</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>-41</td>
+<td>#1,</td>
+<td>dod,</td>
+<td>#c</td>
+<td></td>
+</tr>
+<tr>
+<td>42</td>
+<td>2,</td>
+<td>re,</td>
+<td>d</td>
+<td>D4</td>
+</tr>
+<tr>
+<td>-42</td>
+<td>#2,</td>
+<td>red,</td>
+<td>#d</td>
+<td></td>
+</tr>
+<tr>
+<td>43</td>
+<td>3,</td>
+<td>mi,</td>
+<td>e</td>
+<td>E4</td>
+</tr>
+<tr>
+<td>44</td>
+<td>4,</td>
+<td>fa,</td>
+<td>f</td>
+<td>F4</td>
+</tr>
+<tr>
+<td>-44</td>
+<td>#4,</td>
+<td>fad,</td>
+<td>#f</td>
+<td></td>
+</tr>
+<tr>
+<td>45</td>
+<td>5,</td>
+<td>sol,</td>
+<td>g</td>
+<td>G4</td>
+</tr>
+<tr>
+<td>-45</td>
+<td>#5,</td>
+<td>sold,</td>
+<td>#g</td>
+<td></td>
+</tr>
+<tr>
+<td>46</td>
+<td>6,</td>
+<td>la,</td>
+<td>a</td>
+<td>A4</td>
+</tr>
+<tr>
+<td>-46</td>
+<td>b7,</td>
+<td>sib,</td>
+<td>#a</td>
+<td></td>
+</tr>
+<tr>
+<td>47</td>
+<td>7,</td>
+<td>si,</td>
+<td>b</td>
+<td>B4</td>
+</tr>
+<tr>
+<td>51</td>
+<td>1</td>
+<td>do</td>
+<td>c1</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>-51</td>
+<td>#1</td>
+<td>dod</td>
+<td>#c1</td>
+<td></td>
+</tr>
+<tr>
+<td>52</td>
+<td>2</td>
+<td>re</td>
+<td>d1</td>
+<td>D5</td>
+</tr>
+<tr>
+<td>-52</td>
+<td>#2</td>
+<td>red</td>
+<td>#d1</td>
+<td></td>
+</tr>
+<tr>
+<td>53</td>
+<td>3</td>
+<td>mi</td>
+<td>e1</td>
+<td>E5</td>
+</tr>
+<tr>
+<td>54</td>
+<td>4</td>
+<td>fa</td>
+<td>f1</td>
+<td>F5</td>
+</tr>
+<tr>
+<td>-54</td>
+<td>#4</td>
+<td>fad</td>
+<td>#f1</td>
+<td></td>
+</tr>
+<tr>
+<td>55</td>
+<td>5</td>
+<td>sol</td>
+<td>g1</td>
+<td>G5</td>
+</tr>
+<tr>
+<td>-55</td>
+<td>#5</td>
+<td>sold</td>
+<td>#g1</td>
+<td></td>
+</tr>
+<tr>
+<td>56</td>
+<td>6</td>
+<td>la</td>
+<td>a1</td>
+<td>A5</td>
+</tr>
+<tr>
+<td>-56</td>
+<td>b7</td>
+<td>sib</td>
+<td>#a1</td>
+<td></td>
+</tr>
+<tr>
+<td>57</td>
+<td>7</td>
+<td>si</td>
+<td>b1</td>
+<td>B5</td>
+</tr>
+<tr>
+<td>61</td>
+<td>1'</td>
+<td>do'</td>
+<td>c2</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>-61</td>
+<td>#1'</td>
+<td>dod'</td>
+<td>#c2</td>
+<td></td>
+</tr>
+<tr>
+<td>62</td>
+<td>2'</td>
+<td>re'</td>
+<td>d2</td>
+<td>D6</td>
+</tr>
+<tr>
+<td>-62</td>
+<td>#2'</td>
+<td>red'</td>
+<td>#d2</td>
+<td></td>
+</tr>
+<tr>
+<td>63</td>
+<td>3'</td>
+<td>mi'</td>
+<td>e2</td>
+<td>E6</td>
+</tr>
+<tr>
+<td>64</td>
+<td>4'</td>
+<td>fa'</td>
+<td>f2</td>
+<td>F6</td>
+</tr>
+<tr>
+<td>-64</td>
+<td>#4'</td>
+<td>fad'</td>
+<td>#f2</td>
+<td></td>
+</tr>
+<tr>
+<td>65</td>
+<td>5'</td>
+<td>sol'</td>
+<td>g2</td>
+<td>G6</td>
+</tr>
+<tr>
+<td>-65</td>
+<td>#5'</td>
+<td>sold'</td>
+<td>#g2</td>
+<td></td>
+</tr>
+<tr>
+<td>66</td>
+<td>6'</td>
+<td>la'</td>
+<td>a2</td>
+<td>A6</td>
+</tr>
+<tr>
+<td>-66</td>
+<td>b7'</td>
+<td>sib'</td>
+<td>#a2</td>
+<td></td>
+</tr>
+<tr>
+<td>67</td>
+<td>7'</td>
+<td>si'</td>
+<td>b2</td>
+<td>B6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The game only supports pitches within these three octaves.</li>
+</ul>
+<h3 id="instrument-dataa-idinstrumentdataa">Instrument Data<a id="InstrumentData" href=""></a> </h3>
+<table>
+<thead>
+<tr>
+<th>Instrument Key</th>
+<th>Instrument Name</th>
+<th>Picture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Celesta</td>
+<td><img src="../instruments/celesta.png" width="128" height="128" alt="celesta"></td>
+</tr>
+<tr>
+<td>103</td>
+<td>Marimba</td>
+<td><img src="../instruments/marimba.png" width="128" height="128" alt="marimba"></td>
+</tr>
+<tr>
+<td>105</td>
+<td>Mbira</td>
+<td><img src="../instruments/mbira.png" width="128" height="128" alt="mbira"></td>
+</tr>
+<tr>
+<td>303</td>
+<td>Harpsichord</td>
+<td><img src="../instruments/harpsichord.png" width="128" height="128" alt="harpsichord"></td>
+</tr>
+<tr>
+<td>304</td>
+<td>Piano</td>
+<td><img src="../instruments/piano.png" width="128" height="128" alt="piano"></td>
+</tr>
+<tr>
+<td>306</td>
+<td>Balalaika</td>
+<td><img src="../instruments/balalaika.png" width="128" height="128" alt="balalaika"></td>
+</tr>
+<tr>
+<td>307</td>
+<td>Banjo</td>
+<td><img src="../instruments/banjo.png" width="128" height="128" alt="banjo"></td>
+</tr>
+<tr>
+<td>308</td>
+<td>Cello</td>
+<td><img src="../instruments/cello.png" width="128" height="128" alt="cello"></td>
+</tr>
+<tr>
+<td>310</td>
+<td>Guitar</td>
+<td><img src="../instruments/guitar.png" width="128" height="128" alt="guitar"></td>
+</tr>
+<tr>
+<td>311</td>
+<td>Harp</td>
+<td><img src="../instruments/harp.png" width="128" height="128" alt="harp"></td>
+</tr>
+<tr>
+<td>312</td>
+<td>Lute</td>
+<td><img src="../instruments/lute.png" width="128" height="128" alt="lute"></td>
+</tr>
+<tr>
+<td>314</td>
+<td>Mandolin</td>
+<td><img src="../instruments/mandolin.png" width="128" height="128" alt="mandolin"></td>
+</tr>
+<tr>
+<td>315</td>
+<td>Oud</td>
+<td><img src="../instruments/oud.png" width="128" height="128" alt="oud"></td>
+</tr>
+<tr>
+<td>317</td>
+<td>Shamisen</td>
+<td><img src="../instruments/shamisen.png" width="128" height="128" alt="shamisen"></td>
+</tr>
+<tr>
+<td>318</td>
+<td>Sitar</td>
+<td><img src="../instruments/sitar.png" width="128" height="128" alt="sitar"></td>
+</tr>
+<tr>
+<td>319</td>
+<td>Ukulele</td>
+<td><img src="../instruments/ukulele.png" width="128" height="128" alt="ukulele"></td>
+</tr>
+<tr>
+<td>320</td>
+<td>Violin</td>
+<td><img src="../instruments/violin.png" width="128" height="128" alt="violin"></td>
+</tr>
+<tr>
+<td>401</td>
+<td>Accordion</td>
+<td><img src="../instruments/accordion.png" width="128" height="128" alt="accordion"></td>
+</tr>
+<tr>
+<td>402</td>
+<td>Harmonica</td>
+<td><img src="../instruments/harmonica.png" width="128" height="128" alt="harmonica"></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Bagpipes</td>
+<td><img src="../instruments/bagpipes.png" width="128" height="128" alt="bagpipes"></td>
+</tr>
+<tr>
+<td>405</td>
+<td>Bassoon</td>
+<td><img src="../instruments/bassoon.png" width="128" height="128" alt="bassoon"></td>
+</tr>
+<tr>
+<td>406</td>
+<td>Clarinet</td>
+<td><img src="../instruments/clarinet.png" width="128" height="128" alt="clarinet"></td>
+</tr>
+<tr>
+<td>407</td>
+<td>Didgeridoo</td>
+<td><img src="../instruments/didgeridoo.png" width="128" height="128" alt="didgeridoo"></td>
+</tr>
+<tr>
+<td>409</td>
+<td>Flute</td>
+<td><img src="../instruments/flute.png" width="128" height="128" alt="flute"></td>
+</tr>
+<tr>
+<td>410</td>
+<td>French Horn</td>
+<td><img src="../instruments/frenchhorn.png" width="128" height="128" alt="frenchhorn"></td>
+</tr>
+<tr>
+<td>411</td>
+<td>Oboe</td>
+<td><img src="../instruments/oboe.png" width="128" height="128" alt="oboe"></td>
+</tr>
+<tr>
+<td>412</td>
+<td>Ocarina</td>
+<td><img src="../instruments/ocarina.png" width="128" height="128" alt="ocarina"></td>
+</tr>
+<tr>
+<td>413</td>
+<td>Organ</td>
+<td><img src="../instruments/organ.png" width="128" height="128" alt="organ"></td>
+</tr>
+<tr>
+<td>415</td>
+<td>Recorder</td>
+<td><img src="../instruments/recorder.png" width="128" height="128" alt="recorder"></td>
+</tr>
+<tr>
+<td>416</td>
+<td>Saxophone</td>
+<td><img src="../instruments/saxophone.png" width="128" height="128" alt="saxophone"></td>
+</tr>
+<tr>
+<td>417</td>
+<td>Shakuhachi</td>
+<td><img src="../instruments/shakuhachi.png" width="128" height="128" alt="shakuhachi"></td>
+</tr>
+<tr>
+<td>418</td>
+<td>Tin whistle</td>
+<td><img src="../instruments/tinwhistle.png" width="128" height="128" alt="tinwhistle"></td>
+</tr>
+<tr>
+<td>419</td>
+<td>Trombone</td>
+<td><img src="../instruments/trombone.png" width="128" height="128" alt="trombone"></td>
+</tr>
+<tr>
+<td>420</td>
+<td>Trumpet</td>
+<td><img src="../instruments/trumpet.png" width="128" height="128" alt="trumpet"></td>
+</tr>
+<tr>
+<td>601</td>
+<td>Choir</td>
+<td><img src="../instruments/choir.png" width="128" height="128" alt="choir"></td>
+</tr>
+<tr>
+<td>603</td>
+<td>Music box</td>
+<td><img src="../instruments/musicbox.png" width="128" height="128" alt="musicbox"></td>
+</tr>
+</tbody>
+</table>
 
       </div>
       

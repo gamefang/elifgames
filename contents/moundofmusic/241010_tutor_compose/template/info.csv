@@ -1,15 +1,15 @@
-Key,Value,Tips
-name,Twinkle Twinkle Little Star,曲目显示的名称，可以与索引名不同
-scale_name,C,曲目的调式，会影响曲目的唱名，填写调式key字符串
-slice_start,7,曲目wave文件试听开始时间的秒数
-slice_end,24,曲目wave文件试听结束时间的秒数
-keytype,1,按键类型：1-7键，2-12键
-composer,Wolfgang Amadeus Mozart,作曲家姓名
-lyrics,Twinkle twinkle little star\nHow I wonder what you are!\nUp above the world so high\nLike a diamond in the sky,歌词，仅显示在过场中，换行请使用\n
-copyright,Author: Elif Games,版权信息
-pic_pos,0|0|0.5,曲目图片在准备阶段圆形碟片中的位置及缩放：x像素偏移|y像素偏移|缩放比例
-card_pos,0|0|0.7,曲目图片在选择界面方形音乐卡片中的位置及缩放：x像素偏移|y像素偏移|缩放比例
-video,musicbg1,视频背景，仅支持内置视频：musicbg1 – musicbg9
-fade_lose,0.2,视频每秒变暗的百分比
-fade_hit,0.2,视频每次三连击时变亮的百分比
-alpha_area,0.05|0.4,视频的透明度区间：最低透明度|最高透明度
+Key,Value,Description,说明
+name,Twinkle Twinkle Little Star,"The displayed name of the track, which can be different from the index name.",曲目显示的名称，可以与索引名不同
+scale_name,C,"The key of the track, which affects the solfege names of the notes. Enter the key string.",曲目的调式，会影响曲目的唱名，填写调式key字符串
+slice_start,7,The starting seconds of the track's WAV file preview that will loop during the track preparation phase.,曲目wave文件试听开始时间的秒数
+slice_end,24,The ending seconds of the track's WAV file preview.,曲目wave文件试听结束时间的秒数
+keytype,1,"Key type: 1->7 keys, 2->12 keys. If your track uses accidentals, please use the 12-key setting.",按键类型：1-7键，2-12键
+composer,Wolfgang Amadeus Mozart,"The composer's name, displayed during the preparation phase.",作曲家姓名
+lyrics,Twinkle twinkle little star\nHow I wonder what you are!\nUp above the world so high\nLike a diamond in the sky,"Lyrics, displayed only in transitions, use \n for line breaks.",歌词，仅显示在过场中，换行请使用\n
+copyright,Author: Elif Games,"Copyright information, viewable by clicking the info button during the preparation phase.",版权信息
+pic_pos,0|0|0.5,The position and scale of the track image on the circular disc in the preparation phase: x pixel offset|y pixel offset|scale ratio.,曲目图片在准备阶段圆形碟片中的位置及缩放：x像素偏移|y像素偏移|缩放比例
+card_pos,0|0|0.7,The position and scale of the track image on the square music card in the selection interface: x pixel offset|y pixel offset|scale ratio.,曲目图片在选择界面方形音乐卡片中的位置及缩放：x像素偏移|y像素偏移|缩放比例
+video,musicbg1,"Video background, only supports built-in videos: musicbg1 - musicbg9.",视频背景，仅支持内置视频：musicbg1 – musicbg9
+fade_lose,0.2,The percentage the video darkens per second.,视频每秒变暗的百分比
+fade_hit,0.2,The percentage the video brightens with each triple hit.,视频每次三连击时变亮的百分比
+alpha_area,0.05|0.4,The transparency range of the video: minimum transparency|maximum transparency.,视频的透明度区间：最低透明度|最高透明度
