@@ -90,6 +90,8 @@ video|musicbg1|Video background, only supports built-in videos: musicbg1 - music
 fade_lose|0.2|The percentage the video darkens per second.
 fade_hit|0.2|The percentage the video brightens with each triple hit.
 alpha_area|0.05\|0.4|The transparency range of the video: minimum transparency\|maximum transparency.
+version_info|First version.|Information on this version, and will be submitted to the Steam Workshop.
+
 - All configuration files do not support multiple languages.
 
 ### note.csv

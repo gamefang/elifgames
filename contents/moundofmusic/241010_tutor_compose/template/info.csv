@@ -13,3 +13,4 @@ video,musicbg1,"Video background, only supports built-in videos: musicbg1 - musi
 fade_lose,0.2,The percentage the video darkens per second.,视频每秒变暗的百分比
 fade_hit,0.2,The percentage the video brightens with each triple hit.,视频每次三连击时变亮的百分比
 alpha_area,0.05|0.4,The transparency range of the video: minimum transparency|maximum transparency.,视频的透明度区间：最低透明度|最高透明度
+version_info,First version.This is just an example.,"Information on this version, and will be submitted to the Steam Workshop.",本版本的信息说明，将会被提交至创意工坊

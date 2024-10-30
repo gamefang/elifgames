@@ -90,6 +90,8 @@ video|musicbg1|视频背景，仅支持内置视频：musicbg1 - musicbg9
 fade_lose|0.2|视频每秒变暗的百分比
 fade_hit|0.2|视频每次三连击时变亮的百分比
 alpha_area|0.05\|0.4|视频的透明度区间：最低透明度\|最高透明度
+version_info|First version.|本版本的信息说明，将会被提交至创意工坊
+
 - 所有配置文件不支持多语言
 
 ### note.csv
