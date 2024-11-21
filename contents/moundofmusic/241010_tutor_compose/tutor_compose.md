@@ -49,6 +49,7 @@ export_on_save:
     - The filename must match the index name.
     - It must be a WAV file.
     - It must be stereo, encoded as 16bit-PCM.
+    - The Sample Rate must be set to <font color=#ff0000>44100 Hz</font>, otherwise the track may sound out of tune when loaded into the game.
     - It is recommended that the first note of the actual configuration starts after 6 seconds; otherwise, there may be issues during note speed adjustment. If the prelude time is insufficient, you can add silence at the beginning of the track.
 ![tip_wave](tip_wave.png)
 - If the audio file cannot be parsed correctly, it is recommended to download Audacity and re-export it:
