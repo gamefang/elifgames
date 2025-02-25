@@ -27,3 +27,7 @@ https://store.steampowered.com/app/2911340/Mound_of_Music/
 ## Tutorial
 - [Recording Tutorial](240909_tutor_record/tutor_record.html)
 - [Self-Compose Tutorial](241010_tutor_compose/tutor_compose.html)
+
+## Tools
+- MOM Converter: A MIDI-to-Music Conversion Tool, convert MIDI files more easily and import them into the game.
+download here: https://github.com/gamefang/MOMTools/releases

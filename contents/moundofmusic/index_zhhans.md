@@ -27,3 +27,7 @@ https://store.steampowered.com/app/2911340/Mound_of_Music/
 ## 教程
 - [录音教程](240909_tutor_record/tutor_record_zhhans.html)
 - [原创曲目教程](241010_tutor_compose/tutor_compose_zhhans.html)
+
+## 工具
+- MOM Converter: MIDI文件转化工具，可更方便地转化midi文件并导入游戏中。
+下载地址：https://github.com/gamefang/MOMTools/releases
