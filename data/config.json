@@ -1,0 +1,71 @@
+{
+  "colors": {
+    "primary": { "main": "#000000", "secondary": "#1a1a1a", "white": "#ffffff", "lightGray": "#f8f8f8" },
+    "text": { "main": "#000000", "light": "#666666", "inverse": "#ffffff" },
+    "accent": { "orange": "#ff6b35", "cyan": "#4ecdc4" }
+  },
+  "carousel": {
+    "autoPlay": true,
+    "interval": 5000,
+    "transitionDuration": 1000,
+    "pauseOnHover": true,
+    "showIndicators": true,
+    "showArrows": false,
+    "infiniteLoop": true
+  },
+  "animations": {
+    "fadeInUp": { "duration": 1000, "delay": 0 },
+    "slideInLeft": { "duration": 800, "delay": 0 },
+    "slideInRight": { "duration": 800, "delay": 0 },
+    "pageLoad": { "duration": 800, "staggerDelay": 200 }
+  },
+  "scrollEffects": {
+    "scrollTopThreshold": 200,
+    "headerBackgroundChange": 50,
+    "headerOpacity": { "normal": 0.95, "scrolled": 0.98 }
+  },
+  "lazyLoading": {
+    "threshold": 0.1,
+    "rootMargin": "50px"
+  },
+  "responsive": {
+    "breakpoints": { "mobile": 767, "tablet": 1199, "desktop": 1200 }
+  },
+  "performance": {
+    "preloadImages": true,
+    "debounceDelay": 250,
+    "imageOptimization": true
+  },
+  "accessibility": {
+    "reducedMotion": true,
+    "keyboardNavigation": true,
+    "focusManagement": true
+  },
+  "images": {
+    "hero": [
+      { "src": "images/indie-game-space-battle-hero-background.jpg", "alt": "Space Battle Background", "priority": "high" },
+      { "src": "images/professional-game-development-team-playing-in-office.jpg", "alt": "Development Team", "priority": "high" },
+      { "src": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg", "alt": "Magic Platform Adventure", "priority": "high" }
+    ],
+    "gallery": [
+      { "src": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg", "alt": "Magic Platform Adventure", "category": "action" },
+      { "src": "images/indie-game-space-battle-hero-background.jpg", "alt": "Space Robot War", "category": "strategy" },
+      { "src": "images/pixel-art-game-celeste-platforming-screenshot.jpg", "alt": "Pixel Dungeon Explorer", "category": "rpg" },
+      { "src": "images/indie-action-adventure-game-dialogue-screenshot.jpg", "alt": "Magic Academy", "category": "rpg" },
+      { "src": "images/pixel-art-rpg-game-screenshot-collection.jpg", "alt": "Robot Adventure", "category": "platform" },
+      { "src": "images/darkest-dungeon-plague-doctor-combat-screenshot.jpg", "alt": "Darkest Dungeon", "category": "rpg" }
+    ],
+    "logos": [
+      { "src": "images/logo_box.jpg", "alt": "Studio Logo", "size": "40x40" },
+      { "src": "images/logo.png", "alt": "Studio Logo Modern", "size": "40x40" }
+    ],
+    "team": [
+      { "src": "images/professional-game-development-team-portrait.jpg", "alt": "Team Photo", "priority": "medium" }
+    ]
+  },
+  "content": {
+    "defaultLanguage": "en-US",
+    "supportedLanguages": ["en-US", "zh-CN"],
+    "fallbackLanguage": "en-US"
+  }
+}

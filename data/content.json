@@ -1,0 +1,301 @@
+{
+  "zh-CN": {
+    "site": {
+      "title": "ELIF GAMES",
+      "description": "让游戏扩展生命的维度",
+      "logoName": "ELIF GAMES"
+    },
+    "common": {
+      "ariaLabels": {
+        "selectLanguage": "选择语言",
+        "toggleMenu": "切换菜单",
+        "scrollToTop": "返回顶部",
+        "slideIndicator": {
+          "first": "第一张幻灯片",
+          "second": "第二张幻灯片",
+          "third": "第三张幻灯片"
+        }
+      },
+      "languageOptions": {
+        "zh-CN": "中文",
+        "en-US": "English"
+      }
+    },
+    "navigation": {
+      "home": "首页",
+      "about": "关于我们",
+      "games": "游戏作品",
+      "contact": "联系我们",
+      "language": "语言"
+    },
+    "hero": {
+      "title": "创造独特游戏体验",
+      "subtitle": "我们是一支充满激情的独立游戏开发团队，致力于创造富有创意和情感深度的游戏作品",
+      "cta": "探索我们的游戏",
+      "slides": [
+        {
+          "title": "Else If",
+          "description": "万物皆存在更多可能性"
+        },
+        {
+          "title": "Game is Life",
+          "description": "让游戏扩展生命的维度"
+        },
+        {
+          "title": "Life is Game",
+          "description": "生命是一部精彩的游戏"
+        }
+      ]
+    },
+    "featuredGame": {
+      "title": "最新消息",
+      "subtitle": "《知音冢 Mound of Music》已上线Steam平台",
+      "name": "知音冢",
+      "description": "一款叙事与音乐玩法紧密结合的游戏。作为人类的敌人，前往地球执行音乐危机最终解决方案，在废土世界中，探索并发现世界各地的音乐，跟随旋律与节奏，弹奏出一首首经典的乐章。人类，究竟是敌人，还是知音？当曲终人散后，是谁将音乐埋葬，建起一座又一座知音冢？",
+      "features": [
+        "游戏入围2024年度indiePlay中国独立游戏大赛",
+        "GamesArdor：2024年11月值得关注的Steam优秀游戏"
+      ],
+      "buttons": {
+        "learnMore": "了解更多",
+        "playNow": "立即游玩"
+      }
+    },
+    "about": {
+      "title": "关于我们",
+      "subtitle": "Elif Games",
+      "description": "Elif Games是个人向的小型独立游戏工作室，在创作中以“Else If”为核心理念。",
+      "mission": "ELIF & LIFE",
+      "missionText": "“ELIF”是部分编程语言中“另一种如果”的关键词，同时也是单词“LIFE”的易位词。\n生命中总会有很多隐藏的暗门，而我们希望将游戏做成钥匙。",
+      "values": [
+        {
+          "title": "Else If",
+          "description": "万物皆存在更多可能性"
+        },
+        {
+          "title": "Game is Life",
+          "description": "让游戏扩展生命的维度"
+        },
+        {
+          "title": "Life is Game",
+          "description": "生命是一部精彩的游戏"
+        }
+      ],
+      "buttons": {
+        "learnMore": "了解更多",
+        "contactUs": "联系我们"
+      },
+      "teamImageAlt": "我们的团队"
+    },
+    "gallery": {
+      "title": "作品列表",
+      "subtitle": "由Elif Games开发或参与的游戏作品",
+      "buttons": {
+        "loadMore": "探索更多",
+        "showLess": "收起列表"
+      },
+      "games": [
+        {
+          "name": "我的公司996",
+          "description": "过于真实的职场模拟游戏",
+          "genre": "模拟/剧情",
+          "image": "images/work0.jpg"
+        },
+        {
+          "name": "知音冢",
+          "description": "基于真实乐器演奏的科幻音游",
+          "genre": "音乐/剧情",
+          "image": "images/work1.jpg"
+        },
+        {
+          "name": "6174",
+          "description": "埃舍尔风格的解谜游戏",
+          "genre": "解谜/冒险",
+          "image": "images/work2.jpg"
+        }
+      ]
+    },
+    "footer": {
+      "logoName": "ELIF GAMES",
+      "description": "让游戏扩展生命的维度",
+      "copyright": "© 2025 ELIF GAMES. All rights reserved.",
+      "contact": {
+        "title": "联系我们",
+        "email": "elifgamestudio@gmail.com",
+        "phone": "+86 123-4567-8900",
+        "labels": {
+          "email": "邮箱：",
+          "phone": "电话："
+        }
+      },
+      "social": {
+        "title": "联系我们",
+        "links": [
+          { "name": "邮箱: elifgamestudio@gmail.com", "url": "mailto:elifgamestudio@gmail.com" },
+          { "name": "QQ群: 894397045", "url": "#" },
+          { "name": "Bilibili: gamefang", "url": "https://space.bilibili.com/412487116" }
+        ]
+      }
+    }
+  },
+
+  "en-US": {
+    "site": {
+      "title": "Independent Game Studio",
+      "description": "An independent development team focused on creating unique gaming experiences",
+      "logoName": "Independent Game Studio"
+    },
+    "common": {
+      "ariaLabels": {
+        "selectLanguage": "Select Language",
+        "toggleMenu": "Toggle Menu",
+        "scrollToTop": "Scroll to Top",
+        "slideIndicator": {
+          "first": "First Slide",
+          "second": "Second Slide",
+          "third": "Third Slide"
+        }
+      },
+      "languageOptions": {
+        "zh-CN": "中文",
+        "en-US": "English"
+      }
+    },
+    "navigation": {
+      "home": "Home",
+      "about": "About Us",
+      "games": "Games",
+      "contact": "Contact",
+      "language": "Language"
+    },
+    "hero": {
+      "title": "Creating Unique Gaming Experiences",
+      "subtitle": "We are a passionate independent game development team, dedicated to creating games with creativity and emotional depth",
+      "cta": "Explore Our Games",
+      "slides": [
+        {
+          "title": "Innovative Gaming Experience",
+          "description": "Each game is a brand new adventure journey"
+        },
+        {
+          "title": "Stunning Visual Effects",
+          "description": "Unique artistic style and immersive game worlds"
+        },
+        {
+          "title": "Deep Gameplay Mechanics",
+          "description": "Carefully designed mechanics and challenging levels"
+        }
+      ]
+    },
+    "featuredGame": {
+      "title": "Latest Masterpiece",
+      "subtitle": "Discover Our Flagship Game",
+      "name": "Magic Platform Adventure",
+      "description": "A 2D side-scrolling action-adventure game that combines classic platformer mechanics with modern magical elements. Players take on the role of a young wizard, embarking on an epic adventure through a world filled with mystical charm.",
+      "features": [
+        "Unique Magic System: Learn and master various powerful spells",
+        "Beautiful Pixel Art Style: Recapturing the charm of classic games",
+        "Rich Level Design: From mysterious forests to ancient ruins",
+        "Deep Character Growth: Unlock new skills and equipment"
+      ],
+      "buttons": {
+        "learnMore": "Learn More",
+        "playNow": "Play Now"
+      }
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Learn Our Story",
+      "description": "We are a group of game-loving developers who founded our studio in 2020. We believe games are not just entertainment, but also a medium for artistic expression and emotional communication. Through innovative game design and stunning visual effects, we are committed to creating unforgettable gaming experiences for players.",
+      "mission": "Our Mission",
+      "missionText": "Connecting the world through games, creating digital experiences that touch people's hearts.",
+      "values": [
+        {
+          "title": "Innovation",
+          "description": "Continuously exploring new game mechanics and expression techniques"
+        },
+        {
+          "title": "Quality",
+          "description": "Excellence in every detail"
+        },
+        {
+          "title": "Emotion",
+          "description": "Games should be able to touch players' hearts"
+        }
+      ],
+      "buttons": {
+        "learnMore": "Learn More",
+        "contactUs": "Contact Us"
+      },
+      "teamImageAlt": "Our Team"
+    },
+    "gallery": {
+      "title": "Game Portfolio",
+      "subtitle": "Explore Our Game World",
+      "buttons": {
+        "loadMore": "Discover More Games",
+        "showLess": "Show Less"
+      },
+      "games": [
+        {
+          "name": "Magic Platform Adventure",
+          "description": "2D side-scrolling action-adventure game",
+          "genre": "Action/Adventure",
+          "image": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg"
+        },
+        {
+          "name": "Space Robot War",
+          "description": "Space strategy game",
+          "genre": "Strategy/Sci-Fi",
+          "image": "images/indie-game-space-battle-hero-background.jpg"
+        },
+        {
+          "name": "Pixel Dungeon Explorer",
+          "description": "Pixel-style RPG game",
+          "genre": "RPG/Adventure",
+          "image": "images/pixel-art-game-celeste-platforming-screenshot.jpg"
+        },
+        {
+          "name": "Magic Academy",
+          "description": "Role-playing game",
+          "genre": "RPG/Fantasy",
+          "image": "images/indie-action-adventure-game-dialogue-screenshot.jpg"
+        },
+        {
+          "name": "Robot Adventure",
+          "description": "Platform jumping game",
+          "genre": "Platform/Action",
+          "image": "images/pixel-art-rpg-game-screenshot-collection.jpg"
+        },
+        {
+          "name": "Darkest Dungeon",
+          "description": "Turn-based RPG game",
+          "genre": "RPG/Strategy",
+          "image": "images/darkest-dungeon-plague-doctor-combat-screenshot.jpg"
+        }
+      ]
+    },
+    "footer": {
+      "logoName": "Independent Game Studio",
+      "description": "An independent development team focused on creating unique gaming experiences",
+      "copyright": "© 2025 Independent Game Studio. All rights reserved.",
+      "contact": {
+        "title": "Contact Us",
+        "email": "contact@gamestudio.com",
+        "phone": "+86 123-4567-8900",
+        "labels": {
+          "email": "Email:",
+          "phone": "Phone:"
+        }
+      },
+      "social": {
+        "title": "Follow Us",
+        "links": [
+          { "name": "Weibo", "url": "#" },
+          { "name": "WeChat", "url": "#" },
+          { "name": "QQ Group", "url": "#" }
+        ]
+      }
+    }
+  }
+}

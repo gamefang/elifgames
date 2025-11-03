@@ -1,241 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
-   <head>
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- mobile metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>ELIF GAMES</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
-   <!-- body -->
-   <body class="main-layout">
-      <!-- loader  -->
-      <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-      </div>
-      <!-- end loader -->
-      <!-- header -->
-      <header>
-         <!-- header inner -->
-         <div class="header">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                              <!-- <a href="index.html"><img src="images/logo.png" alt="#" /></a> -->
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
-                           <ul class="navbar-nav mr-auto">
-                              <li class="nav-item"></li>
-                                 <a class="nav-link" href="index_zhhans.html">简体中文</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#focus">Mound of Music</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#studio">Elif Games</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#gallery">Gallery</a>
-                              </li>
-                           </ul>
-                        </div>
-                     </nav>
-                  </div>
-               </div>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELIF GAMES</title>
+    <meta name="description" content="Indie Game Studio">
+    
+    <!-- 字体引入 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 图标配置 -->
+    <link rel="icon" type="image/x-icon" href="images/logo_box.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo_box.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo_box.jpg">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/logo_box.jpg">
+    <link rel="icon" type="image/png" sizes="64x64" href="images/logo_box.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo_box.jpg">
+
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <img src="images/logo_box.jpg" alt="ELIF GAMES" class="nav__logo-img">
+                <span class="nav__logo-text" data-key="site.logoName"></span>
             </div>
-         </div>
-      </header>
-      <!-- end header inner -->
-      <!-- end header -->
-      <!-- banner -->
-      <section class="banner_main">
-         <div class="container-fluid">
-            <div class="row d_flex">
-               <div class="col-md-7">
-                  <div class="text-bg">
-                     <!-- <div class="padding_lert">
-                        <i><img src="images/btn.png" alt="#"/></i>
-                        <h1>A Digital Creative Agency  <br>Landing Page</h1>
-                        <a href="Javascript:void(0)">Read More</a>
-                     </div> -->
-                  </div>
-               </div>
-               <div class="col-md-5 bah">
-                  <div class="bann_img">
-                     <figure><img src="images/bann_img.png" alt="#"/></figure>
-                  </div>
-               </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link" data-key="navigation.home"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link" data-key="navigation.about"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#games" class="nav__link" data-key="navigation.games"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link" data-key="navigation.contact"></a>
+                    </li>
+                </ul>
+                
+                <div class="nav__actions">
+                    <div class="nav__language">
+                        <select class="language-select" id="language-select" aria-label="选择语言">
+                            <option value="zh-CN">中文</option>
+                            <option value="en-US">English</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-         </div>
-      </section>
-      <!-- end banner -->
-      <!-- focus -->
-      <div id="focus" class="service">
-         <div class="container-fluid">
-            <div class="row d_flex">
-               <div class="col-md-5">
-                  <div class="service_img">
-                     <figure><img src="images/focus.png" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-7">
-                  <div class="titlepage">
-                     <h2>Mound of Music</h2>
-                     <span>“Mound of Music” is a game that integrates narrative and music gameplay. As a force opposing humanity, you embark on Earth to execute the Final Solution to the Music Crisis. Explore and discover classic musical pieces, perform all melodies and rhythms, until fate and truth are revealed.<br/>
-                     <br/>
-                     <a href="https://www.gmhub.com/article/29" target="_blank" style="color: blue; text-decoration: underline !important;">· Nominated for the Excellence in Audio Award of IndiePlay 2024</a><br/>
-                     <a href="https://gamesardor.net/top-steam-games-to-lookout-for-in-november-2024/#mound-of-music" target="_blank" style="color: blue; text-decoration: underline !important;">· Top Steam Games To Lookout for in November 2024</a><br/>
-                     </span>
-                     
-                     <a class="read_more" href="https://store.steampowered.com/app/2911340/Mound_of_Music/" target="_blank"><img src="images/icon_steam_w.png" alt="Steam Icon" style="height: 24px; width: 24px;">&nbsp;&nbsp;&nbsp;Steam</a>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a class="read_more" href="contents/moundofmusic/index.html" target="_blank"><img src="images/icon_common_w.png" alt="more icon" style="height: 24px; width: 24px;">&nbsp;&nbsp;&nbsp;More</a>
-                  </div>
-               </div>
+            
+            <button class="nav__toggle" id="nav-toggle" aria-label="切换菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="main">
+        <!-- Hero轮播区域 -->
+        <section class="hero" id="home">
+            <div class="hero__slider">
+                <div class="hero__slide hero__slide--active" data-slide="0">
+                    <div class="hero__bg hero__bg--1"></div>
+                    <div class="hero__content">
+                        <h1 class="hero__title" data-key="hero.slides.0.title"></h1>
+                        <p class="hero__subtitle" data-key="hero.slides.0.description"></p>
+                    </div>
+                </div>
+                
+                <div class="hero__slide" data-slide="1">
+                    <div class="hero__bg hero__bg--2"></div>
+                    <div class="hero__content">
+                        <h1 class="hero__title" data-key="hero.slides.1.title"></h1>
+                        <p class="hero__subtitle" data-key="hero.slides.1.description"></p>
+                    </div>
+                </div>
+                
+                <div class="hero__slide" data-slide="2">
+                    <div class="hero__bg hero__bg--3"></div>
+                    <div class="hero__content">
+                        <h1 class="hero__title" data-key="hero.slides.2.title"></h1>
+                        <p class="hero__subtitle" data-key="hero.slides.2.description"></p>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- end focus -->
-      <!-- studio -->
-      <div id="studio" class="solutions">
-         <div class="container">
-            <div class="row d_flex">
-               <div class="col-md-7">
-                  <div class="titlepage">
-                     <h2>Elif Games</h2>
-                     <span>Elif Games is a tiny independent video game studio that adopts the philosophy of "Else If" in creation, allowing games to become another possibility and to extend the dimensions of life.<br/>
-                           If you have played games by Elif Games before, please click the Old-Timer button below to learn about special rewards.</span>
-                     <a class="read_more" href="https://www.facebook.com/profile.php?id=61555730533026" target="_blank"><img src="images/icon_facebook_b.png" alt="Facebook Icon" style="height: 24px; width: 24px;">&nbsp;&nbsp;&nbsp;Facebook</a>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <a class="read_more" href="contents/common/240430_old_timer/old_timer.html" target="_blank"><img src="images/icon_common_b.png" alt="Oldtimer Icon" style="height: 24px; width: 24px;">&nbsp;&nbsp;&nbsp;Old-Timer</a>
-                  </div>
-               </div>
-               <div class="col-md-5">
-                  <div class="solutions_img">
-                     <figure><img src="images/studio.png" alt="#"/></figure>
-                  </div>
-               </div>
+            
+            <div class="hero__indicators">
+                <button class="hero__indicator hero__indicator--active" data-slide="0" aria-label="第一张幻灯片"></button>
+                <button class="hero__indicator" data-slide="1" aria-label="第二张幻灯片"></button>
+                <button class="hero__indicator" data-slide="2" aria-label="第三张幻灯片"></button>
             </div>
-         </div>
-      </div>
-      <!-- end studio -->
-      <!-- gallery -->
-      <div id="gallery" class="work">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Gallery</h2>
-                     <span>Discover a collection of games developed by Elif Games and titles created by its core members.</span>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="our_work">
-                     <figure><a href="https://store.steampowered.com/app/1249060/MyCompany996/" target="_blank"><img src="images/work0.jpg" alt="#"/></a>
-                        <span>"MyCompany996" is a workplace simulation game that realistically portrays the entrepreneurial journey of a company and various typical characters.</span></figure>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="our_work">
-                     <figure><a href="https://store.steampowered.com/app/2911340/Mound_of_Music/" target="_blank"><img src="images/work1.jpg" alt="#"/></a>
-                        <span>"Mound of Music" is a game dedicated to the art of MUSIC, presenting a captivating sci-fi story.</span></figure>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="our_work">
-                     <figure><img src="images/work2.jpg" alt="#"/><span>"6174" (in developement) is a puzzle game, inspired by Taoist philosophy and the art of M.C. Escher.</span></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end gallery -->
-      <!--  footer -->
-      <footer>
-         <div class="footer">
+            
+
+        </section>
+
+        <!-- 主推游戏区域 -->
+        <section class="featured section" id="featured">
             <div class="container">
-               <!-- <div class="row">
-                  <div class="col-md-5">
-                     <div class="multipurpose">
-                        <h3>Contact</h3>
-                     </div>
-                  </div>
-                  <div class="col-md-7 sm_none">
-                     <div class="contac_detel">
-                        <ul>
-                           <li><img src="images/call.png" alt="#"/>+91 1234567890</li>
-                           <li><a href="Javascript:void(0)"> <img src="images/gmail.png" alt="#"/>demo@gmail.com</a></li>
+                <div class="section__header">
+                    <span class="section__subtitle" data-key="featuredGame.title"></span>
+                    <h2 class="section__title" data-key="featuredGame.subtitle"></h2>
+                </div>
+                
+                <div class="featured__content">
+                    <div class="featured__info">
+                        <h3 class="featured__name" data-key="featuredGame.name"></h3>
+                        <p class="featured__description" data-key="featuredGame.description"></p>
+                        
+                        <ul class="featured__features">
+                            <li>
+                              <a href="https://mp.weixin.qq.com/s/B1wjeHSgo2y7R603LlKv0Q"
+                                 class="featured__feature"
+                                 data-key="featuredGame.features.0"
+                                 target="_blank">
+                              </a>
+                           </li>
+                              <a href="https://gamesardor.net/top-steam-games-to-lookout-for-in-november-2024/#mound-of-music"
+                                 class="featured__feature"
+                                 data-key="featuredGame.features.1"
+                                 target="_blank">
+                              </a>
+                            <!-- <li class="featured__feature" data-key="featuredGame.features.2"></li>
+                            <li class="featured__feature" data-key="featuredGame.features.3"></li> -->
                         </ul>
-                     </div>
-                  </div>
-                  <div class="col-md-12">
-                     <div class="multipurpose">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                     </div>
-                  </div>
-                  <div class="col-md-7 sm_show">
-                     <div class="contac_detel">
-                        <ul>
-                           <li><img src="images/call.png" alt="#"/>+91 1234567890</li>
-                           <li><a href="Javascript:void(0)"> <img src="images/gmail.png" alt="#"/>demo@gmail.com</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div> -->
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <p>  <a href="https://www.facebook.com/profile.php?id=61555730533026" target="_blank"><img src="images/icon_facebook.png" alt="visit our facebook"/></a> | <a href="mailto:elifgamestudio@gmail.com" target="_blank"><img src="images/icon_mail.png" alt="mail to us"/></a>  </p>
-                        <p>© 2024 Elif Games</p>
-                     </div>
-                  </div>
-               </div>
+                        
+                        <div class="featured__buttons">
+                            <a href="contents/moundofmusic/index.html"
+                               class="btn btn--secondary"
+                               data-key="featuredGame.buttons.learnMore"
+                               target="_blank">
+                            </a>
+                            <a href="https://store.steampowered.com/app/2911340/Mound_of_Music/"
+                               class="btn btn--primary"
+                               data-key="featuredGame.buttons.playNow"
+                               target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="featured__image">
+                        <img src="images/work1.jpg" alt="Mound of Music" class="featured__img">
+                    </div>
+                </div>
             </div>
-         </div>
-      </footer>
-      <!-- end footer -->
-      <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
-   </body>
+        </section>
+
+        <!-- 工作室介绍区域 -->
+        <section class="about section section--dark" id="about">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle" data-key="about.title"></span>
+                    <h2 class="section__title" data-key="about.subtitle"></h2>
+                </div>
+                
+                <div class="about__content">
+                    <div class="about__description">
+                        <p data-key="about.description"></p>
+                    </div>
+                    
+                    <div class="about__mission">
+                        <h3 class="about__mission-title" data-key="about.mission"></h3>
+                        <p class="about__mission-text" data-key="about.missionText"></p>
+                    </div>
+                    
+                    <div class="about__values">
+                        <div class="value__card">
+                            <h4 class="value__title" data-key="about.values.0.title"></h4>
+                            <p class="value__description" data-key="about.values.0.description"></p>
+                        </div>
+                        <div class="value__card">
+                            <h4 class="value__title" data-key="about.values.1.title"></h4>
+                            <p class="value__description" data-key="about.values.1.description"></p>
+                        </div>
+                        <div class="value__card">
+                            <h4 class="value__title" data-key="about.values.2.title"></h4>
+                            <p class="value__description" data-key="about.values.2.description"></p>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="about__team">
+                        <img src="images/professional-game-development-team-portrait.jpg" alt="我们的团队" class="about__team-img">
+                    </div>
+                    
+                    <div class="about__buttons">
+                        <a href="#" class="btn btn--outline" data-key="about.buttons.learnMore">了解更多</a>
+                        <a href="#" class="btn btn--ghost" data-key="about.buttons.contactUs">联系我们</a>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏Gallery区域 -->
+        <section class="gallery section" id="games">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle" data-key="gallery.title"></span>
+                    <h2 class="section__title" data-key="gallery.subtitle"></h2>
+                </div>
+                
+                <div class="gallery__grid" id="gallery-grid">
+                    <div class="game__card">
+                        <div class="game__image">
+                            <img src="images/work0.jpg" alt="My Company 996" class="game__img">
+                            <div class="game__overlay">
+                              <a href="https://store.steampowered.com/app/1249060/MyCompany996/" target="_blank">
+                                 <h4 class="game__title" data-key="gallery.games.0.name"></h4>
+                                 <p class="game__genre" data-key="gallery.games.0.genre"></p>
+                                 <p class="game__description" data-key="gallery.games.0.description"></p>
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game__card">
+                        <div class="game__image">
+                            <img src="images/work1.jpg" alt="Mound of Music" class="game__img">
+                            <div class="game__overlay">
+                              <a href="https://store.steampowered.com/app/2911340/Mound_of_Music/" target="_blank">
+                                <h4 class="game__title" data-key="gallery.games.1.name"></h4>
+                                <p class="game__genre" data-key="gallery.games.1.genre"></p>
+                                <p class="game__description" data-key="gallery.games.1.description"></p>
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game__card">
+                        <div class="game__image">
+                            <img src="images/work2.jpg" alt="6174" class="game__img">
+                            <div class="game__overlay">
+                                <h4 class="game__title" data-key="gallery.games.2.name"></h4>
+                                <p class="game__genre" data-key="gallery.games.2.genre"></p>
+                                <p class="game__description" data-key="gallery.games.2.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game__card hidden-game" style="display: none;">
+                        <div class="game__image">
+                            <img src="images/work2.jpg" alt="6174" class="game__img">
+                            <div class="game__overlay">
+                                <h4 class="game__title" data-key="gallery.games.3.name"></h4>
+                                <p class="game__genre" data-key="gallery.games.3.genre"></p>
+                                <p class="game__description" data-key="gallery.games.3.description"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="game__card hidden-game" style="display: none;">
+                        <div class="game__image">
+                            <img src="images/pixel-art-rpg-game-screenshot-collection.jpg" alt="机器人历险记" class="game__img">
+                            <div class="game__overlay">
+                                <h4 class="game__title" data-key="gallery.games.4.name">机器人历险记</h4>
+                                <p class="game__genre" data-key="gallery.games.4.genre">平台/动作</p>
+                                <p class="game__description" data-key="gallery.games.4.description">平台跳跃游戏</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game__card hidden-game" style="display: none;">
+                        <div class="game__image">
+                            <img src="images/darkest-dungeon-plague-doctor-combat-screenshot.jpg" alt="暗黑地牢" class="game__img">
+                            <div class="game__overlay">
+                                <h4 class="game__title" data-key="gallery.games.5.name">暗黑地牢</h4>
+                                <p class="game__genre" data-key="gallery.games.5.genre">RPG/策略</p>
+                                <p class="game__description" data-key="gallery.games.5.description">回合制RPG游戏</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                
+                <!-- <div class="gallery__actions">
+                    <button class="btn btn--secondary gallery__load-more" id="load-more-games">
+                        <span class="load-more-text" data-key="gallery.buttons.loadMore">发现更多游戏</span>
+                        <svg class="load-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div> -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer section--dark" id="contact">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <div class="footer__logo">
+                        <img src="images/logo.png" alt="ELIF GAMES" class="footer__logo-img">
+                        <!-- <span class="footer__logo-text" data-key="footer.logoName"></span> -->
+                    </div>
+                    <p class="footer__description" data-key="footer.description"></p>
+                </div>
+                
+                <!-- <div class="footer__section">
+                    <h3 class="footer__title" data-key="footer.contact.title"></h3>
+                    <div class="footer__contact">
+                        <p class="footer__contact-item">
+                            <span class="footer__contact-label" data-key="footer.contact.labels.email"></span>
+                            <a href="mailto:elifgamestudio@gmail.com" class="footer__contact-link">elifgamestudio@gmail.com</a>
+                        </p>
+                        <p class="footer__contact-item">
+                            <span class="footer__contact-label" data-key="footer.contact.labels.phone"></span>
+                            <a href="tel:+8612345678900" class="footer__contact-link"></a>
+                        </p>
+                    </div>
+                </div> -->
+                
+                <div class="footer__section">
+                    <h3 class="footer__title" data-key="footer.social.title"></h3>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" data-key="footer.social.links.0.name"></a>
+                        <a href="#" class="footer__social-link" data-key="footer.social.links.1.name"></a>
+                        <a href="#" class="footer__social-link" data-key="footer.social.links.2.name"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright" data-key="footer.copyright"></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="scroll-top" id="scroll-top" aria-label="返回顶部">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
 </html>
