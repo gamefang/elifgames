@@ -43,24 +43,22 @@
   },
   "images": {
     "hero": [
-      { "src": "images/indie-game-space-battle-hero-background.jpg", "alt": "Space Battle Background", "priority": "high" },
-      { "src": "images/professional-game-development-team-playing-in-office.jpg", "alt": "Development Team", "priority": "high" },
-      { "src": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg", "alt": "Magic Platform Adventure", "priority": "high" }
+      { "src": "images/blackandwhite.png", "alt": "1", "priority": "high" },
+      { "src": "images/music.gif", "alt": "2", "priority": "high" },
+      { "src": "images/explore.gif", "alt": "3", "priority": "high" }
     ],
     "gallery": [
-      { "src": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg", "alt": "Magic Platform Adventure", "category": "action" },
-      { "src": "images/indie-game-space-battle-hero-background.jpg", "alt": "Space Robot War", "category": "strategy" },
-      { "src": "images/pixel-art-game-celeste-platforming-screenshot.jpg", "alt": "Pixel Dungeon Explorer", "category": "rpg" },
-      { "src": "images/indie-action-adventure-game-dialogue-screenshot.jpg", "alt": "Magic Academy", "category": "rpg" },
-      { "src": "images/pixel-art-rpg-game-screenshot-collection.jpg", "alt": "Robot Adventure", "category": "platform" },
-      { "src": "images/darkest-dungeon-plague-doctor-combat-screenshot.jpg", "alt": "Darkest Dungeon", "category": "rpg" }
+      { "src": "images/work0.jpg", "alt": "1", "category": "action" },
+      { "src": "images/work1.jpg", "alt": "2", "category": "strategy" },
+      { "src": "images/work2.jpg", "alt": "3", "category": "rpg" },
+      { "src": "images/work2.jpg", "alt": "4", "category": "rpg" }
     ],
     "logos": [
       { "src": "images/logo_box.jpg", "alt": "Studio Logo", "size": "40x40" },
       { "src": "images/logo.png", "alt": "Studio Logo Modern", "size": "40x40" }
     ],
     "team": [
-      { "src": "images/professional-game-development-team-portrait.jpg", "alt": "Team Photo", "priority": "medium" }
+      { "src": "images/logo.png", "alt": "Team Photo", "priority": "medium" }
     ]
   },
   "content": {

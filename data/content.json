@@ -112,6 +112,12 @@
           "description": "埃舍尔风格的解谜游戏(开发中)",
           "genre": "解谜/冒险",
           "image": "images/work2.jpg"
+        },
+        {
+          "name": "6174",
+          "description": "埃舍尔风格的解谜游戏(开发中)",
+          "genre": "解谜/冒险",
+          "image": "images/work2.jpg"
         }
       ]
     },
@@ -132,7 +138,7 @@
         "title": "联系我们",
         "links": [
           { "name": "邮箱: elifgamestudio@gmail.com", "url": "mailto:elifgamestudio@gmail.com" },
-          { "name": "QQ群: 894397045", "url": "#" },
+          { "name": "QQ群: 894397045", "url": "https://qm.qq.com/q/clRnCNzSzm" },
           { "name": "Bilibili: gamefang", "url": "https://space.bilibili.com/412487116" }
         ]
       }
@@ -228,7 +234,7 @@
       "teamImageAlt": "Our Team"
     },
     "gallery": {
-      "title": "Games",
+      "title": "Our Games",
       "subtitle": "Games developed or co-developed by Elif Games",
       "buttons": {
         "loadMore": "Show More",
@@ -239,19 +245,25 @@
           "name": "My Company 996",
           "description": "A TOO real office simulator",
           "genre": "Simulation/Narrative",
-          "image": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg"
+          "image": "images/work0.jpg"
         },
         {
           "name": "Mound of Music",
           "description": "A sci-fi rhythm game that lets you play real instruments",
           "genre": "Music/Narrative",
-          "image": "images/indie-game-space-battle-hero-background.jpg"
+          "image": "images/work1.jpg"
         },
         {
           "name": "6174",
           "description": "An Escher-style puzzle game (in development)",
           "genre": "Puzzle/Adventure",
-          "image": "images/pixel-art-game-celeste-platforming-screenshot.jpg"
+          "image": "images/work2.jpg"
+        },
+        {
+          "name": "6174",
+          "description": "An Escher-style puzzle game (in development)",
+          "genre": "Puzzle/Adventure",
+          "image": "images/work2.jpg"
         }
       ]
     },
@@ -272,8 +284,8 @@
         "title": "Contact Us",
         "links": [
           { "name": "Email: elifgamestudio@gmail.com", "url": "mailto:elifgamestudio@gmail.com" },
-          { "name": "Discord", "url": "#" },
-          { "name": "Facebook: Elif Games", "url": "https://www.facebook.com/profile.php?id=61555730533026" }
+          { "name": "Discord: Mound of Music", "url": "https://discord.com/invite/SQ22XP4MKc" },
+          { "name": "Facebook: elifgamestudio", "url": "https://www.facebook.com/profile.php?id=61555730533026" }
         ]
       }
     }

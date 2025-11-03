@@ -525,26 +525,45 @@ function updateLanguageDisplay() {
 
 function updateContent() {
   const content = contentData[currentLanguage];
-  
+
   if (!content) {
     console.warn(`内容数据未找到，语言: ${currentLanguage}`);
     return;
   }
-  
+
   // 更新所有带有data-key的元素
   document.querySelectorAll('[data-key]').forEach(element => {
     const key = element.getAttribute('data-key');
     const value = getNestedValue(content, key);
-    
-    if (value) {
+
+    if (value !== undefined && value !== null) {
       if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
         element.placeholder = value;
+      } else if (element.tagName === 'A' && typeof value === 'object' && value.name && value.url) {
+        // 特殊处理链接元素，设置文本和href
+        element.textContent = value.name;
+        element.href = value.url;
+        
+        // 为外部链接添加 target="_blank" 和 rel="noopener"（安全最佳实践）
+        if (value.url.startsWith('http') || value.url.startsWith('mailto')) {
+          element.setAttribute('target', '_blank');
+          element.setAttribute('rel', 'noopener noreferrer');
+        }
+        
+        console.log(`链接更新成功: ${key} -> name: ${value.name}, url: ${value.url}`); // 调试日志
       } else {
         element.textContent = value;
       }
+    } else {
+      console.warn(`未找到 data-key="${key}" 的值，使用默认值`); // 警告日志
+      // 可选：为A标签设置默认文本和href，防止完全失效
+      if (element.tagName === 'A') {
+        element.textContent = '默认链接';
+        element.href = '#';
+      }
     }
   });
-  
+
   // 特殊处理
   updateSiteTitle();
   updateGameGalleryButton();
