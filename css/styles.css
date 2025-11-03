@@ -980,9 +980,16 @@ ul {
 
 .footer__logo {
   display: flex;
+  justify-content: center;  /* 竖屏居中 */
   align-items: center;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
+}
+/* 横屏（宽度 ≥ 768 px 就算横屏）：左对齐 */
+@media (orientation: landscape) and (min-width: 768px) {
+  .footer__logo {
+    justify-content: flex-start;
+  }
 }
 
 .footer__logo-img {

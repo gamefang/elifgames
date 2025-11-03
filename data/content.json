@@ -109,7 +109,7 @@
         },
         {
           "name": "6174",
-          "description": "埃舍尔风格的解谜游戏",
+          "description": "埃舍尔风格的解谜游戏(开发中)",
           "genre": "解谜/冒险",
           "image": "images/work2.jpg"
         }
@@ -141,9 +141,9 @@
 
   "en-US": {
     "site": {
-      "title": "Independent Game Studio",
-      "description": "An independent development team focused on creating unique gaming experiences",
-      "logoName": "Independent Game Studio"
+      "title": "ELIF GAMES",
+      "description": "Games widen the thread of life",
+      "logoName": "ELIF GAMES"
     },
     "common": {
       "ariaLabels": {
@@ -163,7 +163,7 @@
     },
     "navigation": {
       "home": "Home",
-      "about": "About Us",
+      "about": "About",
       "games": "Games",
       "contact": "Contact",
       "language": "Language"
@@ -174,29 +174,27 @@
       "cta": "Explore Our Games",
       "slides": [
         {
-          "title": "Innovative Gaming Experience",
-          "description": "Each game is a brand new adventure journey"
+          "title": "Else If",
+          "description": "Everything could be otherwise"
         },
         {
-          "title": "Stunning Visual Effects",
-          "description": "Unique artistic style and immersive game worlds"
+          "title": "Game is Life",
+          "description": "Games widen the thread of life"
         },
         {
-          "title": "Deep Gameplay Mechanics",
-          "description": "Carefully designed mechanics and challenging levels"
+          "title": "Life is Game",
+          "description": "Life itself is the finest game"
         }
       ]
     },
     "featuredGame": {
-      "title": "Latest Masterpiece",
-      "subtitle": "Discover Our Flagship Game",
-      "name": "Magic Platform Adventure",
-      "description": "A 2D side-scrolling action-adventure game that combines classic platformer mechanics with modern magical elements. Players take on the role of a young wizard, embarking on an epic adventure through a world filled with mystical charm.",
+      "title": "Latest News",
+      "subtitle": "“Mound of Music” is now available on Steam",
+      "name": "Mound of Music",
+      "description": "A game that integrates narrative and music gameplay. As a force opposing humanity, you embark on Earth to execute the Final Solution to the Music Crisis. Explore and discover classic musical pieces, perform all melodies and rhythms, until fate and truth are revealed.",
       "features": [
-        "Unique Magic System: Learn and master various powerful spells",
-        "Beautiful Pixel Art Style: Recapturing the charm of classic games",
-        "Rich Level Design: From mysterious forests to ancient ruins",
-        "Deep Character Growth: Unlock new skills and equipment"
+        "Nominated for the Excellence in Audio Award of IndiePlay 2024",
+        "Top Steam Games To Lookout for in November 2024"
       ],
       "buttons": {
         "learnMore": "Learn More",
@@ -205,22 +203,22 @@
     },
     "about": {
       "title": "About Us",
-      "subtitle": "Learn Our Story",
-      "description": "We are a group of game-loving developers who founded our studio in 2020. We believe games are not just entertainment, but also a medium for artistic expression and emotional communication. Through innovative game design and stunning visual effects, we are committed to creating unforgettable gaming experiences for players.",
-      "mission": "Our Mission",
-      "missionText": "Connecting the world through games, creating digital experiences that touch people's hearts.",
+      "subtitle": "Elif Games",
+      "description": "Elif Games is a tiny independent video game studio that adopts the philosophy of “Else If” in creation.",
+      "mission": "ELIF & LIFE",
+      "missionText": "ELIF is the keyword for “another if” in some programming languages—and an anagram of LIFE.\nLife hides secret doors everywhere, we forge games to be the keys.",
       "values": [
         {
-          "title": "Innovation",
-          "description": "Continuously exploring new game mechanics and expression techniques"
+          "title": "Else If",
+          "description": "Everything could be otherwise"
         },
         {
-          "title": "Quality",
-          "description": "Excellence in every detail"
+          "title": "Game is Life",
+          "description": "Games widen the thread of life"
         },
         {
-          "title": "Emotion",
-          "description": "Games should be able to touch players' hearts"
+          "title": "Life is Game",
+          "description": "Life itself is the finest game"
         }
       ],
       "buttons": {
@@ -230,55 +228,37 @@
       "teamImageAlt": "Our Team"
     },
     "gallery": {
-      "title": "Game Portfolio",
-      "subtitle": "Explore Our Game World",
+      "title": "Games",
+      "subtitle": "Games developed or co-developed by Elif Games",
       "buttons": {
-        "loadMore": "Discover More Games",
+        "loadMore": "Show More",
         "showLess": "Show Less"
       },
       "games": [
         {
-          "name": "Magic Platform Adventure",
-          "description": "2D side-scrolling action-adventure game",
-          "genre": "Action/Adventure",
+          "name": "My Company 996",
+          "description": "A TOO real office simulator",
+          "genre": "Simulation/Narrative",
           "image": "images/indie-action-adventure-game-screenshot-magic-platformer.jpg"
         },
         {
-          "name": "Space Robot War",
-          "description": "Space strategy game",
-          "genre": "Strategy/Sci-Fi",
+          "name": "Mound of Music",
+          "description": "A sci-fi rhythm game that lets you play real instruments",
+          "genre": "Music/Narrative",
           "image": "images/indie-game-space-battle-hero-background.jpg"
         },
         {
-          "name": "Pixel Dungeon Explorer",
-          "description": "Pixel-style RPG game",
-          "genre": "RPG/Adventure",
+          "name": "6174",
+          "description": "An Escher-style puzzle game (in development)",
+          "genre": "Puzzle/Adventure",
           "image": "images/pixel-art-game-celeste-platforming-screenshot.jpg"
-        },
-        {
-          "name": "Magic Academy",
-          "description": "Role-playing game",
-          "genre": "RPG/Fantasy",
-          "image": "images/indie-action-adventure-game-dialogue-screenshot.jpg"
-        },
-        {
-          "name": "Robot Adventure",
-          "description": "Platform jumping game",
-          "genre": "Platform/Action",
-          "image": "images/pixel-art-rpg-game-screenshot-collection.jpg"
-        },
-        {
-          "name": "Darkest Dungeon",
-          "description": "Turn-based RPG game",
-          "genre": "RPG/Strategy",
-          "image": "images/darkest-dungeon-plague-doctor-combat-screenshot.jpg"
         }
       ]
     },
     "footer": {
-      "logoName": "Independent Game Studio",
-      "description": "An independent development team focused on creating unique gaming experiences",
-      "copyright": "© 2025 Independent Game Studio. All rights reserved.",
+      "logoName": "ELIF GAMES",
+      "description": "Games widen the thread of life",
+      "copyright": "© 2025 ELIF GAMES. All rights reserved.",
       "contact": {
         "title": "Contact Us",
         "email": "contact@gamestudio.com",
@@ -289,11 +269,11 @@
         }
       },
       "social": {
-        "title": "Follow Us",
+        "title": "Contact Us",
         "links": [
-          { "name": "Weibo", "url": "#" },
-          { "name": "WeChat", "url": "#" },
-          { "name": "QQ Group", "url": "#" }
+          { "name": "Email: elifgamestudio@gmail.com", "url": "mailto:elifgamestudio@gmail.com" },
+          { "name": "Discord", "url": "#" },
+          { "name": "Facebook: Elif Games", "url": "https://www.facebook.com/profile.php?id=61555730533026" }
         ]
       }
     }
