@@ -49,9 +49,9 @@
     },
     "featuredGame": {
       "title": "最新消息",
-      "subtitle": "《知音冢 Mound of Music》已上线Steam平台",
-      "name": "知音冢",
-      "description": "一款叙事与音乐玩法紧密结合的游戏。作为人类的敌人，前往地球执行音乐危机最终解决方案，在废土世界中，探索并发现世界各地的音乐，跟随旋律与节奏，弹奏出一首首经典的乐章。人类，究竟是敌人，还是知音？当曲终人散后，是谁将音乐埋葬，建起一座又一座知音冢？",
+      "subtitle": "新作《我的铁饭碗》已公布Steam页面",
+      "name": "我的铁饭碗",
+      "description": "这是你的赛博乞讨伴侣：只需在电脑桌面上摆上一只破碗，你的致富之路便正式开启。翻找垃圾、倒买倒卖、结交权贵——总有一天，你也会在竞选总统的投票车上大呼小叫。",
       "features": [
         "游戏入围2024年度indiePlay中国独立游戏大赛",
         "GamesArdor：2024年11月值得关注的Steam优秀游戏"
@@ -64,7 +64,7 @@
     "about": {
       "title": "关于我们",
       "subtitle": "Elif Games",
-      "description": "Elif Games是个人向的小型独立游戏工作室，在创作中以“Else If”为核心理念。",
+      "description": "Elif Games是个人独立游戏工作室，在创作中以“Else If”为核心理念。",
       "mission": "ELIF & LIFE",
       "missionText": "“ELIF”是部分编程语言中“另一种如果”的关键词，同时也是单词“LIFE”的易位词。\n生命中总会有很多隐藏的暗门，而我们希望将游戏做成钥匙。",
       "values": [
@@ -105,13 +105,13 @@
           "name": "知音冢",
           "description": "基于真实乐器演奏的科幻音游",
           "genre": "音乐/剧情",
-          "image": "images/work1.jpg"
+          "image": "contents/moundofmusic/moundofmusic.png"
         },
         {
-          "name": "6174",
-          "description": "埃舍尔风格的解谜游戏(开发中)",
-          "genre": "解谜/冒险",
-          "image": "images/work2.jpg"
+          "name": "我的铁饭碗",
+          "description": "一款黑色幽默风格的桌宠模拟游戏(开发中)",
+          "genre": "模拟/放置",
+          "image": "contents/trampbecomepresident/tbp1080.png"
         },
         {
           "name": "6174",
@@ -124,10 +124,10 @@
     "footer": {
       "logoName": "ELIF GAMES",
       "description": "让游戏扩展生命的维度",
-      "copyright": "© 2025 ELIF GAMES. All rights reserved.",
+      "copyright": "© 2026 ELIF GAMES. All rights reserved.",
       "contact": {
         "title": "联系我们",
-        "email": "elifgamestudio@gmail.com",
+        "email": "contact@elifgames.fun",
         "phone": "+86 123-4567-8900",
         "labels": {
           "email": "邮箱：",
@@ -137,7 +137,7 @@
       "social": {
         "title": "联系我们",
         "links": [
-          { "name": "邮箱: elifgamestudio@gmail.com", "url": "mailto:elifgamestudio@gmail.com" },
+          { "name": "邮箱: contact@elifgames.fun", "url": "mailto:contact@elifgames.fun" },
           { "name": "QQ群: 894397045", "url": "https://qm.qq.com/q/clRnCNzSzm" },
           { "name": "Bilibili: gamefang", "url": "https://space.bilibili.com/412487116" }
         ]
@@ -148,7 +148,7 @@
   "en-US": {
     "site": {
       "title": "ELIF GAMES",
-      "description": "Games widen the thread of life",
+      "description": "Games expand the dimensions of life",
       "logoName": "ELIF GAMES"
     },
     "common": {
@@ -185,7 +185,7 @@
         },
         {
           "title": "Game is Life",
-          "description": "Games widen the thread of life"
+          "description": "Games expand the dimensions of life"
         },
         {
           "title": "Life is Game",
@@ -195,9 +195,9 @@
     },
     "featuredGame": {
       "title": "Latest News",
-      "subtitle": "“Mound of Music” is now available on Steam",
-      "name": "Mound of Music",
-      "description": "A game that integrates narrative and music gameplay. As a force opposing humanity, you embark on Earth to execute the Final Solution to the Music Crisis. Explore and discover classic musical pieces, perform all melodies and rhythms, until fate and truth are revealed.",
+      "subtitle": "My new game “Tramp: Become President” now has its Steam page live.",
+      "name": "Tramp: Become President",
+      "description": "This is your cyber begging companion: just place a bowl on your desktop, and your road to riches officially begins. Dig through trash, flip goods for profit, network with the powerful—one day, you might even be shouting from the back of a presidential campaign truck.",
       "features": [
         "Nominated for the Excellence in Audio Award of IndiePlay 2024",
         "Top Steam Games To Lookout for in November 2024"
@@ -210,9 +210,9 @@
     "about": {
       "title": "About Us",
       "subtitle": "Elif Games",
-      "description": "Elif Games is a tiny independent video game studio that adopts the philosophy of “Else If” in creation.",
+      "description": "Elif Games is a solo indie game developer inspired by the creative philosophy of “else if.”",
       "mission": "ELIF & LIFE",
-      "missionText": "ELIF is the keyword for “another if” in some programming languages—and an anagram of LIFE.\nLife hides secret doors everywhere, we forge games to be the keys.",
+      "missionText": "ELIF is the keyword for “another if” in some programming languages—and an anagram of LIFE.\nLife hides secret doors everywhere, we create games to become the keys.",
       "values": [
         {
           "title": "Else If",
@@ -220,7 +220,7 @@
         },
         {
           "title": "Game is Life",
-          "description": "Games widen the thread of life"
+          "description": "Games expand the dimensions of life"
         },
         {
           "title": "Life is Game",
@@ -251,13 +251,13 @@
           "name": "Mound of Music",
           "description": "A sci-fi rhythm game that lets you play real instruments",
           "genre": "Music/Narrative",
-          "image": "images/work1.jpg"
+          "image": "contents/moundofmusic/moundofmusic.png"
         },
         {
-          "name": "6174",
-          "description": "An Escher-style puzzle game (in development)",
-          "genre": "Puzzle/Adventure",
-          "image": "images/work2.jpg"
+          "name": "Tramp: Become President",
+          "description": "A darkly humorous desktop idle simulation game (in development)",
+          "genre": "Simulation/Idle",
+          "image": "contents/trampbecomepresident/tbp1080.png"
         },
         {
           "name": "6174",
@@ -269,11 +269,11 @@
     },
     "footer": {
       "logoName": "ELIF GAMES",
-      "description": "Games widen the thread of life",
-      "copyright": "© 2025 ELIF GAMES. All rights reserved.",
+      "description": "Games expand the dimensions of life",
+      "copyright": "© 2026 ELIF GAMES. All rights reserved.",
       "contact": {
         "title": "Contact Us",
-        "email": "contact@gamestudio.com",
+        "email": "contact@elifgames.fun",
         "phone": "+86 123-4567-8900",
         "labels": {
           "email": "Email:",
@@ -283,8 +283,8 @@
       "social": {
         "title": "Contact Us",
         "links": [
-          { "name": "Email: elifgamestudio@gmail.com", "url": "mailto:elifgamestudio@gmail.com" },
-          { "name": "Discord: Mound of Music", "url": "https://discord.com/invite/SQ22XP4MKc" },
+          { "name": "Email: contact@elifgames.fun", "url": "mailto:contact@elifgames.fun" },
+          { "name": "X.COM: Elif Games", "url": "https://x.com/ElifGameStudio" },
           { "name": "Facebook: elifgamestudio", "url": "https://www.facebook.com/profile.php?id=61555730533026" }
         ]
       }

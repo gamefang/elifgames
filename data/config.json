@@ -48,10 +48,10 @@
       { "src": "images/explore.gif", "alt": "3", "priority": "high" }
     ],
     "gallery": [
-      { "src": "images/work0.jpg", "alt": "1", "category": "action" },
-      { "src": "images/work1.jpg", "alt": "2", "category": "strategy" },
-      { "src": "images/work2.jpg", "alt": "3", "category": "rpg" },
-      { "src": "images/work2.jpg", "alt": "4", "category": "rpg" }
+      { "src": "images/work0.jpg", "alt": "1", "category": "simulation" },
+      { "src": "contents/moundofmusic/moundofmusic.png", "alt": "2", "category": "music" },
+      { "src": "contents/trampbecomepresident/tbp1080.png", "alt": "3", "category": "simulation" },
+      { "src": "images/work_ph.jpg", "alt": "4", "category": "rpg" }
     ],
     "logos": [
       { "src": "images/logo_box.jpg", "alt": "Studio Logo", "size": "40x40" },

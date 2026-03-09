@@ -50,8 +50,8 @@
                 <div class="nav__actions">
                     <div class="nav__language">
                         <select class="language-select" id="language-select" aria-label="选择语言">
-                            <option value="zh-CN">中文</option>
                             <option value="en-US">English</option>
+                            <option value="zh-CN">中文</option>
                         </select>
                     </div>
                 </div>
@@ -117,7 +117,8 @@
                         <h3 class="featured__name" data-key="featuredGame.name"></h3>
                         <p class="featured__description" data-key="featuredGame.description"></p>
                         
-                        <ul class="featured__features">
+                        <!-- 暂时隐藏 -->
+                        <ul class="featured__features" style="display: none;">
                             <li>
                               <a href="https://mp.weixin.qq.com/s/B1wjeHSgo2y7R603LlKv0Q"
                                  class="featured__feature"
@@ -135,21 +136,23 @@
                         </ul>
                         
                         <div class="featured__buttons">
-                            <a href="contents/moundofmusic/index.html"
+                            <a href="https://store.steampowered.com/app/3635920/Tramp_Become_President/"
                                class="btn btn--secondary"
                                data-key="featuredGame.buttons.learnMore"
                                target="_blank">
                             </a>
-                            <a href="https://store.steampowered.com/app/2911340/Mound_of_Music/"
+                            <!-- 暂时隐藏 -->
+                            <a href="https://store.steampowered.com/app/3635920/Tramp_Become_President/"
                                class="btn btn--primary"
                                data-key="featuredGame.buttons.playNow"
-                               target="_blank">
+                               target="_blank"
+                               style="display: none;">
                             </a>
                         </div>
                     </div>
                     
                     <div class="featured__image">
-                        <img src="images/work1.jpg" alt="Mound of Music" class="featured__img">
+                        <img src="contents/trampbecomepresident/tbp1080.png" alt="Tramp: Become President" class="featured__img">
                     </div>
                 </div>
             </div>
@@ -224,9 +227,9 @@
                     
                     <div class="game__card">
                         <div class="game__image">
-                            <img src="images/work1.jpg" alt="Mound of Music" class="game__img">
+                            <img src="contents/moundofmusic/moundofmusic.png" alt="Mound of Music" class="game__img">
                             <div class="game__overlay">
-                              <a href="https://store.steampowered.com/app/2911340/Mound_of_Music/" target="_blank">
+                              <a href="contents/moundofmusic/index.html" target="_blank">
                                 <h4 class="game__title" data-key="gallery.games.1.name"></h4>
                                 <p class="game__genre" data-key="gallery.games.1.genre"></p>
                                 <p class="game__description" data-key="gallery.games.1.description"></p>
@@ -237,11 +240,13 @@
                     
                     <div class="game__card">
                         <div class="game__image">
-                            <img src="images/work2.jpg" alt="6174" class="game__img">
+                            <img src="contents/trampbecomepresident/tbp1080.png" alt="Tramp: Become President" class="game__img">
                             <div class="game__overlay">
-                                <h4 class="game__title" data-key="gallery.games.2.name"></h4>
-                                <p class="game__genre" data-key="gallery.games.2.genre"></p>
-                                <p class="game__description" data-key="gallery.games.2.description"></p>
+                                <a href="https://store.steampowered.com/app/3635920/Tramp_Become_President/" target="_blank">
+                                    <h4 class="game__title" data-key="gallery.games.2.name"></h4>
+                                    <p class="game__genre" data-key="gallery.games.2.genre"></p>
+                                    <p class="game__description" data-key="gallery.games.2.description"></p>
+                                </a>
                             </div>
                         </div>
                     </div>
