@@ -1,69 +1,172 @@
 {
-  "colors": {
-    "primary": { "main": "#000000", "secondary": "#1a1a1a", "white": "#ffffff", "lightGray": "#f8f8f8" },
-    "text": { "main": "#000000", "light": "#666666", "inverse": "#ffffff" },
-    "accent": { "orange": "#ff6b35", "cyan": "#4ecdc4" }
+  "brand": {
+    "name": "ELIF GAMES",
+    "favicon": "images/logo_box.jpg",
+    "headerLogo": {
+      "src": "images/logo_box.jpg",
+      "alt": "ELIF GAMES"
+    },
+    "footerLogo": {
+      "src": "images/logo.png",
+      "alt": "ELIF GAMES"
+    }
   },
+  "colors": {
+    "primary": {
+      "main": "#000000",
+      "secondary": "#1a1a1a",
+      "white": "#ffffff",
+      "lightGray": "#f8f8f8"
+    },
+    "text": {
+      "main": "#000000",
+      "light": "#666666",
+      "inverse": "#ffffff"
+    },
+    "accent": {
+      "orange": "#ff6b35",
+      "cyan": "#4ecdc4"
+    }
+  },
+  "language": {
+    "default": "en-US",
+    "fallback": "en-US",
+    "storageKey": "preferredLanguage"
+  },
+  "languages": [
+    {
+      "code": "en-US",
+      "label": "English"
+    },
+    {
+      "code": "zh-CN",
+      "label": "中文"
+    }
+  ],
+  "navigation": [
+    {
+      "id": "home",
+      "key": "navigation.home"
+    },
+    {
+      "id": "about",
+      "key": "navigation.about"
+    },
+    {
+      "id": "games",
+      "key": "navigation.games"
+    },
+    {
+      "id": "contact",
+      "key": "navigation.contact"
+    }
+  ],
   "carousel": {
+    "enabled": true,
     "autoPlay": true,
     "interval": 5000,
-    "transitionDuration": 1000,
+    "transitionDuration": 800,
     "pauseOnHover": true,
     "showIndicators": true,
-    "showArrows": false,
-    "infiniteLoop": true
+    "infiniteLoop": true,
+    "slides": [
+      {
+        "id": "else-if",
+        "image": "images/blackandwhite.png",
+        "alt": "ELIF GAMES — Else If"
+      },
+      {
+        "id": "game-is-life",
+        "image": "images/music.gif",
+        "alt": "ELIF GAMES — Game is Life"
+      },
+      {
+        "id": "life-is-game",
+        "image": "images/explore.gif",
+        "alt": "ELIF GAMES — Life is Game"
+      }
+    ],
+    "preloadNextSlide": true
   },
-  "animations": {
-    "fadeInUp": { "duration": 1000, "delay": 0 },
-    "slideInLeft": { "duration": 800, "delay": 0 },
-    "slideInRight": { "duration": 800, "delay": 0 },
-    "pageLoad": { "duration": 800, "staggerDelay": 200 }
+  "announcement": {
+    "enabled": true,
+    "image": {
+      "src": "contents/trampbecomepresident/tbp1080.png",
+      "alt": "Tramp: Become President"
+    },
+    "buttons": {
+      "learnMore": {
+        "href": "https://store.steampowered.com/app/3635920/Tramp_Become_President/",
+        "visible": true
+      },
+      "playNow": {
+        "href": "https://store.steampowered.com/app/3635920/Tramp_Become_President/",
+        "visible": false
+      }
+    },
+    "features": {
+      "enabled": false,
+      "links": [
+        {
+          "href": "https://mp.weixin.qq.com/s/B1wjeHSgo2y7R603LlKv0Q"
+        },
+        {
+          "href": "https://gamesardor.net/top-steam-games-to-lookout-for-in-november-2024/#mound-of-music"
+        }
+      ]
+    }
+  },
+  "gallery": {
+    "imageAspectRatio": "16 / 9",
+    "initialVisible": 3,
+    "showMore": true,
+    "games": [
+      {
+        "id": "my-company-996",
+        "image": "images/work0.jpg",
+        "alt": "My Company 996",
+        "href": "https://store.steampowered.com/app/1249060/MyCompany996/",
+        "target": "_blank",
+        "enabled": true
+      },
+      {
+        "id": "mound-of-music",
+        "image": "contents/moundofmusic/moundofmusic.png",
+        "alt": "Mound of Music",
+        "href": "contents/moundofmusic/index.html",
+        "target": "_blank",
+        "enabled": true
+      },
+      {
+        "id": "tramp-become-president",
+        "image": "contents/trampbecomepresident/tbp1080.png",
+        "alt": "Tramp: Become President",
+        "href": "https://store.steampowered.com/app/3635920/Tramp_Become_President/",
+        "target": "_blank",
+        "enabled": true
+      },
+      {
+        "id": "6174",
+        "image": "images/work_ph.jpg",
+        "alt": "6174",
+        "enabled": true
+      }
+    ]
   },
   "scrollEffects": {
     "scrollTopThreshold": 200,
     "headerBackgroundChange": 50,
-    "headerOpacity": { "normal": 0.95, "scrolled": 0.98 }
-  },
-  "lazyLoading": {
-    "threshold": 0.1,
-    "rootMargin": "50px"
-  },
-  "responsive": {
-    "breakpoints": { "mobile": 767, "tablet": 1199, "desktop": 1200 }
+    "headerOpacity": {
+      "normal": 0.95,
+      "scrolled": 0.98
+    }
   },
   "performance": {
-    "preloadImages": true,
-    "debounceDelay": 250,
-    "imageOptimization": true
+    "preloadLogos": true,
+    "debounceDelay": 150
   },
   "accessibility": {
     "reducedMotion": true,
-    "keyboardNavigation": true,
-    "focusManagement": true
-  },
-  "images": {
-    "hero": [
-      { "src": "images/blackandwhite.png", "alt": "1", "priority": "high" },
-      { "src": "images/music.gif", "alt": "2", "priority": "high" },
-      { "src": "images/explore.gif", "alt": "3", "priority": "high" }
-    ],
-    "gallery": [
-      { "src": "images/work0.jpg", "alt": "1", "category": "simulation" },
-      { "src": "contents/moundofmusic/moundofmusic.png", "alt": "2", "category": "music" },
-      { "src": "contents/trampbecomepresident/tbp1080.png", "alt": "3", "category": "simulation" },
-      { "src": "images/work_ph.jpg", "alt": "4", "category": "rpg" }
-    ],
-    "logos": [
-      { "src": "images/logo_box.jpg", "alt": "Studio Logo", "size": "40x40" },
-      { "src": "images/logo.png", "alt": "Studio Logo Modern", "size": "40x40" }
-    ],
-    "team": [
-      { "src": "images/logo.png", "alt": "Team Photo", "priority": "medium" }
-    ]
-  },
-  "content": {
-    "defaultLanguage": "en-US",
-    "supportedLanguages": ["en-US", "zh-CN"],
-    "fallbackLanguage": "en-US"
+    "keyboardNavigation": true
   }
 }

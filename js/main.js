@@ -1,1058 +1,775 @@
-// ===== 全局变量 =====
-let currentLanguage = 'zh-CN';
-let currentSlide = 0;
-let slideInterval;
-let config = {};
-let contentData = {};
+'use strict';
 
-// ===== DOM元素 =====
+let config = null;
+let contentData = {};
+let currentLanguage = 'en-US';
+let carouselManager = null;
+let galleryManager = null;
+
 const elements = {
-  navToggle: document.getElementById('nav-toggle'),
+  header: document.getElementById('header'),
   navMenu: document.getElementById('nav-menu'),
-  languageToggle: document.getElementById('language-toggle'),
-  heroSlides: document.querySelectorAll('.hero__slide'),
-  heroIndicators: document.querySelectorAll('.hero__indicator'),
-  scrollTop: document.getElementById('scroll-top'),
-  navLinks: document.querySelectorAll('.nav__link'),
-  loadMoreGames: document.getElementById('load-more-games'),
+  navList: document.getElementById('nav-list'),
+  navToggle: document.getElementById('nav-toggle'),
+  languageSelect: document.getElementById('language-select'),
+  hero: document.getElementById('home'),
+  heroSlider: document.getElementById('hero-slider'),
+  heroIndicators: document.getElementById('hero-indicators'),
+  announcement: document.getElementById('featured'),
+  featuredImage: document.getElementById('featured-image'),
+  featuredFeatures: document.getElementById('featured-features'),
+  featuredLearnMore: document.getElementById('featured-learn-more'),
+  featuredPlayNow: document.getElementById('featured-play-now'),
+  aboutValues: document.getElementById('about-values'),
   galleryGrid: document.getElementById('gallery-grid'),
-  hiddenGames: document.querySelectorAll('.hidden-game')
+  galleryActions: document.getElementById('gallery-actions'),
+  loadMoreGames: document.getElementById('load-more-games'),
+  footerSocial: document.getElementById('footer-social'),
+  scrollTop: document.getElementById('scroll-top'),
+  appError: document.getElementById('app-error'),
+  favicon: document.getElementById('site-favicon'),
+  metaDescription: document.getElementById('meta-description'),
+  headerLogo: document.getElementById('header-logo'),
+  footerLogo: document.getElementById('footer-logo')
 };
 
-// ===== 配置加载器 =====
-class ConfigLoader {
-  constructor() {
-    this.config = null;
-    this.content = null;
+async function loadJson(path) {
+  const response = await fetch(path, { cache: 'no-cache' });
+  if (!response.ok) {
+    throw new Error(`Unable to load ${path}: HTTP ${response.status}`);
   }
-
-  async loadConfig() {
-    try {
-      const response = await fetch('data/config.json');
-      if (!response.ok) {
-        throw new Error(`Failed to load config: ${response.status}`);
-      }
-      this.config = await response.json();
-      console.log('配置加载成功:', this.config);
-      return this.config;
-    } catch (error) {
-      console.error('配置加载失败:', error);
-      throw new Error('Unable to load application configuration. Please check that data/config.json exists and is valid.');
-    }
-  }
-
-  async loadContent() {
-    try {
-      const response = await fetch('data/content.json');
-      if (!response.ok) {
-        throw new Error(`Failed to load content: ${response.status}`);
-      }
-      this.content = await response.json();
-      console.log('内容数据加载成功');
-      return this.content;
-    } catch (error) {
-      console.error('内容数据加载失败:', error);
-      throw new Error('Unable to load content data. Please check that data/content.json exists and is valid.');
-    }
-  }
-
-
+  return response.json();
 }
 
-// ===== 图片管理器 =====
-class ImageManager {
-  constructor(config) {
-    this.config = config;
-    this.loadedImages = new Set();
-  }
-
-  preloadImages() {
-    if (!this.config.performance?.preloadImages) return;
-
-    const imagesToPreload = [
-      ...this.config.images?.hero || [],
-      ...this.config.images?.logos || [],
-      ...this.config.images?.team || []
-    ];
-
-    imagesToPreload.forEach(imageInfo => {
-      if (!this.loadedImages.has(imageInfo.src)) {
-        const img = new Image();
-        img.src = imageInfo.src;
-        this.loadedImages.add(imageInfo.src);
-      }
-    });
-  }
-
-  getImageByCategory(category) {
-    return this.config.images?.gallery?.filter(img => img.category === category) || [];
-  }
-
-  getHeroImages() {
-    return this.config.images?.hero || [];
-  }
-
-  getLogoImages() {
-    return this.config.images?.logos || [];
-  }
-}
-
-// ===== 轮播管理器 =====
-/**
- * 轮播图管理器
- * 功能说明：
- * - 自动轮播：每5秒自动切换到下一张图片
- * - 手动控制：用户点击指示器时立即切换
- * - 定时器重置：用户点击后重置5秒定时器
- * - 悬停暂停：鼠标悬停时暂停自动轮播
- * 
- * 时间配置说明：
- * - interval: 轮播间隔时间（毫秒），默认5000ms（5秒）
- * - transitionDuration: 过渡动画时间（毫秒）
- */
-class CarouselManager {
-  constructor(config, elements) {
-    this.config = config.carousel;
-    this.elements = elements;
-    this.currentSlide = 0;
-    this.slideInterval = null;
-  }
-
-  /**
-   * 初始化轮播图
-   */
-  init() {
-    this.showSlide(0);
-    if (this.config.autoPlay) {
-      this.startSlideshow();
-    }
-  }
-
-  /**
-   * 显示指定索引的幻灯片
-   * @param {number} index - 幻灯片索引
-   */
-  showSlide(index) {
-    // 隐藏所有幻灯片
-    this.elements.heroSlides.forEach(slide => {
-      slide.classList.remove('hero__slide--active');
-    });
-    
-    // 移除所有指示器的active状态
-    this.elements.heroIndicators.forEach(indicator => {
-      indicator.classList.remove('hero__indicator--active');
-    });
-    
-    // 显示当前幻灯片
-    if (this.elements.heroSlides[index]) {
-      this.elements.heroSlides[index].classList.add('hero__slide--active');
-    }
-    
-    if (this.elements.heroIndicators[index]) {
-      this.elements.heroIndicators[index].classList.add('hero__indicator--active');
-    }
-    
-    this.currentSlide = index;
-  }
-
-  /**
-   * 切换到下一张幻灯片
-   */
-  nextSlide() {
-    const nextIndex = (this.currentSlide + 1) % this.elements.heroSlides.length;
-    this.showSlide(nextIndex);
-  }
-
-  /**
-   * 启动自动轮播
-   * 每隔指定间隔时间自动切换到下一张图片
-   */
-  startSlideshow() {
-    if (this.elements.heroSlides.length === 0) {
-      console.warn('Hero slides not found');
-      return;
-    }
-    
-    // 清除可能存在的旧定时器
-    this.stopSlideshow();
-    
-    // 启动新的轮播定时器
-    this.slideInterval = setInterval(() => {
-      this.nextSlide();
-    }, this.config.interval);
-    
-    console.log(`轮播定时器已启动，间隔：${this.config.interval}ms`);
-  }
-
-  /**
-   * 停止自动轮播
-   */
-  stopSlideshow() {
-    if (this.slideInterval) {
-      clearInterval(this.slideInterval);
-      this.slideInterval = null;
-      console.log('轮播定时器已停止');
-    }
-  }
-
-  /**
-   * 跳转到指定幻灯片（用户手动点击时调用）
-   * @param {number} index - 目标幻灯片索引
-   */
-  goToSlide(index) {
-    console.log(`用户点击跳转到幻灯片：${index}`);
-    
-    // 1. 立即停止当前定时器
-    this.stopSlideshow();
-    
-    // 2. 立即切换到目标幻灯片
-    this.showSlide(index);
-    
-    // 3. 如果开启了自动轮播，重置定时器
-    if (this.config.autoPlay) {
-      // 延迟重启，给用户足够时间查看当前图片
-      setTimeout(() => {
-        this.startSlideshow();
-      }, this.config.interval);
-      
-      console.log(`将在 ${this.config.interval}ms 后重启轮播定时器`);
-    }
-  }
-}
-
-// ===== 游戏Gallery管理器 =====
-class GameGalleryManager {
-  constructor() {
-    this.elements = elements;
-    this.isExpanded = false;
-    this.maxVisibleGames = 3; // 默认显示3个游戏
-  }
-
-  init() {
-    this.setupGalleryLayout();
-    this.setupLoadMoreButton();
-  }
-
-  setupGalleryLayout() {
-    const { galleryGrid, hiddenGames } = this.elements;
-    
-    if (!galleryGrid) return;
-
-    // 检查当前可见的游戏数量
-    const visibleGames = galleryGrid.querySelectorAll('.game__card:not(.hidden-game)');
-    const totalGames = galleryGrid.querySelectorAll('.game__card').length;
-    
-    console.log(`Gallery布局: 可见游戏 ${visibleGames.length}, 总游戏 ${totalGames}`);
-    
-    // 如果只有3个游戏，应用特殊布局
-    if (totalGames === 3) {
-      galleryGrid.classList.add('has-3-games');
-    }
-    
-    // 初始化"发现更多"按钮状态
-    this.updateLoadMoreButton();
-  }
-
-  setupLoadMoreButton() {
-    const { loadMoreGames } = this.elements;
-    
-    if (!loadMoreGames) return;
-    
-    loadMoreGames.addEventListener('click', () => {
-      this.toggleGamesDisplay();
-    });
-  }
-
-  toggleGamesDisplay() {
-    const { hiddenGames, loadMoreGames } = this.elements;
-    
-    if (!loadMoreGames) return;
-    
-    // 添加加载状态
-    loadMoreGames.classList.add('loading');
-    loadMoreGames.disabled = true;
-    
-    setTimeout(() => {
-      if (!this.isExpanded) {
-        // 显示更多游戏
-        hiddenGames.forEach((game, index) => {
-          setTimeout(() => {
-            game.style.display = 'block';
-            game.classList.remove('hidden-game');
-            game.classList.add('show');
-          }, index * 100);
-        });
-        
-        // 更新按钮文本和图标
-        const loadMoreText = loadMoreGames.querySelector('.load-more-text');
-        if (loadMoreText) {
-          loadMoreText.textContent = currentLanguage === 'zh-CN' ? '收起游戏' : 'Show Less';
-        }
-        
-        // 更新图标
-        const loadMoreIcon = loadMoreGames.querySelector('.load-more-icon');
-        if (loadMoreIcon) {
-          loadMoreIcon.innerHTML = '<path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
-        }
-        
-        this.isExpanded = true;
-        loadMoreGames.setAttribute('data-expanded', 'true');
-      } else {
-        // 隐藏游戏
-        hiddenGames.forEach((game, index) => {
-          setTimeout(() => {
-            game.classList.remove('show');
-            game.classList.add('hidden-game');
-            setTimeout(() => {
-              game.style.display = 'none';
-            }, 300);
-          }, index * 100);
-        });
-        
-        // 更新按钮文本和图标
-        const loadMoreText = loadMoreGames.querySelector('.load-more-text');
-        if (loadMoreText) {
-          loadMoreText.textContent = currentLanguage === 'zh-CN' ? '发现更多游戏' : 'Discover More Games';
-        }
-        
-        // 更新图标
-        const loadMoreIcon = loadMoreGames.querySelector('.load-more-icon');
-        if (loadMoreIcon) {
-          loadMoreIcon.innerHTML = '<path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
-        }
-        
-        this.isExpanded = false;
-        loadMoreGames.setAttribute('data-expanded', 'false');
-      }
-      
-      // 移除加载状态
-      loadMoreGames.classList.remove('loading');
-      loadMoreGames.disabled = false;
-      
-      // 滚动到gallery区域
-      setTimeout(() => {
-        const gallerySection = document.querySelector('.gallery');
-        if (gallerySection) {
-          const headerHeight = document.querySelector('.header').offsetHeight;
-          const targetPosition = gallerySection.offsetTop - headerHeight;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 500);
-      
-    }, 500);
-  }
-
-  updateLoadMoreButton() {
-    const { loadMoreGames, hiddenGames } = this.elements;
-    
-    if (!loadMoreGames || hiddenGames.length === 0) {
-      // 如果没有隐藏的游戏或按钮不存在，隐藏按钮
-      if (loadMoreGames) {
-        loadMoreGames.style.display = 'none';
-      }
-      return;
-    }
-    
-    // 显示按钮
-    loadMoreGames.style.display = 'inline-flex';
-    
-    // 设置初始状态
-    loadMoreGames.setAttribute('data-expanded', 'false');
-    
-    // 设置初始文本
-    const loadMoreText = loadMoreGames.querySelector('.load-more-text');
-    if (loadMoreText) {
-      loadMoreText.textContent = currentLanguage === 'zh-CN' ? '发现更多游戏' : 'Discover More Games';
-    }
-  }
-}
-
-// ===== 初始化 =====
-document.addEventListener('DOMContentLoaded', async function() {
-  console.log('开始初始化应用...');
-  
-  // 初始化配置加载器
-  const configLoader = new ConfigLoader();
-  
+async function initializeApp() {
   try {
-    // 并行加载配置和内容
-    const [configData, contentDataResult] = await Promise.all([
-      configLoader.loadConfig(),
-      configLoader.loadContent()
+    const [configData, translations] = await Promise.all([
+      loadJson('data/config.json'),
+      loadJson('data/content.json')
     ]);
-    
-    config = configData;
-    contentData = contentDataResult;
-    
-    // 初始化各个管理器
-    const imageManager = new ImageManager(config);
-    const carouselManager = new CarouselManager(config, elements);
-    
-    // 预加载图片
-    imageManager.preloadImages();
-    
-    // 初始化各个功能模块
-    initializeLanguage(config);
-    carouselManager.init();
-    initializeNavigation(config);
-    initializeScrollEffects(config);
-    initializeLazyLoading(config);
-    
-    // 初始化游戏Gallery管理器
-    const gameGalleryManager = new GameGalleryManager();
-    gameGalleryManager.init();
-    
-    addEventListeners(config, carouselManager);
-    
-    // 页面加载完成后的处理
-    handlePageLoad(config);
-    
-    console.log('应用初始化完成');
-    
-  } catch (error) {
-    console.error('应用初始化失败:', error);
-  }
-});
 
-// ===== 多语言功能 =====
-function initializeLanguage(config) {
-  // 获取支持的语言列表和fallback语言
-  const supportedLanguages = config.content?.supportedLanguages || ['zh-CN', 'en-US'];
-  const fallbackLanguage = config.content?.fallbackLanguage || 'en-US';
-  
-  // 检测浏览器语言或从本地存储获取
-  const savedLanguage = localStorage.getItem('preferredLanguage');
-  const detectedLanguage = detectLanguage(navigator.language, supportedLanguages, fallbackLanguage);
-  
-  // 优先级：本地存储 > 检测到的语言 > 默认语言 > fallback语言
-  currentLanguage = savedLanguage || detectedLanguage || config.content?.defaultLanguage || fallbackLanguage;
-  
-  // 确保当前语言在支持列表中，否则使用fallback
-  if (!supportedLanguages.includes(currentLanguage)) {
-    console.warn(`语言 ${currentLanguage} 不在支持列表中，使用fallback语言 ${fallbackLanguage}`);
-    currentLanguage = fallbackLanguage;
-    localStorage.setItem('preferredLanguage', currentLanguage);
+    config = configData;
+    contentData = translations;
+
+    applyTheme(config.colors);
+    applyBranding(config.brand);
+    renderNavigation();
+    renderLanguageOptions();
+    renderCarousel();
+    renderAnnouncement();
+    renderGallery();
+
+    currentLanguage = getInitialLanguage();
+    updateLanguageDisplay();
+    updateContent();
+
+    carouselManager = new CarouselManager(config.carousel);
+    carouselManager.init();
+    updateCarouselLabels();
+    galleryManager = new GameGalleryManager(config.gallery);
+    galleryManager.init();
+
+    addEventListeners();
+    initializeScrollEffects();
+    applyAccessibilitySettings();
+    document.body.classList.add('loaded');
+  } catch (error) {
+    console.error('ELIF GAMES initialization failed:', error);
+    showAppError('The website could not load its configuration. Please check data/config.json and data/content.json, then reload the page.');
   }
-  
-  console.log(`语言初始化完成: ${currentLanguage}`, {
-    savedLanguage,
-    detectedLanguage,
-    fallbackLanguage,
-    supportedLanguages
-  });
-  
-  updateLanguageDisplay();
-  updateContent();
 }
 
-/**
- * 检测浏览器语言，支持多种语言代码格式
- * @param {string} browserLanguage - 浏览器语言代码
- * @param {Array} supportedLanguages - 支持的语言列表
- * @param {string} fallbackLanguage - fallback语言
- * @returns {string} 检测到的语言代码
- */
-function detectLanguage(browserLanguage, supportedLanguages, fallbackLanguage) {
-  console.log('检测浏览器语言:', browserLanguage);
-  
-  // 直接匹配
-  if (supportedLanguages.includes(browserLanguage)) {
-    console.log('直接匹配到支持的语言:', browserLanguage);
-    return browserLanguage;
-  }
-  
-  // 提取语言前缀（如 'zh-CN' -> 'zh', 'en-US' -> 'en'）
-  const languagePrefix = browserLanguage.split('-')[0];
-  
-  // 尝试匹配语言前缀
-  const matchedLanguage = supportedLanguages.find(lang => {
-    const langPrefix = lang.split('-')[0];
-    return langPrefix === languagePrefix;
-  });
-  
-  if (matchedLanguage) {
-    console.log(`通过语言前缀匹配: ${browserLanguage} -> ${matchedLanguage}`);
-    return matchedLanguage;
-  }
-  
-  // 特殊语言代码映射
-  const languageMap = {
-    'zh': 'zh-CN',
-    'en': 'en-US',
-    'zh-cn': 'zh-CN',
-    'zh-tw': 'zh-CN', // 繁体中文也使用简体中文
-    'en-us': 'en-US',
-    'en-gb': 'en-US'  // 英式英语也使用美式英语
+function showAppError(message) {
+  if (!elements.appError) return;
+  elements.appError.textContent = message;
+  elements.appError.hidden = false;
+}
+
+function applyTheme(colors = {}) {
+  const root = document.documentElement;
+  const values = {
+    '--color-primary': colors.primary?.main,
+    '--color-secondary': colors.primary?.secondary,
+    '--color-white': colors.primary?.white,
+    '--color-light-gray': colors.primary?.lightGray,
+    '--color-text': colors.text?.main,
+    '--color-text-light': colors.text?.light,
+    '--color-text-inverse': colors.text?.inverse,
+    '--color-accent-orange': colors.accent?.orange,
+    '--color-accent-cyan': colors.accent?.cyan
   };
-  
-  const normalizedLanguage = browserLanguage.toLowerCase();
-  if (languageMap[normalizedLanguage]) {
-    console.log(`通过语言映射匹配: ${browserLanguage} -> ${languageMap[normalizedLanguage]}`);
-    return languageMap[normalizedLanguage];
+
+  Object.entries(values).forEach(([property, value]) => {
+    if (typeof value === 'string' && value.trim()) {
+      root.style.setProperty(property, value);
+    }
+  });
+}
+
+function applyBranding(brand = {}) {
+  if (brand.favicon && elements.favicon) {
+    elements.favicon.href = brand.favicon;
   }
-  
-  console.log(`未找到匹配的语言，使用fallback: ${fallbackLanguage}`);
-  return fallbackLanguage;
+
+  if (brand.headerLogo && elements.headerLogo) {
+    elements.headerLogo.src = brand.headerLogo.src || '';
+    elements.headerLogo.alt = brand.headerLogo.alt || brand.name || 'ELIF GAMES';
+  }
+
+  if (brand.footerLogo && elements.footerLogo) {
+    elements.footerLogo.src = brand.footerLogo.src || '';
+    elements.footerLogo.alt = brand.footerLogo.alt || brand.name || 'ELIF GAMES';
+  }
+}
+
+function renderNavigation() {
+  if (!elements.navList) return;
+  elements.navList.replaceChildren();
+
+  (config.navigation || []).forEach(item => {
+    if (!item.id || !item.key) return;
+
+    const listItem = document.createElement('li');
+    listItem.className = 'nav__item';
+
+    const link = document.createElement('a');
+    link.className = 'nav__link';
+    link.href = `#${item.id}`;
+    link.dataset.key = item.key;
+    listItem.appendChild(link);
+    elements.navList.appendChild(listItem);
+  });
+}
+
+function renderLanguageOptions() {
+  if (!elements.languageSelect) return;
+  elements.languageSelect.replaceChildren();
+
+  (config.languages || []).forEach(language => {
+    if (!language.code) return;
+    const option = document.createElement('option');
+    option.value = language.code;
+    option.textContent = language.label || language.code;
+    elements.languageSelect.appendChild(option);
+  });
+}
+
+function renderCarousel() {
+  const carouselConfig = config.carousel || {};
+  const slides = carouselConfig.enabled === false ? [] : (carouselConfig.slides || []);
+
+  if (!elements.heroSlider || !elements.heroIndicators) return;
+  elements.heroSlider.replaceChildren();
+  elements.heroIndicators.replaceChildren();
+  elements.hero.hidden = slides.length === 0;
+
+  slides.forEach((slide, index) => {
+    const slideElement = document.createElement('div');
+    slideElement.className = 'hero__slide';
+    slideElement.dataset.slide = String(index);
+    slideElement.setAttribute('aria-hidden', 'true');
+
+    const image = document.createElement('img');
+    image.className = 'hero__bg';
+    image.dataset.src = slide.image;
+    image.alt = slide.alt || '';
+    image.loading = index === 0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    if (index === 0) image.fetchPriority = 'high';
+    slideElement.appendChild(image);
+
+    const content = document.createElement('div');
+    content.className = 'hero__content';
+
+    const title = document.createElement('h1');
+    title.className = 'hero__title';
+    title.dataset.key = `hero.slides.${index}.title`;
+
+    const description = document.createElement('p');
+    description.className = 'hero__subtitle';
+    description.dataset.key = `hero.slides.${index}.description`;
+
+    content.append(title, description);
+    slideElement.appendChild(content);
+    elements.heroSlider.appendChild(slideElement);
+
+    if (carouselConfig.showIndicators !== false) {
+      const indicator = document.createElement('button');
+      indicator.type = 'button';
+      indicator.className = 'hero__indicator';
+      indicator.dataset.slide = String(index);
+      indicator.setAttribute('aria-pressed', 'false');
+      indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+      elements.heroIndicators.appendChild(indicator);
+    }
+  });
+
+  elements.heroIndicators.hidden = carouselConfig.showIndicators === false || slides.length < 2;
+  document.documentElement.style.setProperty(
+    '--carousel-transition-duration',
+    `${Math.max(0, Number(carouselConfig.transitionDuration) || 800)}ms`
+  );
+
+  if (config.performance?.preloadLogos) {
+    [config.brand?.headerLogo?.src, config.brand?.footerLogo?.src].filter(Boolean).forEach(src => {
+      const preload = new Image();
+      preload.src = src;
+    });
+  }
+}
+
+function renderAnnouncement() {
+  const announcement = config.announcement || {};
+  if (elements.announcement) {
+    elements.announcement.hidden = announcement.enabled === false;
+  }
+
+  if (announcement.image && elements.featuredImage) {
+    elements.featuredImage.src = announcement.image.src || '';
+    elements.featuredImage.alt = announcement.image.alt || '';
+  }
+
+  configureLink(elements.featuredLearnMore, announcement.buttons?.learnMore);
+  configureLink(elements.featuredPlayNow, announcement.buttons?.playNow);
+
+  const featureConfig = announcement.features || {};
+  if (elements.featuredFeatures) {
+    elements.featuredFeatures.replaceChildren();
+    elements.featuredFeatures.hidden = featureConfig.enabled !== true;
+
+    if (featureConfig.enabled === true) {
+      (featureConfig.links || []).forEach((item, index) => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.className = 'featured__feature';
+        link.dataset.key = `featuredGame.features.${index}`;
+        configureLink(link, { href: item.href, visible: true, target: '_blank' });
+        listItem.appendChild(link);
+        elements.featuredFeatures.appendChild(listItem);
+      });
+    }
+  }
+}
+
+function configureLink(element, linkConfig) {
+  if (!element) return;
+  const visible = Boolean(linkConfig?.href) && linkConfig.visible !== false;
+  element.hidden = !visible;
+  if (!visible) return;
+
+  element.href = linkConfig.href;
+  const target = linkConfig.target || (linkConfig.href.startsWith('https://') || linkConfig.href.startsWith('http://') ? '_blank' : '_self');
+  element.target = target;
+  if (target === '_blank') {
+    element.rel = 'noopener noreferrer';
+  } else {
+    element.removeAttribute('rel');
+  }
+}
+
+function renderAboutValues() {
+  if (!elements.aboutValues) return;
+  elements.aboutValues.replaceChildren();
+
+  const values = contentData[currentLanguage]?.about?.values || [];
+  values.forEach((value, index) => {
+    const card = document.createElement('div');
+    card.className = 'value__card';
+
+    const title = document.createElement('h4');
+    title.className = 'value__title';
+    title.dataset.key = `about.values.${index}.title`;
+
+    const description = document.createElement('p');
+    description.className = 'value__description';
+    description.dataset.key = `about.values.${index}.description`;
+
+    card.append(title, description);
+    elements.aboutValues.appendChild(card);
+  });
+}
+
+function renderGallery() {
+  if (!elements.galleryGrid) return;
+  elements.galleryGrid.replaceChildren();
+
+  const games = (config.gallery?.games || []).filter(game => game.enabled !== false);
+  const imageAspectRatio = config.gallery?.imageAspectRatio || '16 / 9';
+  document.documentElement.style.setProperty('--gallery-image-ratio', imageAspectRatio);
+
+  games.forEach(game => {
+    const card = document.createElement('article');
+    card.className = 'game__card';
+    card.dataset.gameId = game.id;
+
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'game__image';
+
+    const image = document.createElement('img');
+    image.className = 'game__img';
+    image.src = game.image;
+    image.alt = game.alt || '';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    imageContainer.appendChild(image);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'game__overlay';
+
+    const title = document.createElement('h4');
+    title.className = 'game__title';
+    title.dataset.key = `gallery.games.${game.id}.name`;
+
+    const genre = document.createElement('p');
+    genre.className = 'game__genre';
+    genre.dataset.key = `gallery.games.${game.id}.genre`;
+
+    const description = document.createElement('p');
+    description.className = 'game__description';
+    description.dataset.key = `gallery.games.${game.id}.description`;
+
+    if (game.href) {
+      const link = document.createElement('a');
+      link.href = game.href;
+      link.target = game.target || '_self';
+      if (link.target === '_blank') link.rel = 'noopener noreferrer';
+      link.append(title, genre, description);
+      overlay.appendChild(link);
+    } else {
+      overlay.append(title, genre, description);
+    }
+
+    imageContainer.appendChild(overlay);
+    card.appendChild(imageContainer);
+    elements.galleryGrid.appendChild(card);
+  });
+
+  if (elements.galleryActions) {
+    elements.galleryActions.hidden = config.gallery?.showMore !== true || games.length <= (Number(config.gallery?.initialVisible) || 3);
+  }
+}
+
+function getSupportedLanguages() {
+  return (config.languages || []).map(language => language.code).filter(Boolean);
+}
+
+function getInitialLanguage() {
+  const supportedLanguages = getSupportedLanguages();
+  const fallbackLanguage = config.language?.fallback || supportedLanguages[0] || 'en-US';
+  const defaultLanguage = config.language?.default || fallbackLanguage;
+  const storageKey = config.language?.storageKey || 'preferredLanguage';
+
+  let savedLanguage = null;
+  try {
+    savedLanguage = localStorage.getItem(storageKey);
+  } catch (error) {
+    console.warn('Language preference storage is unavailable:', error);
+  }
+
+  if (supportedLanguages.includes(savedLanguage)) return savedLanguage;
+  const detectedLanguage = detectLanguage(navigator.language || '', supportedLanguages, fallbackLanguage);
+  if (supportedLanguages.includes(detectedLanguage)) return detectedLanguage;
+  return supportedLanguages.includes(defaultLanguage) ? defaultLanguage : fallbackLanguage;
+}
+
+function detectLanguage(browserLanguage, supportedLanguages, fallbackLanguage) {
+  if (supportedLanguages.includes(browserLanguage)) return browserLanguage;
+
+  const languagePrefix = browserLanguage.toLowerCase().split('-')[0];
+  const match = supportedLanguages.find(language => language.toLowerCase().split('-')[0] === languagePrefix);
+  return match || fallbackLanguage;
 }
 
 function updateLanguageDisplay() {
-  // 更新select元素（如果存在）
-  const languageSelect = document.getElementById('language-select');
-  if (languageSelect) {
-    languageSelect.value = currentLanguage;
+  if (elements.languageSelect) {
+    elements.languageSelect.value = currentLanguage;
+    elements.languageSelect.setAttribute('aria-label', getNestedValue(contentData[currentLanguage], 'common.ariaLabels.selectLanguage') || 'Select language');
   }
-  
-  // 更新按钮元素（如果存在）
-  const languageCurrent = document.querySelector('.language-current');
-  const languageOther = document.querySelector('.language-other');
-  
-  if (languageCurrent && languageOther) {
-    if (currentLanguage === 'zh-CN') {
-      languageCurrent.textContent = '中文';
-      languageOther.textContent = 'EN';
-    } else {
-      languageCurrent.textContent = 'EN';
-      languageOther.textContent = '中文';
-    }
+
+  if (elements.navToggle) {
+    elements.navToggle.setAttribute('aria-label', getNestedValue(contentData[currentLanguage], 'common.ariaLabels.toggleMenu') || 'Toggle menu');
   }
-  
-  // 更新HTML lang属性
-  document.documentElement.lang = currentLanguage === 'zh-CN' ? 'zh-CN' : 'en-US';
+
+  if (elements.scrollTop) {
+    elements.scrollTop.setAttribute('aria-label', getNestedValue(contentData[currentLanguage], 'common.ariaLabels.scrollToTop') || 'Scroll to top');
+  }
+
+  document.documentElement.lang = currentLanguage;
+}
+
+function getNestedValue(object, path) {
+  if (!object || !path) return undefined;
+  return path.split('.').reduce((value, key) => value == null ? undefined : value[key], object);
 }
 
 function updateContent() {
   const content = contentData[currentLanguage];
-
   if (!content) {
-    console.warn(`内容数据未找到，语言: ${currentLanguage}`);
+    console.warn(`No content found for language: ${currentLanguage}`);
     return;
   }
 
-  // 更新所有带有data-key的元素
+  renderAboutValues();
+
   document.querySelectorAll('[data-key]').forEach(element => {
-    const key = element.getAttribute('data-key');
+    const key = element.dataset.key;
     const value = getNestedValue(content, key);
+    if (value === undefined || value === null || typeof value === 'object') return;
 
-    if (value !== undefined && value !== null) {
-      if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-        element.placeholder = value;
-      } else if (element.tagName === 'A' && typeof value === 'object' && value.name && value.url) {
-        // 特殊处理链接元素，设置文本和href
-        element.textContent = value.name;
-        element.href = value.url;
-        
-        // 为外部链接添加 target="_blank" 和 rel="noopener"（安全最佳实践）
-        if (value.url.startsWith('http') || value.url.startsWith('mailto')) {
-          element.setAttribute('target', '_blank');
-          element.setAttribute('rel', 'noopener noreferrer');
-        }
-        
-        console.log(`链接更新成功: ${key} -> name: ${value.name}, url: ${value.url}`); // 调试日志
-      } else {
-        element.textContent = value;
-      }
+    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+      element.placeholder = String(value);
     } else {
-      console.warn(`未找到 data-key="${key}" 的值，使用默认值`); // 警告日志
-      // 可选：为A标签设置默认文本和href，防止完全失效
-      if (element.tagName === 'A') {
-        element.textContent = '默认链接';
-        element.href = '#';
-      }
+      element.textContent = String(value);
     }
   });
 
-  // 特殊处理
-  updateSiteTitle();
-  updateGameGalleryButton();
-  updateGameGallery();
+  updateSiteMetadata(content);
+  renderSocialLinks(content.footer?.social?.links || []);
+  updateGalleryButtonText(content);
+  updateLanguageDisplay();
+  updateCarouselLabels(content);
 }
 
-function getNestedValue(obj, path) {
-  return path.split('.').reduce((current, key) => current && current[key], obj);
-}
-
-function updateSiteTitle() {
-  const content = contentData[currentLanguage];
-  if (content?.site) {
-    document.title = `${content.site.title} - ${content.site.description}`;
+function updateSiteMetadata(content) {
+  if (content.site?.title) {
+    document.title = `${content.site.title} - ${content.site.description || ''}`.trim();
+  }
+  if (elements.metaDescription && content.site?.description) {
+    elements.metaDescription.content = content.site.description;
   }
 }
 
-function updateGameGalleryButton() {
-  const loadMoreButton = document.getElementById('load-more-games');
-  if (!loadMoreButton) return;
+function renderSocialLinks(links) {
+  if (!elements.footerSocial) return;
+  elements.footerSocial.replaceChildren();
 
-  const loadMoreText = loadMoreButton.querySelector('.load-more-text');
-  if (!loadMoreText) return;
+  links.forEach(item => {
+    if (!item?.url || !item?.name) return;
+    const link = document.createElement('a');
+    link.className = 'footer__social-link';
+    link.href = item.url;
+    link.textContent = item.name;
 
-  // 检查按钮当前状态
-  const isExpanded = loadMoreButton.getAttribute('data-expanded') === 'true';
-
-  if (isExpanded) {
-    // 收起状态
-    loadMoreText.textContent = currentLanguage === 'zh-CN' ? '收起游戏' : 'Show Less';
-  } else {
-    // 展开状态
-    loadMoreText.textContent = currentLanguage === 'zh-CN' ? '发现更多游戏' : 'Discover More Games';
-  }
-}
-
-function updateGameGallery() {
-  const content = contentData[currentLanguage];
-
-  if (!content) {
-    console.warn(`内容数据未找到，语言: ${currentLanguage}`);
-    return;
-  }
-
-  // 更新所有游戏卡片的本地化内容
-  document.querySelectorAll('.game__card').forEach((card, index) => {
-    const gameData = content.gallery?.games?.[index];
-    if (!gameData) {
-      console.warn(`游戏数据未找到，索引: ${index}, 语言: ${currentLanguage}`);
-      return;
+    if (/^https?:\/\//i.test(item.url)) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
     }
 
-    // 更新游戏标题
-    const titleElement = card.querySelector('.game__title');
-    if (titleElement) {
-      titleElement.textContent = gameData.name;
-    }
-
-    // 更新游戏类型
-    const genreElement = card.querySelector('.game__genre');
-    if (genreElement) {
-      genreElement.textContent = gameData.genre;
-    }
-
-    // 更新游戏描述
-    const descElement = card.querySelector('.game__description');
-    if (descElement) {
-      descElement.textContent = gameData.description;
-    }
+    elements.footerSocial.appendChild(link);
   });
-
-  console.log(`游戏Gallery已更新为 ${currentLanguage} 语言`);
 }
 
-function toggleLanguage() {
-  const supportedLanguages = config.content?.supportedLanguages || ['zh-CN', 'en-US'];
-  const fallbackLanguage = config.content?.fallbackLanguage || 'en-US';
-  
-  const currentIndex = supportedLanguages.indexOf(currentLanguage);
-  const nextIndex = (currentIndex + 1) % supportedLanguages.length;
-  
-  const newLanguage = supportedLanguages[nextIndex];
-  
-  // 确保切换到的语言在支持列表中
-  if (supportedLanguages.includes(newLanguage)) {
-    currentLanguage = newLanguage;
-    localStorage.setItem('preferredLanguage', currentLanguage);
-    console.log(`语言切换到: ${currentLanguage}`);
-    updateLanguageDisplay();
-    updateContent();
-  } else {
-    console.warn(`目标语言 ${newLanguage} 不在支持列表中，使用fallback语言 ${fallbackLanguage}`);
-    currentLanguage = fallbackLanguage;
-    localStorage.setItem('preferredLanguage', currentLanguage);
-    updateLanguageDisplay();
-    updateContent();
+function updateGalleryButtonText(content = contentData[currentLanguage]) {
+  if (!elements.loadMoreGames) return;
+  const isExpanded = elements.loadMoreGames.getAttribute('aria-expanded') === 'true';
+  const key = isExpanded ? 'gallery.buttons.showLess' : 'gallery.buttons.loadMore';
+  const text = getNestedValue(content, key);
+  const textElement = elements.loadMoreGames.querySelector('.load-more-text');
+  if (textElement && text) textElement.textContent = text;
+}
+
+function updateCarouselLabels(content = contentData[currentLanguage]) {
+  if (!carouselManager) return;
+  const labels = getNestedValue(content, 'common.ariaLabels.slideIndicator') || {};
+  const standardLabels = [labels.first, labels.second, labels.third];
+
+  elements.heroIndicators?.querySelectorAll('.hero__indicator').forEach((indicator, index) => {
+    indicator.setAttribute('aria-label', standardLabels[index] || `Slide ${index + 1}`);
+  });
+}
+
+function saveLanguagePreference(languageCode) {
+  try {
+    localStorage.setItem(config.language?.storageKey || 'preferredLanguage', languageCode);
+  } catch (error) {
+    console.warn('Could not save language preference:', error);
   }
 }
 
-/**
- * 通过select下拉框切换语言
- * @param {string} languageCode - 选择的语言代码
- */
 function changeLanguage(languageCode) {
-  const supportedLanguages = config.content?.supportedLanguages || ['zh-CN', 'en-US'];
-  const fallbackLanguage = config.content?.fallbackLanguage || 'en-US';
-  
-  // 验证语言代码
-  if (supportedLanguages.includes(languageCode)) {
-    currentLanguage = languageCode;
-    localStorage.setItem('preferredLanguage', currentLanguage);
-    console.log(`语言切换到: ${currentLanguage}`);
-    updateLanguageDisplay();
-    updateContent();
-  } else {
-    console.warn(`选择的语言 ${languageCode} 不在支持列表中，使用fallback语言 ${fallbackLanguage}`);
-    currentLanguage = fallbackLanguage;
-    localStorage.setItem('preferredLanguage', currentLanguage);
-    updateLanguageDisplay();
-    updateContent();
+  if (!getSupportedLanguages().includes(languageCode)) return;
+  currentLanguage = languageCode;
+  saveLanguagePreference(languageCode);
+  updateContent();
+}
+
+class CarouselManager {
+  constructor(carouselConfig = {}) {
+    this.config = carouselConfig;
+    this.slides = Array.from(elements.heroSlider?.querySelectorAll('.hero__slide') || []);
+    this.indicators = Array.from(elements.heroIndicators?.querySelectorAll('.hero__indicator') || []);
+    this.currentSlide = 0;
+    this.timer = null;
+  }
+
+  init() {
+    if (this.slides.length === 0) return;
+    this.showSlide(0);
+    if (this.config.autoPlay === true && this.slides.length > 1) this.startSlideshow();
+  }
+
+  showSlide(index) {
+    if (!this.slides.length || index < 0 || index >= this.slides.length) return;
+
+    this.loadSlideImage(index);
+    if (this.config.preloadNextSlide === true && this.slides.length > 1) {
+      const nextIndex = index < this.slides.length - 1
+        ? index + 1
+        : (this.config.infiniteLoop !== false ? 0 : -1);
+      if (nextIndex >= 0) this.loadSlideImage(nextIndex);
+    }
+
+    this.slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === index;
+      slide.classList.toggle('hero__slide--active', isActive);
+      slide.setAttribute('aria-hidden', String(!isActive));
+    });
+
+    this.indicators.forEach((indicator, indicatorIndex) => {
+      const isActive = indicatorIndex === index;
+      indicator.classList.toggle('hero__indicator--active', isActive);
+      indicator.setAttribute('aria-pressed', String(isActive));
+    });
+
+    this.currentSlide = index;
+  }
+
+  loadSlideImage(index) {
+    const image = this.slides[index]?.querySelector('.hero__bg');
+    if (!image || !image.dataset.src) return;
+    image.src = image.dataset.src;
+    image.loading = 'eager';
+    delete image.dataset.src;
+  }
+
+  nextSlide() {
+    if (this.currentSlide < this.slides.length - 1) {
+      this.showSlide(this.currentSlide + 1);
+    } else if (this.config.infiniteLoop !== false) {
+      this.showSlide(0);
+    } else {
+      this.stopSlideshow();
+    }
+  }
+
+  previousSlide() {
+    if (this.currentSlide > 0) {
+      this.showSlide(this.currentSlide - 1);
+    } else if (this.config.infiniteLoop !== false) {
+      this.showSlide(this.slides.length - 1);
+    }
+  }
+
+  startSlideshow() {
+    this.stopSlideshow();
+    if (this.slides.length < 2 || this.config.autoPlay !== true) return;
+
+    const interval = Math.max(1000, Number(this.config.interval) || 5000);
+    this.timer = window.setInterval(() => this.nextSlide(), interval);
+  }
+
+  stopSlideshow() {
+    if (this.timer !== null) {
+      window.clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  goToSlide(index) {
+    this.showSlide(index);
+    this.startSlideshow();
   }
 }
 
-// ===== 导航功能 =====
-function initializeNavigation(config) {
-  // 首先设置首页为初始active状态
-  setInitialActiveState();
-  
-  // 平滑滚动
-  elements.navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      
-      console.log('导航链接点击:', targetId);
-      
-      if (targetSection) {
-        // 立即更新导航状态（点击时立即反馈）
-        elements.navLinks.forEach(navLink => {
-          navLink.classList.remove('active');
-        });
-        this.classList.add('active');
-        
-        let targetPosition;
-        
-        // 特殊处理home链接 - 滚动到页面最顶部
-        if (targetId === '#home') {
-          targetPosition = 0;
-        } else {
-          // 其他链接减去header高度，避免被导航栏遮挡
-          const headerHeight = document.querySelector('.header').offsetHeight;
-          targetPosition = targetSection.offsetTop - headerHeight;
-        }
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-        
-        // 滚动完成后再次更新导航状态（确保准确性）
-        setTimeout(() => {
-          updateActiveNavItem();
-        }, 500);
-      }
-      
-      // 关闭移动端菜单
-      closeMobileMenu();
+class GameGalleryManager {
+  constructor(galleryConfig = {}) {
+    this.config = galleryConfig;
+    this.cards = Array.from(elements.galleryGrid?.querySelectorAll('.game__card') || []);
+    this.initialVisible = galleryConfig.showMore === true
+      ? Math.max(1, Number(galleryConfig.initialVisible) || 3)
+      : Number.POSITIVE_INFINITY;
+    this.isExpanded = false;
+  }
+
+  init() {
+    this.cards.forEach((card, index) => {
+      card.hidden = index >= this.initialVisible;
     });
-  });
-  
-  // 滚动时更新活动导航项（使用节流优化性能）
-  let scrollTimeout;
-  window.addEventListener('scroll', function() {
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
+    this.updateLayoutClass();
+    this.updateButton();
+  }
+
+  updateLayoutClass() {
+    const visibleCount = this.isExpanded ? this.cards.length : Math.min(this.initialVisible, this.cards.length);
+    elements.galleryGrid?.classList.toggle('has-3-games', visibleCount === 3);
+  }
+
+  updateButton() {
+    if (!elements.galleryActions || !elements.loadMoreGames) return;
+    const hasMore = this.cards.length > this.initialVisible && this.config.showMore === true;
+    elements.galleryActions.hidden = !hasMore;
+    elements.loadMoreGames.setAttribute('aria-expanded', String(this.isExpanded));
+    updateGalleryButtonText();
+  }
+
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+    this.cards.forEach((card, index) => {
+      card.hidden = !this.isExpanded && index >= this.initialVisible;
+    });
+    this.updateLayoutClass();
+    this.updateButton();
+  }
+}
+
+function initializeScrollEffects() {
+  const scrollConfig = config.scrollEffects || {};
+  const scrollTopThreshold = Number(scrollConfig.scrollTopThreshold) || 200;
+  const headerBackgroundChange = Number(scrollConfig.headerBackgroundChange) || 50;
+  const opacity = scrollConfig.headerOpacity || { normal: 0.95, scrolled: 0.98 };
+
+  const updateOnScroll = () => {
+    const scrollY = window.scrollY;
+    elements.scrollTop?.classList.toggle('show', scrollY > scrollTopThreshold);
+
+    if (elements.header) {
+      const value = scrollY > headerBackgroundChange ? opacity.scrolled : opacity.normal;
+      elements.header.style.backgroundColor = `rgba(26, 26, 26, ${value})`;
     }
-    scrollTimeout = setTimeout(updateActiveNavItem, 10);
-  });
-  
-  // 延迟设置初始状态，确保DOM完全加载
-  setTimeout(() => {
     updateActiveNavItem();
-  }, 200);
+  };
+
+  window.addEventListener('scroll', debounce(updateOnScroll, config.performance?.debounceDelay || 150), { passive: true });
+  updateOnScroll();
 }
 
 function updateActiveNavItem() {
-  // 获取所有导航链接的href目标，只考虑导航中实际存在的section
-  const validSectionIds = Array.from(elements.navLinks).map(link => {
-    return link.getAttribute('href').substring(1); // 移除#符号
+  const links = Array.from(elements.navList?.querySelectorAll('.nav__link') || []);
+  if (!links.length) return;
+
+  const marker = window.scrollY + (elements.header?.offsetHeight || 0) + 60;
+  const sections = links
+    .map(link => document.getElementById(link.getAttribute('href')?.slice(1)))
+    .filter(Boolean);
+
+  let activeId = sections[0]?.id;
+  sections.forEach(section => {
+    if (section.offsetTop <= marker) activeId = section.id;
   });
-  
-  console.log('有效的导航section IDs:', validSectionIds);
-  
-  // 只获取导航中实际存在的section
-  const sections = validSectionIds.map(id => {
-    return document.getElementById(id);
-  }).filter(section => section !== null);
-  
-  const headerHeight = document.querySelector('.header').offsetHeight;
-  const scrollPosition = window.scrollY + headerHeight + 50;
-  const windowHeight = window.innerHeight;
-  const documentHeight = document.documentElement.scrollHeight;
-  
-  console.log('当前滚动位置:', scrollPosition, '窗口高度:', windowHeight, '文档高度:', documentHeight);
-  
-  // 检查是否接近或已经到达页面底部
-  const isNearBottom = (window.scrollY + windowHeight) >= (documentHeight - 100);
-  
-  let activeSection = null;
-  let maxSectionTop = -1;
-  
-  // 如果接近底部，直接选择最后一个section（contact）
-  if (isNearBottom && sections.length > 0) {
-    const lastSection = sections[sections.length - 1];
-    activeSection = lastSection.getAttribute('id');
-    console.log('接近页面底部，选择最后一个section:', activeSection);
-  } else {
-    // 找到当前可见区域对应的section
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
-      
-      console.log(`检查section: ${sectionId}, 顶部: ${sectionTop}, 高度: ${sectionHeight}`);
-      
-      // 如果滚动位置在当前section范围内
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        if (sectionTop > maxSectionTop) {
-          maxSectionTop = sectionTop;
-          activeSection = sectionId;
-        }
-      }
-    });
-    
-    // 如果没有找到匹配的section（可能在页面顶部），默认选中home
-    if (!activeSection && scrollPosition < 100) {
-      activeSection = 'home';
-    }
+
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+    activeId = sections[sections.length - 1]?.id || activeId;
   }
-  
-  console.log('当前活动section:', activeSection);
-  
-  // 更新导航链接的active状态
-  elements.navLinks.forEach(link => {
-    link.classList.remove('active');
-    const href = link.getAttribute('href');
-    if (href === `#${activeSection}`) {
-      link.classList.add('active');
-      console.log('设置active状态:', href);
-    }
-  });
-}
 
-
-
-// 强制设置首页为初始active状态
-function setInitialActiveState() {
-  console.log('设置初始导航状态 - 首页');
-  elements.navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#home') {
-      link.classList.add('active');
-      console.log('首页设置为active状态');
-    }
+  links.forEach(link => {
+    const active = link.getAttribute('href') === `#${activeId}`;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
   });
 }
 
 function toggleMobileMenu() {
-  elements.navMenu.classList.toggle('show');
-  elements.navToggle.classList.toggle('active');
+  if (!elements.navMenu || !elements.navToggle) return;
+  const isOpen = elements.navMenu.classList.toggle('show');
+  elements.navToggle.classList.toggle('active', isOpen);
+  elements.navToggle.setAttribute('aria-expanded', String(isOpen));
 }
 
 function closeMobileMenu() {
-  elements.navMenu.classList.remove('show');
-  elements.navToggle.classList.remove('active');
+  elements.navMenu?.classList.remove('show');
+  elements.navToggle?.classList.remove('active');
+  elements.navToggle?.setAttribute('aria-expanded', 'false');
 }
 
-// ===== 滚动效果 =====
-function initializeScrollEffects(config) {
-  const scrollConfig = config.scrollEffects;
-  
-  window.addEventListener('scroll', function() {
-    const scrollY = window.scrollY;
-    
-    // 显示/隐藏返回顶部按钮
-    if (scrollY > scrollConfig.scrollTopThreshold) {
-      elements.scrollTop.classList.add('show');
-    } else {
-      elements.scrollTop.classList.remove('show');
-    }
-    
-    // 导航栏背景透明度
-    const header = document.querySelector('.header');
-    if (header) {
-      if (scrollY > scrollConfig.headerBackgroundChange) {
-        header.style.backgroundColor = `rgba(26, 26, 26, ${scrollConfig.headerOpacity.scrolled})`;
-      } else {
-        header.style.backgroundColor = `rgba(26, 26, 26, ${scrollConfig.headerOpacity.normal})`;
-      }
-    }
-  });
-  
-  // 初始化时检查滚动位置
-  if (window.scrollY > scrollConfig.scrollTopThreshold && elements.scrollTop) {
-    elements.scrollTop.classList.add('show');
-  }
-}
+function addEventListeners() {
+  elements.languageSelect?.addEventListener('change', event => changeLanguage(event.target.value));
+  elements.navToggle?.addEventListener('click', toggleMobileMenu);
 
-// ===== 图片懒加载 =====
-function initializeLazyLoading(config) {
-  const lazyConfig = config.lazyLoading;
-  const images = document.querySelectorAll('img[data-src]');
-  
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.remove('lazy');
-        imageObserver.unobserve(img);
-      }
-    });
-  }, {
-    threshold: lazyConfig.threshold,
-    rootMargin: lazyConfig.rootMargin
-  });
-  
-  images.forEach(img => imageObserver.observe(img));
-}
+  elements.navList?.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
 
-// ===== 事件监听器 =====
-function addEventListeners(config, carouselManager) {
-  // 语言切换 - 按钮方式
-  if (elements.languageToggle) {
-    elements.languageToggle.addEventListener('click', toggleLanguage);
-  }
-  
-  // 语言切换 - select下拉框方式
-  const languageSelect = document.getElementById('language-select');
-  if (languageSelect) {
-    languageSelect.addEventListener('change', function(e) {
-      const selectedLanguage = e.target.value;
-      changeLanguage(selectedLanguage);
-    });
-  }
-  
-  // 移动端菜单切换
-  if (elements.navToggle) {
-    elements.navToggle.addEventListener('click', toggleMobileMenu);
-  }
-  
-  // Hero轮播指示器点击事件
-  elements.heroIndicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', function() {
-      console.log(`点击轮播指示器：${index}`);
-      
-      // 用户点击指示器时立即切换到对应幻灯片
-      // goToSlide方法会自动处理定时器的停止和重启
-      carouselManager.goToSlide(index);
+      const top = target.id === 'home'
+        ? 0
+        : target.getBoundingClientRect().top + window.scrollY - (elements.header?.offsetHeight || 0);
+      window.scrollTo({ top, behavior: 'smooth' });
+      closeMobileMenu();
     });
   });
-  
-  // 返回顶部
-  if (elements.scrollTop) {
-    elements.scrollTop.addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+
+  elements.loadMoreGames?.addEventListener('click', () => galleryManager?.toggle());
+
+  elements.scrollTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  if (config.carousel?.pauseOnHover === true && elements.hero) {
+    elements.hero.addEventListener('mouseenter', () => carouselManager?.stopSlideshow());
+    elements.hero.addEventListener('mouseleave', () => carouselManager?.startSlideshow());
+  }
+
+  elements.heroIndicators?.querySelectorAll('.hero__indicator').forEach(indicator => {
+    indicator.addEventListener('click', () => {
+      const index = Number(indicator.dataset.slide);
+      if (Number.isInteger(index)) carouselManager?.goToSlide(index);
     });
-  }
-  
-  // 鼠标悬停暂停/恢复轮播
-  if (config.carousel.pauseOnHover) {
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-      // 鼠标进入Hero区域时暂停轮播
-      heroSection.addEventListener('mouseenter', () => {
-        console.log('鼠标悬停，暂停轮播');
-        carouselManager.stopSlideshow();
-      });
-      
-      // 鼠标离开Hero区域时恢复轮播
-      heroSection.addEventListener('mouseleave', () => {
-        console.log('鼠标离开，恢复轮播');
-        if (config.carousel.autoPlay) {
-          carouselManager.startSlideshow();
-        }
-      });
-    }
-  }
-  
-  // 键盘导航支持（左右箭头键）
-  if (config.accessibility.keyboardNavigation) {
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowLeft') {
-        console.log('键盘导航：左箭头键');
-        
-        // 停止当前轮播
-        carouselManager.stopSlideshow();
-        
-        // 切换到上一张
-        const prevIndex = carouselManager.currentSlide === 0 ? elements.heroSlides.length - 1 : carouselManager.currentSlide - 1;
-        carouselManager.showSlide(prevIndex);
-        
-        // 延迟重启轮播定时器，给用户足够时间查看
-        setTimeout(() => {
-          carouselManager.startSlideshow();
-        }, carouselManager.config.interval);
-        
-      } else if (e.key === 'ArrowRight') {
-        console.log('键盘导航：右箭头键');
-        
-        // 停止当前轮播
-        carouselManager.stopSlideshow();
-        
-        // 切换到下一张
+  });
+
+  if (config.accessibility?.keyboardNavigation === true) {
+    document.addEventListener('keydown', event => {
+      if (!carouselManager || !elements.hero || elements.hero.hidden) return;
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+      if (event.target instanceof Element && event.target.closest('input, textarea, select, button, a, [contenteditable="true"]')) return;
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        carouselManager.previousSlide();
+        carouselManager.startSlideshow();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
         carouselManager.nextSlide();
-        
-        // 延迟重启轮播定时器，给用户足够时间查看
-        setTimeout(() => {
-          carouselManager.startSlideshow();
-        }, carouselManager.config.interval);
+        carouselManager.startSlideshow();
       }
     });
   }
-  
-  // 窗口大小改变时重新计算
-  window.addEventListener('resize', debounce(function() {
-    updateActiveNavItem();
-  }, config.performance.debounceDelay));
+
+  window.addEventListener('resize', debounce(updateActiveNavItem, config.performance?.debounceDelay || 150), { passive: true });
 }
 
-// ===== 工具函数 =====
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+function applyAccessibilitySettings() {
+  if (config.accessibility?.reducedMotion !== true) return;
+  const prefersReducedMotion = typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) return;
+
+  document.documentElement.style.setProperty('--transition-fast', '0.01ms');
+  document.documentElement.style.setProperty('--transition-normal', '0.01ms');
+  document.documentElement.style.setProperty('--transition-slow', '0.01ms');
+  document.documentElement.style.setProperty('--carousel-transition-duration', '0.01ms');
+  carouselManager?.stopSlideshow();
+}
+
+function debounce(callback, wait) {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => callback(...args), wait);
   };
 }
 
-// ===== 页面加载完成后的处理 =====
-function handlePageLoad(config) {
-  window.addEventListener('load', function() {
-    // 添加页面加载完成的类
-    document.body.classList.add('loaded');
-    
-    // 立即设置初始导航状态
-    console.log('页面加载完成，设置初始导航状态');
-    setInitialActiveState();
-    
-    // 触发进入动画
-    const animations = config.animations;
-    setTimeout(() => {
-      const animatedElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__cta');
-      animatedElements.forEach((el, index) => {
-        setTimeout(() => {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, index * animations.pageLoad.staggerDelay);
-      });
-    }, 300);
-  });
-  
-  // 无障碍支持
-  if (config.accessibility.reducedMotion && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.style.setProperty('--transition-fast', '0.01ms');
-    document.documentElement.style.setProperty('--transition-normal', '0.01ms');
-    document.documentElement.style.setProperty('--transition-slow', '0.01ms');
-  }
-}
-
-// ===== 错误处理 =====
-window.addEventListener('error', function(e) {
-  console.error('页面错误:', e.error);
+window.addEventListener('error', event => {
+  console.error('Website runtime error:', event.error || event.message);
 });
 
-// ===== 导出函数（用于调试） =====
 window.GameStudioApp = {
-  toggleLanguage,
   changeLanguage,
   detectLanguage,
-  config: () => config,
-  contentData: () => contentData,
-  currentLanguage: () => currentLanguage
+  get config() { return config; },
+  get contentData() { return contentData; },
+  get currentLanguage() { return currentLanguage; }
 };
+
+document.addEventListener('DOMContentLoaded', initializeApp);

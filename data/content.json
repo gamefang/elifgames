@@ -15,10 +15,6 @@
           "second": "第二张幻灯片",
           "third": "第三张幻灯片"
         }
-      },
-      "languageOptions": {
-        "zh-CN": "中文",
-        "en-US": "English"
       }
     },
     "navigation": {
@@ -94,32 +90,28 @@
         "loadMore": "探索更多",
         "showLess": "收起列表"
       },
-      "games": [
-        {
+      "games": {
+        "my-company-996": {
           "name": "我的公司996",
           "description": "过于真实的职场模拟游戏",
-          "genre": "模拟/剧情",
-          "image": "images/work0.jpg"
+          "genre": "模拟/剧情"
         },
-        {
+        "mound-of-music": {
           "name": "知音冢",
           "description": "基于真实乐器演奏的科幻音游",
-          "genre": "音乐/剧情",
-          "image": "contents/moundofmusic/moundofmusic.png"
+          "genre": "音乐/剧情"
         },
-        {
+        "tramp-become-president": {
           "name": "我的铁饭碗",
           "description": "一款黑色幽默风格的桌宠模拟游戏(开发中)",
-          "genre": "模拟/放置",
-          "image": "contents/trampbecomepresident/tbp1080.png"
+          "genre": "模拟/放置"
         },
-        {
+        "6174": {
           "name": "6174",
           "description": "埃舍尔风格的解谜游戏(开发中)",
-          "genre": "解谜/冒险",
-          "image": "images/work2.jpg"
+          "genre": "解谜/冒险"
         }
-      ]
+      }
     },
     "footer": {
       "logoName": "ELIF GAMES",
@@ -137,14 +129,22 @@
       "social": {
         "title": "联系我们",
         "links": [
-          { "name": "邮箱: contact@elifgames.fun", "url": "mailto:contact@elifgames.fun" },
-          { "name": "QQ群: 894397045", "url": "https://qm.qq.com/q/clRnCNzSzm" },
-          { "name": "Bilibili: gamefang", "url": "https://space.bilibili.com/412487116" }
+          {
+            "name": "邮箱: contact@elifgames.fun",
+            "url": "mailto:contact@elifgames.fun"
+          },
+          {
+            "name": "QQ群: 894397045",
+            "url": "https://qm.qq.com/q/clRnCNzSzm"
+          },
+          {
+            "name": "Bilibili: gamefang",
+            "url": "https://space.bilibili.com/412487116"
+          }
         ]
       }
     }
   },
-
   "en-US": {
     "site": {
       "title": "ELIF GAMES",
@@ -161,10 +161,6 @@
           "second": "Second Slide",
           "third": "Third Slide"
         }
-      },
-      "languageOptions": {
-        "zh-CN": "中文",
-        "en-US": "English"
       }
     },
     "navigation": {
@@ -240,32 +236,28 @@
         "loadMore": "Show More",
         "showLess": "Show Less"
       },
-      "games": [
-        {
+      "games": {
+        "my-company-996": {
           "name": "My Company 996",
           "description": "A TOO real office simulator",
-          "genre": "Simulation/Narrative",
-          "image": "images/work0.jpg"
+          "genre": "Simulation/Narrative"
         },
-        {
+        "mound-of-music": {
           "name": "Mound of Music",
           "description": "A sci-fi rhythm game that lets you play real instruments",
-          "genre": "Music/Narrative",
-          "image": "contents/moundofmusic/moundofmusic.png"
+          "genre": "Music/Narrative"
         },
-        {
+        "tramp-become-president": {
           "name": "Tramp: Become President",
           "description": "A darkly humorous desktop idle simulation game (in development)",
-          "genre": "Simulation/Idle",
-          "image": "contents/trampbecomepresident/tbp1080.png"
+          "genre": "Simulation/Idle"
         },
-        {
+        "6174": {
           "name": "6174",
           "description": "An Escher-style puzzle game (in development)",
-          "genre": "Puzzle/Adventure",
-          "image": "images/work2.jpg"
+          "genre": "Puzzle/Adventure"
         }
-      ]
+      }
     },
     "footer": {
       "logoName": "ELIF GAMES",
@@ -283,9 +275,18 @@
       "social": {
         "title": "Contact Us",
         "links": [
-          { "name": "Email: contact@elifgames.fun", "url": "mailto:contact@elifgames.fun" },
-          { "name": "X.COM: Elif Games", "url": "https://x.com/ElifGameStudio" },
-          { "name": "Facebook: elifgamestudio", "url": "https://www.facebook.com/profile.php?id=61555730533026" }
+          {
+            "name": "Email: contact@elifgames.fun",
+            "url": "mailto:contact@elifgames.fun"
+          },
+          {
+            "name": "X.COM: Elif Games",
+            "url": "https://x.com/ElifGameStudio"
+          },
+          {
+            "name": "Facebook: elifgamestudio",
+            "url": "https://www.facebook.com/profile.php?id=61555730533026"
+          }
         ]
       }
     }

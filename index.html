@@ -3,61 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" id="meta-description">
+    <meta name="theme-color" content="#1a1a1a">
     <title>ELIF GAMES</title>
-    <meta name="description" content="Indie Game Studio">
-    
-    <!-- 字体引入 -->
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- 图标配置 -->
-    <link rel="icon" type="image/x-icon" href="images/logo_box.jpg">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logo_box.jpg">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo_box.jpg">
-    <link rel="icon" type="image/png" sizes="48x48" href="images/logo_box.jpg">
-    <link rel="icon" type="image/png" sizes="64x64" href="images/logo_box.jpg">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/logo_box.jpg">
 
-    <!-- 样式文件 -->
+    <!-- Site icon and styles are configured at runtime -->
+    <link id="site-favicon" rel="icon" type="image/jpeg">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- 导航栏 -->
     <header class="header" id="header">
-        <nav class="nav container">
-            <div class="nav__logo">
-                <img src="images/logo_box.jpg" alt="ELIF GAMES" class="nav__logo-img">
-                <span class="nav__logo-text" data-key="site.logoName"></span>
-            </div>
-            
+        <nav class="nav container" aria-label="Main navigation">
+            <a class="nav__logo" href="#home" aria-label="ELIF GAMES home">
+                <img id="header-logo" alt="" class="nav__logo-img">
+                <span class="nav__logo-text" data-key="site.logoName">ELIF GAMES</span>
+            </a>
+
             <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link" data-key="navigation.home"></a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#about" class="nav__link" data-key="navigation.about"></a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#games" class="nav__link" data-key="navigation.games"></a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link" data-key="navigation.contact"></a>
-                    </li>
-                </ul>
-                
+                <ul class="nav__list" id="nav-list"></ul>
                 <div class="nav__actions">
                     <div class="nav__language">
-                        <select class="language-select" id="language-select" aria-label="选择语言">
-                            <option value="en-US">English</option>
-                            <option value="zh-CN">中文</option>
-                        </select>
+                        <select class="language-select" id="language-select" aria-label="Select language"></select>
                     </div>
                 </div>
             </div>
-            
-            <button class="nav__toggle" id="nav-toggle" aria-label="切换菜单">
+
+            <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Toggle menu" aria-controls="nav-menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -65,288 +41,111 @@
         </nav>
     </header>
 
-    <!-- 主要内容 -->
     <main class="main">
-        <!-- Hero轮播区域 -->
-        <section class="hero" id="home">
-            <div class="hero__slider">
-                <div class="hero__slide hero__slide--active" data-slide="0">
-                    <div class="hero__bg hero__bg--1"></div>
-                    <div class="hero__content">
-                        <h1 class="hero__title" data-key="hero.slides.0.title"></h1>
-                        <p class="hero__subtitle" data-key="hero.slides.0.description"></p>
-                    </div>
-                </div>
-                
-                <div class="hero__slide" data-slide="1">
-                    <div class="hero__bg hero__bg--2"></div>
-                    <div class="hero__content">
-                        <h1 class="hero__title" data-key="hero.slides.1.title"></h1>
-                        <p class="hero__subtitle" data-key="hero.slides.1.description"></p>
-                    </div>
-                </div>
-                
-                <div class="hero__slide" data-slide="2">
-                    <div class="hero__bg hero__bg--3"></div>
-                    <div class="hero__content">
-                        <h1 class="hero__title" data-key="hero.slides.2.title"></h1>
-                        <p class="hero__subtitle" data-key="hero.slides.2.description"></p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero__indicators">
-                <button class="hero__indicator hero__indicator--active" data-slide="0" aria-label="第一张幻灯片"></button>
-                <button class="hero__indicator" data-slide="1" aria-label="第二张幻灯片"></button>
-                <button class="hero__indicator" data-slide="2" aria-label="第三张幻灯片"></button>
-            </div>
-            
-
+        <!-- Slides, indicators and their images are rendered from data/config.json. -->
+        <section class="hero" id="home" aria-label="Studio introduction">
+            <div class="hero__slider" id="hero-slider"></div>
+            <div class="hero__indicators" id="hero-indicators" aria-label="Carousel controls"></div>
         </section>
 
-        <!-- 主推游戏区域 -->
+        <!-- Temporary featured announcement. Replace with dated content entries when the news archive is implemented. -->
         <section class="featured section" id="featured">
             <div class="container">
                 <div class="section__header">
                     <span class="section__subtitle" data-key="featuredGame.title"></span>
                     <h2 class="section__title" data-key="featuredGame.subtitle"></h2>
                 </div>
-                
+
                 <div class="featured__content">
                     <div class="featured__info">
                         <h3 class="featured__name" data-key="featuredGame.name"></h3>
                         <p class="featured__description" data-key="featuredGame.description"></p>
-                        
-                        <!-- 暂时隐藏 -->
-                        <ul class="featured__features" style="display: none;">
-                            <li>
-                              <a href="https://mp.weixin.qq.com/s/B1wjeHSgo2y7R603LlKv0Q"
-                                 class="featured__feature"
-                                 data-key="featuredGame.features.0"
-                                 target="_blank">
-                              </a>
-                           </li>
-                              <a href="https://gamesardor.net/top-steam-games-to-lookout-for-in-november-2024/#mound-of-music"
-                                 class="featured__feature"
-                                 data-key="featuredGame.features.1"
-                                 target="_blank">
-                              </a>
-                            <!-- <li class="featured__feature" data-key="featuredGame.features.2"></li>
-                            <li class="featured__feature" data-key="featuredGame.features.3"></li> -->
-                        </ul>
-                        
+                        <ul class="featured__features" id="featured-features" hidden></ul>
                         <div class="featured__buttons">
-                            <a href="https://store.steampowered.com/app/3635920/Tramp_Become_President/"
-                               class="btn btn--secondary"
-                               data-key="featuredGame.buttons.learnMore"
-                               target="_blank">
-                            </a>
-                            <!-- 暂时隐藏 -->
-                            <a href="https://store.steampowered.com/app/3635920/Tramp_Become_President/"
-                               class="btn btn--primary"
-                               data-key="featuredGame.buttons.playNow"
-                               target="_blank"
-                               style="display: none;">
-                            </a>
+                            <a id="featured-learn-more" class="btn btn--secondary" data-key="featuredGame.buttons.learnMore"></a>
+                            <a id="featured-play-now" class="btn btn--primary" data-key="featuredGame.buttons.playNow"></a>
                         </div>
                     </div>
-                    
+
                     <div class="featured__image">
-                        <img src="contents/trampbecomepresident/tbp1080.png" alt="Tramp: Become President" class="featured__img">
+                        <img id="featured-image" alt="" class="featured__img" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 工作室介绍区域 -->
         <section class="about section section--dark" id="about">
             <div class="container">
                 <div class="section__header">
                     <span class="section__subtitle" data-key="about.title"></span>
                     <h2 class="section__title" data-key="about.subtitle"></h2>
                 </div>
-                
+
                 <div class="about__content">
                     <div class="about__description">
                         <p data-key="about.description"></p>
                     </div>
-                    
                     <div class="about__mission">
                         <h3 class="about__mission-title" data-key="about.mission"></h3>
                         <p class="about__mission-text" data-key="about.missionText"></p>
                     </div>
-                    
-                    <div class="about__values">
-                        <div class="value__card">
-                            <h4 class="value__title" data-key="about.values.0.title"></h4>
-                            <p class="value__description" data-key="about.values.0.description"></p>
-                        </div>
-                        <div class="value__card">
-                            <h4 class="value__title" data-key="about.values.1.title"></h4>
-                            <p class="value__description" data-key="about.values.1.description"></p>
-                        </div>
-                        <div class="value__card">
-                            <h4 class="value__title" data-key="about.values.2.title"></h4>
-                            <p class="value__description" data-key="about.values.2.description"></p>
-                        </div>
-                    </div>
-                    
-                    <!-- <div class="about__team">
-                        <img src="images/professional-game-development-team-portrait.jpg" alt="我们的团队" class="about__team-img">
-                    </div>
-                    
-                    <div class="about__buttons">
-                        <a href="#" class="btn btn--outline" data-key="about.buttons.learnMore">了解更多</a>
-                        <a href="#" class="btn btn--ghost" data-key="about.buttons.contactUs">联系我们</a>
-                    </div> -->
+                    <div class="about__values" id="about-values"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 游戏Gallery区域 -->
         <section class="gallery section" id="games">
             <div class="container">
                 <div class="section__header">
                     <span class="section__subtitle" data-key="gallery.title"></span>
                     <h2 class="section__title" data-key="gallery.subtitle"></h2>
                 </div>
-                
-                <div class="gallery__grid" id="gallery-grid">
-                    <div class="game__card">
-                        <div class="game__image">
-                            <img src="images/work0.jpg" alt="My Company 996" class="game__img">
-                            <div class="game__overlay">
-                              <a href="https://store.steampowered.com/app/1249060/MyCompany996/" target="_blank">
-                                 <h4 class="game__title" data-key="gallery.games.0.name"></h4>
-                                 <p class="game__genre" data-key="gallery.games.0.genre"></p>
-                                 <p class="game__description" data-key="gallery.games.0.description"></p>
-                              </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="game__card">
-                        <div class="game__image">
-                            <img src="contents/moundofmusic/moundofmusic.png" alt="Mound of Music" class="game__img">
-                            <div class="game__overlay">
-                              <a href="contents/moundofmusic/index.html" target="_blank">
-                                <h4 class="game__title" data-key="gallery.games.1.name"></h4>
-                                <p class="game__genre" data-key="gallery.games.1.genre"></p>
-                                <p class="game__description" data-key="gallery.games.1.description"></p>
-                              </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="game__card">
-                        <div class="game__image">
-                            <img src="contents/trampbecomepresident/tbp1080.png" alt="Tramp: Become President" class="game__img">
-                            <div class="game__overlay">
-                                <a href="https://store.steampowered.com/app/3635920/Tramp_Become_President/" target="_blank">
-                                    <h4 class="game__title" data-key="gallery.games.2.name"></h4>
-                                    <p class="game__genre" data-key="gallery.games.2.genre"></p>
-                                    <p class="game__description" data-key="gallery.games.2.description"></p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="game__card hidden-game" style="display: none;">
-                        <div class="game__image">
-                            <img src="images/work2.jpg" alt="6174" class="game__img">
-                            <div class="game__overlay">
-                                <h4 class="game__title" data-key="gallery.games.3.name"></h4>
-                                <p class="game__genre" data-key="gallery.games.3.genre"></p>
-                                <p class="game__description" data-key="gallery.games.3.description"></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- <div class="game__card hidden-game" style="display: none;">
-                        <div class="game__image">
-                            <img src="images/pixel-art-rpg-game-screenshot-collection.jpg" alt="机器人历险记" class="game__img">
-                            <div class="game__overlay">
-                                <h4 class="game__title" data-key="gallery.games.4.name">机器人历险记</h4>
-                                <p class="game__genre" data-key="gallery.games.4.genre">平台/动作</p>
-                                <p class="game__description" data-key="gallery.games.4.description">平台跳跃游戏</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="game__card hidden-game" style="display: none;">
-                        <div class="game__image">
-                            <img src="images/darkest-dungeon-plague-doctor-combat-screenshot.jpg" alt="暗黑地牢" class="game__img">
-                            <div class="game__overlay">
-                                <h4 class="game__title" data-key="gallery.games.5.name">暗黑地牢</h4>
-                                <p class="game__genre" data-key="gallery.games.5.genre">RPG/策略</p>
-                                <p class="game__description" data-key="gallery.games.5.description">回合制RPG游戏</p>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-                
-                <!-- <div class="gallery__actions">
-                    <button class="btn btn--secondary gallery__load-more" id="load-more-games">
-                        <span class="load-more-text" data-key="gallery.buttons.loadMore">发现更多游戏</span>
-                        <svg class="load-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <div class="gallery__grid" id="gallery-grid"></div>
+                <!-- hide show more
+                <div class="gallery__actions" id="gallery-actions" hidden>
+                    <button class="btn btn--secondary gallery__load-more" id="load-more-games" type="button" aria-expanded="false">
+                        <span class="load-more-text" data-key="gallery.buttons.loadMore"></span>
+                        <svg class="load-more-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                </div> -->
+                </div>
+                -->
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
     <footer class="footer section--dark" id="contact">
         <div class="container">
             <div class="footer__content">
                 <div class="footer__section">
                     <div class="footer__logo">
-                        <img src="images/logo.png" alt="ELIF GAMES" class="footer__logo-img">
-                        <!-- <span class="footer__logo-text" data-key="footer.logoName"></span> -->
+                        <img id="footer-logo" alt="" class="footer__logo-img" loading="lazy" decoding="async">
                     </div>
                     <p class="footer__description" data-key="footer.description"></p>
                 </div>
-                
-                <!-- <div class="footer__section">
-                    <h3 class="footer__title" data-key="footer.contact.title"></h3>
-                    <div class="footer__contact">
-                        <p class="footer__contact-item">
-                            <span class="footer__contact-label" data-key="footer.contact.labels.email"></span>
-                            <a href="mailto:elifgamestudio@gmail.com" class="footer__contact-link">elifgamestudio@gmail.com</a>
-                        </p>
-                        <p class="footer__contact-item">
-                            <span class="footer__contact-label" data-key="footer.contact.labels.phone"></span>
-                            <a href="tel:+8612345678900" class="footer__contact-link"></a>
-                        </p>
-                    </div>
-                </div> -->
-                
+
                 <div class="footer__section">
                     <h3 class="footer__title" data-key="footer.social.title"></h3>
-                    <div class="footer__social">
-                        <a class="footer__social-link" data-key="footer.social.links.0"></a>
-                        <a class="footer__social-link" data-key="footer.social.links.1"></a>
-                        <a class="footer__social-link" data-key="footer.social.links.2"></a>
-                    </div>
+                    <div class="footer__social" id="footer-social"></div>
                 </div>
             </div>
-            
+
             <div class="footer__bottom">
                 <p class="footer__copyright" data-key="footer.copyright"></p>
             </div>
         </div>
     </footer>
 
-    <!-- 返回顶部按钮 -->
-    <button class="scroll-top" id="scroll-top" aria-label="返回顶部">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </button>
 
-    <!-- JavaScript -->
+    <div class="app-error" id="app-error" role="alert" hidden></div>
+
     <script src="js/main.js"></script>
 </body>
 </html>
